@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 CON BÁO</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../Style/style.css">
+</head>
+<body>
+<nav>
+  <div class="bieu_tuong">3 CON BÁO
+    <span>CINEMA</span></div>
+    <ul>
+    <li class="co_menu_con">
+      <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a>
+  <button class="mui_ten_xuong" onclick="batTatMenuRap(event)">
+    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="menu_rap_phim" id="menuRapPhim">
+        <div class="tim_kiem_rap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
+          <select id="loc_thanh_pho_id" onchange="locRap('')">
+            <option value="hcm">Tp. Hồ Chí Minh</option>
+            <option value="hn">Hà Nội</option>
+            <option value="dn">Đà Nẵng</option>
+            <option value="vt">Vũng Tàu</option>
+          </select>
+        </div>
+        <div class="danh_sach_rap" id="danhSachRap">
+          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
+            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
+            </div>
+          </div>
+          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
+            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
+            </div>
+          </div>
+          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
+            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
+            </div>
+          </div>
+          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
+            <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
+            </div>
+          </div>
+          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
+            <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
+            </div>
+          </div>
+          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
+            <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
+            <div class="thong_tin_rap">
+              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
+              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li><a href="../sapchieu.html">Sắp chiếu</a></li>
+    <li><a href="../xemphim.html">Xem phim</a></li>
+    <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
+  </ul>
+  <div class="hanh_dong_dieu_huong">
+    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
+    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
+  </div>
+</nav>
+<div class="uu-dai">
+<section>
+  <!--uudai2-->
+  <h2 class="title-red">
+    RA MẮT MARIO GALAXY COMBO – MANG CẢ VŨ TRỤ VỀ NHÀ!
+  </h2>
+  <div class="detail-container">
+    <!-- Hình bên trái -->
+    <div class="left">
+      <img src="../images/banh_6.png" alt="">
+      <a href="./uudai.html"></a>
+    </div>
+    <!-- Nội dung bên phải -->
+    <div class="right">
+        Chào đón PHIM SUPER MARIO THIÊN HÀ, cùng chạm tay vào thế giới Mario Galaxy với bộ merchandise này!
+<br><br><strong>1. Thông tin sản phẩm:</strong>
+<br>Mở bán từ ngày 03/04/2026 - Online & Offline tại các cụm rạp CGV trên toàn quốc.
+<br><br><strong>BÌNH NƯỚC MARIO GALAXY
+Có mặt tại tất cả cụm rạp CGV trên toàn quốc</strong>
+<br>Với dung tích 220ml, nhỏ gọn, mang đi học, đi làm cực tiện
+<br>Chất liệu thép không gỉ – bền, sạch, an toàn
+<br><br>Giữ cho đồ uống lạnh luôn mát
+<br><br><strong>CHĂN MARIO GALAXY
+<br>Có mặt tại tất cả cụm rạp CGV thuộc khu vực (trước sáp nhập): TP. Hồ Chí Minh, Bình Dương, Cần Thơ, Đồng Nai, Hà Nội, Hải Phòng và Vincom Đà Nẵng</strong>
+<br>Kích thước 100x150 cm, đắp khi xem phim tại nhà hay ở rạp, mang đi du lịch, dùng trong văn phòng đều hợp lý
+<br>Chăn 02 lớp, chất liệu polyester, mềm, nhẹ, đủ ấm áp.
+<br><br><strong>2. COMBO SẢN PHẨM:<br>
+MARIO GLX BOTTLE COMBO_239.000Đ</strong>
+<br>01 Bình nước Mario Galaxy
+<br>01 Bắp ngọt 44oz + 01 Coke 32oz
+<br><br><strong>MARIO GLX BOTTLE COMBO_269.000Đ</strong>
+<br>01 Chăn Mario Galaxy
+<br>01 Bắp ngọt 44oz + 01 Coke 32oz
+<br><br><strong>MARIO GLX SET COMBO_499.000Đ</strong>
+<br>01 Bình nước & 01 Chăn
+<br>01 Bắp ngọt 44oz  + 01 Coke 32oz
+<br><br>Mua trực tiếp tại rạp hoặc đặt mua tại CGV Store/ mua cùng lúc với vé online trên ứng dụng CGV Cinemas.
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="thuong_hieu_chan_trang">
+    <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+    <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+  </div>
+  <div>
+    <h4>Hỗ trợ</h4>
+    <ul>
+      <li><a href="#">Hướng dẫn đặt vé</a></li>
+      <li><a href="#">Chính sách hoàn vé</a></li>
+      <li><a href="#">Câu hỏi thường gặp</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Về chúng tôi</h4>
+    <ul>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Tin tức</a></li>
+      <li><a href="#">Tuyển dụng</a></li>
+      <li><a href="#">Đối tác</a></li>
+    </ul>
+  </div>
+  
+</footer>
+<div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+</footer>
+<script type="module" src="../Java/java.js"></script>
+</body>
+</html>
