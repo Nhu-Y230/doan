@@ -384,7 +384,7 @@ async function processPayment(btn) {
     btn.disabled = true;
 
     const danhSachGhe = [...da_chon].sort().join(', ') || '—';
-    const code = 'CVIET-' + Math.random().toString(36).substring(2,10).toUpperCase();
+    const code = 'Bao-' + Math.random().toString(36).substring(2,10).toUpperCase();
     const nguoiDung = getCurrentUser();
 
     try {
