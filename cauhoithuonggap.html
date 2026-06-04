@@ -6,168 +6,7 @@
 <title>3 CON BÁO</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./Style/style.css">
-<style>
-  /* ---- SECTION HƯỚNG DẪN ĐẶT VÉ ---- */
-  .hdv-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 72px 24px 80px;
-  }
 
-  .hdv-section > h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .hdv-section > p.mo_dau {
-    color: var(--light);
-    font-size: 0.95rem;
-    margin-bottom: 48px;
-    line-height: 1.6;
-  }
-
-  /* Mỗi thẻ bước */
-  .buoc {
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 36px 40px;
-    margin-bottom: 24px;
-    transition: border-color 0.3s, transform 0.2s;
-  }
-
-  .buoc:hover {
-    border-color: rgba(232,25,44,0.4);
-    transform: translateY(-2px);
-  }
-
-  /* Số tròn bên trái */
-  .buoc__so {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba(232,25,44,0.12);
-    border: 2px solid rgba(232,25,44,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    color: var(--red);
-  }
-
-  /* Nội dung chữ bên phải */
-  .buoc__noi_dung {
-    flex: 1;
-  }
-
-  .buoc__noi_dung h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.35rem;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .buoc__noi_dung p {
-    color: var(--light);
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-
-  /* Ảnh đơn trong mỗi bước */
-  .buoc__anh {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.07);
-    margin-top: 20px;
-    display: block;
-  }
-
-  /* ---- 2 ẢNH SONG SONG (đăng ký / đăng nhập) ---- */
-  .hinh-anh-doi {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .hinh-anh-doi .buoc__anh {
-    width: 48%;
-    margin-top: 0; /* bỏ margin-top thừa từ .buoc__anh */
-  }
-
-  /* Hộp mẹo vàng */
-  .meo_nhanh {
-    background: rgba(245,200,66,0.07);
-    border: 1px solid rgba(245,200,66,0.3);
-    border-radius: 12px;
-    padding: 20px 28px;
-    margin-top: 48px;
-  }
-
-  .meo_nhanh h4 {
-    color: var(--gold);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .meo_nhanh ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .meo_nhanh ul li {
-    color: var(--light);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .meo_nhanh ul li::before {
-    content: "✦";
-    color: var(--gold);
-    position: absolute;
-    left: 0;
-    font-size: 0.65rem;
-    top: 3px;
-  }
-
-  /* Responsive mobile — 2 ảnh xếp chồng trên màn nhỏ */
-  @media (max-width: 640px) {
-    .buoc {
-      flex-direction: column;
-      gap: 20px;
-      padding: 28px 24px;
-    }
-    .buoc__so {
-      width: 48px;
-      height: 48px;
-      font-size: 1.4rem;
-    }
-    .hinh-anh-doi {
-      flex-direction: column;
-    }
-    .hinh-anh-doi .buoc__anh {
-      width: 100%;
-    }
-  }
-</style>
 </head>
 <body>
 
@@ -283,70 +122,11 @@
 </div>
 
 
-
 <section>
-  <div class="hdv-section">
-
-    <h2>HƯỚNG DẪN ĐẶT VÉ</h2>
-    <p class="mo_dau">Đặt vé xem phim tại 3 CON BÁO rất đơn giản và nhanh chóng. Hãy làm theo 4 bước dưới đây để có trải nghiệm tốt nhất.</p>
-
-    <!-- Bước 1 -->
-    <div class="buoc">
-      <div class="buoc__so">01</div>
-      <div class="buoc__noi_dung">
-        <h3>ĐĂNG NHẬP HOẶC ĐĂNG KÝ TÀI KHOẢN</h3>
-        <p>Nhấn nút <strong style="color:var(--text);">Đăng nhập</strong> hoặc <strong style="color:var(--text);">Đăng ký</strong> ở góc trên bên phải màn hình. Nếu đã có tài khoản, điền email và mật khẩu. Nếu chưa có, tạo tài khoản mới — hoàn toàn miễn phí.</p>
-        <div class="hinh-anh-doi">
-          <img src="images/huongdandatve/dangky.png" alt="Bước 1 - Đăng ký" class="buoc__anh">
-          <img src="images/huongdandatve/dangnhap.png" alt="Bước 1 - Đăng nhập" class="buoc__anh">
-        </div>
-      </div>
-    </div>
-
-    <!-- Bước 2 -->
-    <div class="buoc">
-      <div class="buoc__so">02</div>
-      <div class="buoc__noi_dung">
-        <h3>CHỌN PHIM VÀ GHẾ NGỒI</h3>
-        <p>Chọn ngày và suất chiếu mong muốn. Sơ đồ ghế sẽ hiện ra, ghế <strong style="color:var(--red);">đỏ</strong> đã được đặt - ghế <strong style="color:var(--text);">trắng</strong> là ghế trống - ghế <strong style="color:var(--purple);">tím</strong> là ghế Vip - ghế <strong style="color:var(--muted);">đen</strong> là ghế đã bán. Nhấn vào ghế yêu thích, có thể chọn nhiều ghế cho cả nhóm.</p>
-        <img src="images/huongdandatve/vitrighe.png" alt="Bước 2 - Chọn ghế" class="buoc__anh">
-      </div>
-    </div>
-
-    <!-- Bước 3 -->
-    <div class="buoc">
-      <div class="buoc__so">03</div>
-      <div class="buoc__noi_dung">
-        <h3>THANH TOÁN VÀ NHẬN VÉ</h3>
-        <p>Kiểm tra lại đơn hàng, nhập mã giảm giá nếu có, chọn thêm bắp rang và nước uống nếu muốn. Chọn phương thức thanh toán: <strong style="color:var(--text);">MoMo, VNPay, ZaloPay</strong> hoặc <strong style="color:var(--text);">thẻ ngân hàng</strong>. Sau khi thanh toán, sẽ hiện thông tin mã vé ngay trên màn hình.</p>
-        <div class="hinh-anh-doi">
-          <img src="images/huongdandatve/thanhtoan.png" alt="Bước 3 - Thanh toán" class="buoc__anh">
-          <img src="images/huongdandatve/phuongthucthanhtoan.png" alt="Bước 4 - Phương thức thanh toán" class="buoc__anh">
-        </div>
-      </div>
-    </div>
-    <!-- Bước 4 -->
-    <div class="buoc">
-      <div class="buoc__so">04</div>
-      <div class="buoc__noi_dung">
-        <h3>KIỂM TRA ĐƠN HÀNG</h3>
-        <p>Xem lại thông tin đơn hàng đã đặt, bao gồm phim, suất chiếu, ghế đã chọn và tổng số tiền cần thanh toán.</p>
-        <img src="images/huongdandatve/kiemtra.png" alt="Bước 4 - Kiểm tra đơn hàng" class="buoc__anh">
-      </div>
-    </div>
-
-    <!-- Mẹo nhanh -->
-    <div class="meo_nhanh">
-      <h4>✦ Mẹo để đặt vé nhanh hơn</h4>
-      <ul>
-        <li>Đặt vé trước ít nhất 30 phút để có ghế đẹp, đặc biệt vào cuối tuần.</li>
-        <li>Dùng mã <strong style="color:var(--gold);">BAOBARA</strong> để nhận ưu đãi giảm giá đặc biệt.</li>
-        <li>Thứ 3 hàng tuần giảm 30% — áp dụng tự động, không cần mã.</li>
-      </ul>
-    </div>
-
-  </div>
+  
 </section>
+
+
 
 <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
   <div class="auth-hop_thoai">
@@ -463,3 +243,4 @@
 </iframe>
 </body>
 </html>
+
