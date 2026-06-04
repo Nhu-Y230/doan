@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../Style/style.css">
 <style>
-  /* ---- SECTION HƯỚNG DẪN ĐẶT VÉ ---- */
-  .hdv-section {
+  /* ---- SECTION CHÍNH SÁCH HOÀN VÉ ---- */
+  .csv-section {
     max-width: 900px;
     margin: 0 auto;
     padding: 72px 24px 80px;
   }
 
-  .hdv-section > h2 {
+  .csv-section > h2 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
     letter-spacing: 3px;
@@ -22,100 +22,153 @@
     margin-bottom: 8px;
   }
 
-  .hdv-section > p.mo_dau {
+  .csv-section > p.mo_dau {
     color: var(--light);
     font-size: 0.95rem;
     margin-bottom: 48px;
     line-height: 1.6;
   }
 
-  /* Mỗi thẻ bước */
-  .buoc {
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
+  /* Thẻ nội dung chính sách */
+  .csv-the {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 16px;
-    padding: 36px 40px;
-    margin-bottom: 24px;
+    padding: 32px 40px;
+    margin-bottom: 20px;
     transition: border-color 0.3s, transform 0.2s;
   }
 
-  .buoc:hover {
-    border-color: rgba(232,25,44,0.4);
+  .csv-the:hover {
+    border-color: rgba(232,25,44,0.35);
     transform: translateY(-2px);
   }
 
-  /* Số tròn bên trái */
-  .buoc__so {
+  /* Tiêu đề mỗi thẻ — icon + chữ */
+  .csv-the__tieu_de {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .csv-the__icon {
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     background: rgba(232,25,44,0.12);
-    border: 2px solid rgba(232,25,44,0.4);
+    border: 1px solid rgba(232,25,44,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    color: var(--red);
+    font-size: 1.2rem;
   }
 
-  /* Nội dung chữ bên phải */
-  .buoc__noi_dung {
-    flex: 1;
-  }
-
-  .buoc__noi_dung h3 {
+  .csv-the__tieu_de h3 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     letter-spacing: 2px;
     color: var(--text);
-    margin-bottom: 10px;
   }
 
-  .buoc__noi_dung p {
+  /* Danh sách điều kiện */
+  .csv-the ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .csv-the ul li {
     color: var(--light);
     font-size: 0.9rem;
     line-height: 1.65;
+    padding-left: 22px;
+    position: relative;
   }
 
-  /* Ảnh đơn trong mỗi bước */
-  .buoc__anh {
+  .csv-the ul li::before {
+    content: "—";
+    color: var(--red);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Nhãn trạng thái: được hoàn / không được hoàn */
+  .nhan_duoc_hoan {
+    display: inline-block;
+    background: rgba(34,197,94,0.12);
+    border: 1px solid rgba(34,197,94,0.35);
+    color: #4ade80;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .nhan_khong_hoan {
+    display: inline-block;
+    background: rgba(232,25,44,0.12);
+    border: 1px solid rgba(232,25,44,0.35);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* Bảng so sánh trường hợp */
+  .csv-bang {
     width: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.07);
-    margin-top: 20px;
-    display: block;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.88rem;
   }
 
-  /* ---- 2 ẢNH SONG SONG (đăng ký / đăng nhập) ---- */
-  .hinh-anh-doi {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    margin-top: 20px;
+  .csv-bang th {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
-  .hinh-anh-doi .buoc__anh {
-    width: 48%;
-    margin-top: 0; /* bỏ margin-top thừa từ .buoc__anh */
+  .csv-bang td {
+    color: var(--light);
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: middle;
+    line-height: 1.55;
   }
 
-  /* Hộp mẹo vàng */
-  .meo_nhanh {
-    background: rgba(245,200,66,0.07);
-    border: 1px solid rgba(245,200,66,0.3);
+  .csv-bang tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Hộp cảnh báo đỏ */
+  .csv-canh_bao {
+    background: rgba(232,25,44,0.07);
+    border: 1px solid rgba(232,25,44,0.3);
     border-radius: 12px;
     padding: 20px 28px;
     margin-top: 48px;
   }
 
-  .meo_nhanh h4 {
-    color: var(--gold);
+  .csv-canh_bao h4 {
+    color: var(--red);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -123,7 +176,7 @@
     margin-bottom: 12px;
   }
 
-  .meo_nhanh ul {
+  .csv-canh_bao ul {
     list-style: none;
     padding: 0;
     display: flex;
@@ -131,7 +184,7 @@
     gap: 8px;
   }
 
-  .meo_nhanh ul li {
+  .csv-canh_bao ul li {
     color: var(--light);
     font-size: 0.88rem;
     line-height: 1.6;
@@ -139,38 +192,70 @@
     position: relative;
   }
 
-  .meo_nhanh ul li::before {
-    content: "✦";
-    color: var(--gold);
+  .csv-canh_bao ul li::before {
+    content: "✕";
+    color: var(--red);
     position: absolute;
     left: 0;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     top: 3px;
   }
 
-  /* Responsive mobile — 2 ảnh xếp chồng trên màn nhỏ */
+  /* Hộp liên hệ hỗ trợ */
+  .csv-lien_he {
+    background: rgba(245,200,66,0.07);
+    border: 1px solid rgba(245,200,66,0.3);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .csv-lien_he__icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .csv-lien_he__noi_dung h4 {
+    color: var(--gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .csv-lien_he__noi_dung p {
+    color: var(--light);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .csv-lien_he__noi_dung a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .csv-lien_he__noi_dung a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive mobile */
   @media (max-width: 640px) {
-    .buoc {
-      flex-direction: column;
-      gap: 20px;
-      padding: 28px 24px;
+    .csv-the {
+      padding: 24px 20px;
     }
-    .buoc__so {
-      width: 48px;
-      height: 48px;
-      font-size: 1.4rem;
-    }
-    .hinh-anh-doi {
-      flex-direction: column;
-    }
-    .hinh-anh-doi .buoc__anh {
-      width: 100%;
+    .csv-bang th,
+    .csv-bang td {
+      padding: 10px 10px;
     }
   }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="bieu_tuong">3 CON BÁO
     <span>CINEMA</span></div>
@@ -283,68 +368,90 @@
 </div>
 
 
-
 <section>
-  <div class="hdv-section">
+  <div class="csv-section">
 
-    <h2>HƯỚNG DẪN ĐẶT VÉ</h2>
-    <p class="mo_dau">Đặt vé xem phim tại 3 CON BÁO rất đơn giản và nhanh chóng. Hãy làm theo 4 bước dưới đây để có trải nghiệm tốt nhất.</p>
+    <h2>CHÍNH SÁCH HOÀN VÉ</h2>
+    <p class="mo_dau">3 CON BÁO CINEMA cam kết mang lại trải nghiệm đặt vé minh bạch và công bằng. Vui lòng đọc kỹ chính sách hoàn vé dưới đây trước khi đặt.</p>
 
-    <!-- Bước 1 -->
-    <div class="buoc">
-      <div class="buoc__so">01</div>
-      <div class="buoc__noi_dung">
-        <h3>ĐĂNG NHẬP HOẶC ĐĂNG KÝ TÀI KHOẢN</h3>
-        <p>Nhấn nút <strong style="color:var(--text);">Đăng nhập</strong> hoặc <strong style="color:var(--text);">Đăng ký</strong> ở góc trên bên phải màn hình. Nếu đã có tài khoản, điền email và mật khẩu. Nếu chưa có, tạo tài khoản mới — hoàn toàn miễn phí.</p>
-        <div class="hinh-anh-doi">
-          <img src="../images/huongdandatve/dangky.png" alt="Bước 1 - Đăng ký" class="buoc__anh">
-          <img src="../images/huongdandatve/dangnhap.png" alt="Bước 1 - Đăng nhập" class="buoc__anh">
-        </div>
+    <!-- Điều kiện được hoàn vé -->
+    <div class="csv-the">
+      <div class="csv-the__tieu_de">
+        <div class="csv-the__icon"><img src="../images/tich_xanh.png" width="24px" height="24px"></div>
+        <h3>ĐIỀU KIỆN ĐƯỢC HOÀN VÉ</h3>
       </div>
-    </div>
-
-    <!-- Bước 2 -->
-    <div class="buoc">
-      <div class="buoc__so">02</div>
-      <div class="buoc__noi_dung">
-        <h3>CHỌN PHIM VÀ GHẾ NGỒI</h3>
-        <p>Chọn ngày và suất chiếu mong muốn. Sơ đồ ghế sẽ hiện ra, ghế <strong style="color:var(--red);">đỏ</strong> đã được đặt - ghế <strong style="color:var(--text);">trắng</strong> là ghế trống - ghế <strong style="color:var(--purple);">tím</strong> là ghế Vip - ghế <strong style="color:var(--muted);">đen</strong> là ghế đã bán. Nhấn vào ghế yêu thích, có thể chọn nhiều ghế cho cả nhóm.</p>
-        <img src="../images/huongdandatve/vitrighe.png" alt="Bước 2 - Chọn ghế" class="buoc__anh">
-      </div>
-    </div>
-
-    <!-- Bước 3 -->
-    <div class="buoc">
-      <div class="buoc__so">03</div>
-      <div class="buoc__noi_dung">
-        <h3>THANH TOÁN VÀ NHẬN VÉ</h3>
-        <p>Kiểm tra lại đơn hàng, nhập mã giảm giá nếu có, chọn thêm bắp rang và nước uống nếu muốn. Chọn phương thức thanh toán: <strong style="color:var(--text);">MoMo, VNPay, ZaloPay</strong> hoặc <strong style="color:var(--text);">thẻ ngân hàng</strong>. Sau khi thanh toán, sẽ hiện thông tin mã vé ngay trên màn hình.</p>
-        <div class="hinh-anh-doi">
-          <img src="../images/huongdandatve/thanhtoan.png" alt="Bước 3 - Thanh toán" class="buoc__anh">
-          <img src="../images/huongdandatve/phuongthucthanhtoan.png" alt="Bước 4 - Phương thức thanh toán" class="buoc__anh">
-        </div>
-      </div>
-    </div>
-    <!-- Bước 4 -->
-    <div class="buoc">
-      <div class="buoc__so">04</div>
-      <div class="buoc__noi_dung">
-        <h3>KIỂM TRA ĐƠN HÀNG</h3>
-        <p>Xem lại thông tin đơn hàng đã đặt, bao gồm phim, suất chiếu, ghế đã chọn và tổng số tiền cần thanh toán.</p>
-        <img src="../images/huongdandatve/kiemtra.png" alt="Bước 4 - Kiểm tra đơn hàng" class="buoc__anh">
-      </div>
-    </div>
-
-    <!-- Mẹo nhanh -->
-    <div class="meo_nhanh">
-      <h4>✦ Mẹo để đặt vé nhanh hơn</h4>
       <ul>
-        <li>Đặt vé trước ít nhất 30 phút để có ghế đẹp, đặc biệt vào cuối tuần.</li>
-        <li>Dùng mã <strong style="color:var(--gold);">BAOBARA</strong> để nhận ưu đãi giảm giá đặc biệt.</li>
-        <li>Thứ 3 hàng tuần giảm 30% — áp dụng tự động, không cần mã.</li>
+        <li>Yêu cầu hoàn trong vòng <strong style="color:var(--text);">2 giờ</strong> kể từ lúc thanh toán thành công.</li>
+        <li>Thời điểm hoàn phải <strong style="color:var(--text);">trước giờ chiếu ít nhất 3 tiếng</strong>.</li>
+        <li>Vé chưa được sử dụng để vào rạp (chưa quét mã).</li>
+        <li>Tài khoản đặt vé hợp lệ, không vi phạm điều khoản sử dụng.</li>
       </ul>
     </div>
 
+    <!-- Bảng các trường hợp cụ thể -->
+    <div class="csv-the">
+      <div class="csv-the__tieu_de">
+        <div class="csv-the__icon"><img src="../images/cac_cau_hoi_thuong_gap.png" width="24px" height="24px"></div>
+        <h3>CÁC TRƯỜNG HỢP CỤ THỂ</h3>
+      </div>
+      <table class="csv-bang">
+        <thead>
+          <tr>
+            <th>Trường hợp</th>
+            <th>Kết quả</th>
+            <th>Thời gian hoàn tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hủy vé trong 2 giờ sau thanh toán, trước giờ chiếu 3 tiếng</td>
+            <td><span class="nhan_duoc_hoan">Hoàn 100%</span></td>
+            <td>3–5 ngày làm việc</td>
+          </tr>
+          <tr>
+            <td>Rạp hủy suất chiếu hoặc thay đổi lịch do sự cố kỹ thuật</td>
+            <td><span class="nhan_duoc_hoan">Hoàn 100%</span></td>
+            <td>1–3 ngày làm việc</td>
+          </tr>
+          <tr>
+            <td>Lỗi thanh toán nhưng tiền đã bị trừ</td>
+            <td><span class="nhan_duoc_hoan">Hoàn 100%</span></td>
+            <td>1–3 ngày làm việc</td>
+          </tr>
+          <tr>
+            <td>Hủy sau 2 giờ nhưng còn trước giờ chiếu 3 tiếng</td>
+            <td><span class="nhan_khong_hoan">Không hoàn</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Hủy trong vòng 3 tiếng trước giờ chiếu</td>
+            <td><span class="nhan_khong_hoan">Không hoàn</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Vé đã quét mã vào rạp</td>
+            <td><span class="nhan_khong_hoan">Không hoàn</span></td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Các trường hợp không được hoàn -->
+    <div class="csv-canh_bao">
+      <div class="csv-the__tieu_de">
+        <div class="csv-the__icon"><img src="../images/dau_x_do.png" width="24px" height="24px"></div>
+        <h3>CÁC TRƯỜNG HỢP KHÔNG ĐƯỢC HOÀN VÉ</h3>
+      </div>
+      <ul>
+        <li>Đã quá 2 giờ kể từ lúc thanh toán thành công.</li>
+        <li>Yêu cầu hoàn trong vòng 3 tiếng trước giờ chiếu.</li>
+        <li>Vé đã được quét mã tại cửa rạp.</li>
+        <li>Vé mua từ chương trình khuyến mãi đặc biệt, flash sale, hoặc gói combo có ghi rõ "không hoàn trả".</li>
+        <li>Tài khoản bị khóa do vi phạm điều khoản sử dụng.</li>
+        <li>Khách hàng tự thay đổi ý định mà không có lý do hợp lệ sau thời hạn cho phép.</li>
+      </ul>
+    </div>
   </div>
 </section>
 

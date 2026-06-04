@@ -7,6 +7,7 @@
     --muted: #5A5A72;
     --text: #E8E8F0;
     --light: #C4C4D8;
+    --purple: #7C3AED;
   }
 nav ul li a {
   position: relative;
@@ -243,7 +244,7 @@ nav ul li a.trang_hien_tai::after {
   height: 16px;
 }
   .vung_noi_bat h1 {
-    font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem;
+    font-family: 'Times New Roman', sans-serif; font-size: 4.5rem;
     line-height: 1; letter-spacing: 2px; margin-bottom: 12px; color: #fff;
   }
   .vung_noi_bat h1 em { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); }
