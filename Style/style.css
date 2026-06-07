@@ -894,7 +894,7 @@ div.icon p {
   border-radius: 14px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.18);
   z-index: 9999;
-  overflow: hidden;
+  overflow: visible;
   animation: truotXuong 0.2s ease;
 }
 @keyframes truotXuong {
@@ -917,7 +917,7 @@ div.icon p {
   align-items: center;
   gap: 10px;
   padding: 14px 16px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
 }
 .tim_kiem_rap i { color: #aaa; font-size: 0.9rem; }
 .tim_kiem_rap input {
@@ -925,21 +925,24 @@ div.icon p {
   border: none;
   outline: none;
   font-size: 0.9rem;
-  color: #333;
+  color: #ffffff;
   background: transparent;
 }
+.tim_kiem_rap input::placeholder {
+  color: #888;
+}
 .tim_kiem_rap select {
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   border-radius: 8px;
   padding: 6px 10px;
   font-size: 0.85rem;
-  color: #333;
-  background: #f9f9f9;
+  color: #ffffff;
+  background: var(--card2);
   cursor: pointer;
   outline: none;
 }
 
-.danh_sach_rap { max-height: 340px; overflow-y: auto; scrollbar-width: none; }
+.danh_sach_rap { max-height: 340px; overflow-y: auto; scrollbar-width: none; border-radius: 0 0 14px 14px; }
 .danh_sach_rap::-webkit-scrollbar { display: none; }
 
 .muc_rap {
@@ -947,11 +950,12 @@ div.icon p {
   align-items: center;
   gap: 14px;
   padding: 16px 18px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #2a2a2a;
   cursor: pointer;
   transition: background 0.15s;
 }
 .muc_rap:last-child { border-bottom: none; }
+.muc_rap:hover { background: rgba(255,255,255,0.06); }
 
 .logo_rap {
   width: 52px;
