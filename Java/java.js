@@ -1,7 +1,7 @@
 // ✅ Sửa đường dẫn: ../firebase.js (vì java.js nằm trong thư mục Java/)
 import { auth, db, collection, addDoc } from './firebase.js';
-// ✅ Sửa version: 10.13.0 → 12.13.0 (khớp với firebase.js)
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+// ✅ Đã sửa version: 10.13.0 → 12.13.0 (khớp với firebase.js)
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 const ROWS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 const COLS = 10;
@@ -215,9 +215,11 @@ function showToast(msg) {
     toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
+// ✅ Đã sửa: xử lý trường hợp pathname là "/" hoặc "" → mặc định là index.html
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
-    const tenFile = location.pathname.split('/').pop();
+    let tenFile = location.pathname.split('/').pop();
+    if (!tenFile || tenFile === '') tenFile = 'index.html';
     document.querySelectorAll('nav ul li a').forEach(a => {
         if (a.getAttribute('href') === tenFile) {
             a.classList.add('trang_hien_tai');
