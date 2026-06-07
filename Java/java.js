@@ -640,17 +640,25 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function chuyenTrangRap(tenRap) {
-  const dangORap = window.location.pathname.includes('/Danhsachrap/');
+  const path = window.location.pathname;
+  const dangORap     = path.includes('/Danhsachrap/');
+  const dangOThongTin = path.includes('/thongtin/');
+
+  let prefix;
+  if (dangORap)        prefix = '';                // đang trong Danhsachrap/
+  else if (dangOThongTin) prefix = '../Danhsachrap/'; // từ thongtin/ lên root rồi vào Danhsachrap/
+  else                 prefix = 'Danhsachrap/';    // từ root
+
   const bangDinhTuyen = {
-    'beta-quang-trung': dangORap ? 'rap1.html' : 'Danhsachrap/rap1.html',
-    'beta-tran-quang-khai': dangORap ? 'rap2.html' : 'Danhsachrap/rap2.html',
-    'beta-ung-van-khiem': dangORap ? 'rap3.html' : 'Danhsachrap/rap3.html',
-    'cinestar-quoc-thanh': dangORap ? 'rap4.html' : 'Danhsachrap/rap4.html',
-    'cgv-vung-tau': dangORap ? 'rap5.html' : 'Danhsachrap/rap5.html',
-    'cgv-ha-noi': dangORap ? 'rap6.html' : 'Danhsachrap/rap6.html',
+    'beta-quang-trung':     'rap1.html',
+    'beta-tran-quang-khai': 'rap2.html',
+    'beta-ung-van-khiem':   'rap3.html',
+    'cinestar-quoc-thanh':  'rap4.html',
+    'cgv-vung-tau':         'rap5.html',
+    'cgv-ha-noi':           'rap6.html',
   };
-  const duongDan = bangDinhTuyen[tenRap];
-  if (duongDan) window.location.href = duongDan;
+  const tenFile = bangDinhTuyen[tenRap];
+  if (tenFile) window.location.href = prefix + tenFile;
 }
 
 // Gắn các hàm vào window để gọi từ HTML onclick
