@@ -146,6 +146,7 @@
     </div>
   </div>
 
+  <div id="dat-ve"></div>
   <div class="movies-grid" id="moviesGrid">
     
     <div class="the_phim" data-title="Hẹn Em Ngày Nhật Thực" data-genre="gia-dinh" data-tag="HOT" onclick="openModal('Hẹn Em Ngày Nhật Thực','images/hen_em_ngay_nhut_thuc.jpg')">
@@ -404,7 +405,7 @@
           <img id="payMoviePoster" src="" alt="" class="pay-poster_phim">
           <div class="pay-movie-details">
             <div class="pay-movie-name" id="payMovieName">—</div>
-            <div class="pay-mo_ta_phim">14/04/2026  ·  11:30  ·  IMAX</div>
+            <div class="pay-mo_ta_phim">21/05/2026  ·  11:30  ·  IMAX</div>
           </div>
         </div>
 
@@ -566,5 +567,16 @@
   allowfullscreen="" 
   loading="lazy">
 </iframe>
+<script>
+// Scroll đến lưới phim nếu URL có hash #dat-ve
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash === '#dat-ve') {
+    setTimeout(function() {
+      var el = document.getElementById('dat-ve');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+});
+</script>
 </body>
 </html>
