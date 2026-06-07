@@ -917,7 +917,7 @@ div.icon p {
   align-items: center;
   gap: 10px;
   padding: 14px 16px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #2d2d2d;
 }
 .tim_kiem_rap i { color: #aaa; font-size: 0.9rem; }
 .tim_kiem_rap input {
@@ -928,9 +928,7 @@ div.icon p {
   color: #ffffff;
   background: transparent;
 }
-.tim_kiem_rap input::placeholder {
-  color: #888;
-}
+.tim_kiem_rap input::placeholder { color: #888; }
 .tim_kiem_rap select {
   border: 1px solid #444;
   border-radius: 8px;
@@ -942,7 +940,7 @@ div.icon p {
   outline: none;
 }
 
-.danh_sach_rap { max-height: 340px; overflow-y: auto; scrollbar-width: none; border-radius: 0 0 14px 14px; }
+.danh_sach_rap { max-height: 340px; overflow-y: auto; scrollbar-width: none; }
 .danh_sach_rap::-webkit-scrollbar { display: none; }
 
 .muc_rap {
@@ -955,7 +953,6 @@ div.icon p {
   transition: background 0.15s;
 }
 .muc_rap:last-child { border-bottom: none; }
-.muc_rap:hover { background: rgba(255,255,255,0.06); }
 
 .logo_rap {
   width: 52px;
