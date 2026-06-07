@@ -331,78 +331,6 @@
     <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
     <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
   </div>
-</nav><nav>
-  <div class="bieu_tuong">3 CON BÁO
-    <span>CINEMA</span></div>
-  <ul>
-    <li class="co_menu_con">
-      <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong" onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="menu_rap_phim" id="menuRapPhim">
-        <div class="tim_kiem_rap">
-          <i class="fas fa-search"></i>
-          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
-          <select id="loc_thanh_pho_id" onchange="locRap('')">
-            <option value="">Tất cả</option>
-            <option value="hcm">Tp. Hồ Chí Minh</option>
-            <option value="hn">Hà Nội</option>
-            <option value="dn">Đà Nẵng</option>
-            <option value="vt">Vũng Tàu</option>
-          </select>
-        </div>
-        <div class="danh_sach_rap" id="danhSachRap">
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
-            <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
-            <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
-            <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li><a href="../sapchieu.html">Sắp chiếu</a></li>
-    <li><a href="../xemphim.html">Xem phim</a></li>
-    <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
-  </ul>
-  <div class="hanh_dong_dieu_huong">
-    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
-    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
-  </div>
 </nav>
  
 <div class="vung_noi_bat">
@@ -413,7 +341,7 @@
     <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
     <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
     <div class="vung_noi_bat-cta">
-      <button class="nut_chinh">Đặt vé ngay</button>
+      <button class="nut_chinh" onclick="location.href='../index.html'">Đặt vé ngay</button>
       <button class="btn-ghost"onclick="location.href='../xemphim.html'"><img src="../images/nut_bat_dau.png" height=" 13px" width="13px"> Xem trailer</button>
     </div> 
   </div>
@@ -628,12 +556,12 @@
   <p class="tooltip-desc" id="tooltipDesc"></p>
 </div>
 
-<script type="module" src="./Java/java.js"></script>
+<script type="module" src="../Java/java.js"></script>
 
 <div class="icon">
   <h3>ĐỊA CHỈ</h3>
   <p>
-    <img src="images/vi_tri.png" class="bieu_tuong_vi_tri">
+    <img src="../images/vi_tri.png" class="bieu_tuong_vi_tri">
     84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
   </p>
 </div>
@@ -647,4 +575,3 @@
 </iframe>
 </body>
 </html>
-
