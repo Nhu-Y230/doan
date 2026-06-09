@@ -613,6 +613,16 @@ function guiLienHe() {
   </div>
 </footer>
 <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+<div id="movieTooltip" class="movie-tooltip">
+  <div class="tooltip-header">
+    <div class="tooltip-title" id="tooltipTitle"></div>
+    <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+  </div>
+  <div class="tooltip-meta" id="tooltipMeta"></div>
+  <p class="tooltip-desc" id="tooltipDesc"></p>
+</div>
+
+<script type="module" src="../Java/java.js"></script>
 <div class="icon">
   <h3>ĐỊA CHỈ</h3>
   <p>
@@ -628,15 +638,19 @@ function guiLienHe() {
   allowfullscreen="" 
   loading="lazy">
 </iframe>
-<div id="movieTooltip" class="movie-tooltip">
-  <div class="tooltip-header">
-    <div class="tooltip-title" id="tooltipTitle"></div>
-    <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
-  </div>
-  <div class="tooltip-meta" id="tooltipMeta"></div>
-  <p class="tooltip-desc" id="tooltipDesc"></p>
-</div>
-
-<script type="module" src="../Java/java.js"></script>
+<script>
+window.chuyenTrangRap = function(tenRap) {
+  var bangDinhTuyen = {
+    'beta-quang-trung':     '../Danhsachrap/rap1.html',
+    'beta-tran-quang-khai': '../Danhsachrap/rap2.html',
+    'beta-ung-van-khiem':   '../Danhsachrap/rap3.html',
+    'cinestar-quoc-thanh':  '../Danhsachrap/rap4.html',
+    'cgv-vung-tau':         '../Danhsachrap/rap5.htm l',
+    'cgv-ha-noi':           '../Danhsachrap/rap6.html',
+  };
+  var url = bangDinhTuyen[tenRap];
+  if (url) window.location.href = url;
+};
+</script>
 </body>
 </html>
