@@ -189,8 +189,8 @@
     transform: translateY(-1px);
   }
 
-  .lh-thanh_cong {
-  display: flex;
+.lh-thanh_cong {
+  display: none; /* THÊM DÒNG NÀY ĐỂ ẨN MẶC ĐỊNH */
   align-items: center; 
   gap: 12px;
   background: rgba(34, 197, 94, 0.1);
@@ -486,7 +486,7 @@
 
         <div class="lh-thanh_cong" id="lh_thanh_cong">
   <img src="../images/tich_xanh.png" alt="Thành công" width="20px" height="20px">
-  <span>Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất.</span>
+  Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất.
 </div>
       </div>
 
@@ -528,7 +528,9 @@ function guiLienHe() {
   document.getElementById('lh_email').value = '';
   document.getElementById('lh_chu_de').value = '';
   document.getElementById('lh_noi_dung').value = '';
-  document.getElementById('lh_thanh_cong').style.display = 'block';
+  
+  // SỬA 'block' THÀNH 'flex' Ở DÒNG DƯỚI ĐÂY:
+  document.getElementById('lh_thanh_cong').style.display = 'flex'; 
 }
 </script>
 
