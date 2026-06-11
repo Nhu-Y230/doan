@@ -644,7 +644,7 @@ window.addEventListener('DOMContentLoaded', function() {
 function chuyenTrangRap(tenRap) {
   const path = window.location.pathname;
   const dangORap     = path.includes('/Danhsachrap/');
-  const dangOThongTin = path.includes('/thongtin/');
+  const dangOThongTin = path.includes('/Thongtin/');
 
   let prefix;
   if (dangORap)        prefix = '';                // đang trong Danhsachrap/
