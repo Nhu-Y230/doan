@@ -29,16 +29,40 @@ function isLoggedIn() {
     return getCurrentUser() !== null;
 }
 
+function getAvatarText(user) {
+    // Lấy tên hiển thị: ưu tiên name, fallback về phần trước @ của email
+    const displayName = user.name || (user.email ? user.email.split('@')[0] : '');
+    if (!displayName) return '?';
+
+    const parts = displayName.trim().split(/\s+/);
+    if (parts.length >= 2) {
+        // Họ tên đầy đủ → lấy chữ cái đầu của 2 từ cuối
+        return (parts[parts.length - 2].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    } else {
+        // Tên ngắn như tk01, user123 → lấy tối đa 4 ký tự đầu
+        return displayName.substring(0, 4).toUpperCase();
+    }
+}
+
+function getDisplayName(user) {
+    const displayName = user.name || (user.email ? user.email.split('@')[0] : 'User');
+    const parts = displayName.trim().split(/\s+/);
+    // Nếu tên 1 từ (như tk01) hiện nguyên, nếu nhiều từ lấy từ cuối
+    return parts.length === 1 ? displayName : parts[parts.length - 1];
+}
+
 function updateNavbar() {
     const user = getCurrentUser();
     const navActions = document.querySelector('.hanh_dong_dieu_huong');
     if (!navActions) return;
 
     if (user) {
+        const avatarText = getAvatarText(user);
+        const displayName = getDisplayName(user);
         navActions.innerHTML = `
             <div class="user-info-nav">
-                <div class="user-avatar-nav">${user.avatar || user.name?.charAt(0).toUpperCase() || '?'}</div>
-                <span class="user-name-nav">${user.name ? user.name.split(' ').pop() : 'User'}</span>
+                <div class="user-avatar-nav" title="${user.name || ''}">${avatarText}</div>
+                <span class="user-name-nav">${displayName}</span>
             </div>
             <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
         `;
