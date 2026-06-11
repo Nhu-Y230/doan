@@ -657,7 +657,7 @@ function chuyenTrangRap(tenRap) {
     'beta-ung-van-khiem':   'rap3.html',
     'cinestar-quoc-thanh':  'rap4.html',
     'cgv-vung-tau':         'rap5.html',
-    'cgv-ha-noi':           'rap6.html',
+    'beta-ha-noi':           'rap6.html',
   };
   const tenFile = bangDinhTuyen[tenRap];
   if (tenFile) window.location.href = prefix + tenFile;
