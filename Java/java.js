@@ -60,10 +60,7 @@ function updateNavbar() {
         const avatarText = getAvatarText(user);
         const displayName = getDisplayName(user);
         navActions.innerHTML = `
-            <div class="user-info-nav">
-                <div class="user-avatar-nav" title="${user.name || ''}">${avatarText}</div>
-                <span class="user-name-nav">${displayName}</span>
-            </div>
+            <div class="user-avatar-nav" title="${user.name || displayName}">${avatarText}</div>
             <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
         `;
     } else {
