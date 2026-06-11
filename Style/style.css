@@ -109,21 +109,23 @@ nav ul li a.trang_hien_tai::after {
     cursor: default;
   }
   .user-avatar-nav {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background: #D8D8D0;
     color: #1a1a1a;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
     user-select: none;
+    line-height: 1;
+    text-align: center;
   }
   .user-name-nav {
     color: var(--light);

@@ -30,18 +30,10 @@ function isLoggedIn() {
 }
 
 function getAvatarText(user) {
-    // Lấy tên hiển thị: ưu tiên name, fallback về phần trước @ của email
-    const displayName = user.name || (user.email ? user.email.split('@')[0] : '');
-    if (!displayName) return '?';
-
-    const parts = displayName.trim().split(/\s+/);
-    if (parts.length >= 2) {
-        // Họ tên đầy đủ → lấy chữ cái đầu của 2 từ cuối
-        return (parts[parts.length - 2].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
-    } else {
-        // Tên ngắn như tk01, user123 → lấy tối đa 4 ký tự đầu
-        return displayName.substring(0, 4).toUpperCase();
-    }
+    // Lấy phần trước @ của email làm username (vd: taikhoanso01 → taikh)
+    const username = user.email ? user.email.split('@')[0] : (user.name || '?');
+    // Hiển thị tối đa 5 ký tự viết thường
+    return username.substring(0, 5).toLowerCase();
 }
 
 function getDisplayName(user) {
