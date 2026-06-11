@@ -100,6 +100,40 @@ nav ul li a.trang_hien_tai::after {
   nav ul li a { color: var(--light); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; transition: color .2s; }
   nav ul li a:hover { color: var(--red); }
   .hanh_dong_dieu_huong { display: flex; gap: 10px; align-items: center; }
+
+  /* Avatar tài khoản */
+  .user-info-nav {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: default;
+  }
+  .user-avatar-nav {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #D8D8D0;
+    color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
+    user-select: none;
+  }
+  .user-name-nav {
+    color: var(--light);
+    font-size: 0.88rem;
+    font-weight: 600;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .nut_dieu_huong_chinh {
     background: var(--red); color: #fff; border: none;
     padding: 10px 24px; border-radius: 4px; cursor: pointer;
