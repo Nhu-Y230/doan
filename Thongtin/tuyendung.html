@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../Style/style.css">
 <style>
-  /* ---- PHẦN GIỚI THIỆU ---- */
-  .phan_gioi_thieu {
+  /* ---- PHẦN TUYỂN DỤNG ---- */
+  .phan_tuyen_dung {
     max-width: 1100px;
     margin: 0 auto;
     padding: 24px 24px 20px;
   }
 
-  .phan_gioi_thieu > h1 {
+  .phan_tuyen_dung > h1 {
     font-family: 'Times New Roman', sans-serif;
     font-size: 2rem;
     letter-spacing: 3px;
@@ -22,7 +22,7 @@
     margin-bottom: 8px;
   }
 
-  .phan_gioi_thieu > p.mo_dau {
+  .phan_tuyen_dung > p.mo_dau {
     color: var(--light);
     font-size: 0.95rem;
     margin-bottom: 48px;
@@ -30,62 +30,19 @@
     max-width: 700px;
   }
 
-  /* Khối câu chuyện */
-  .cau_chuyen {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 56px;
-    flex-wrap: wrap;
+  /* Lý do gia nhập */
+  .nhom_tuyen_dung {
+    margin-bottom: 48px;
   }
 
-  .cau_chuyen__hinh {
-    flex: 1 1 380px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .cau_chuyen__hinh img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .cau_chuyen__noi_dung {
-    flex: 1 1 380px;
-  }
-
-  .cau_chuyen__noi_dung h3 {
-    font-family: 'Arial', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 2.5px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .cau_chuyen__noi_dung p {
-    color: var(--light);
-    font-size: 0.92rem;
-    line-height: 1.8;
-    margin-bottom: 14px;
-  }
-
-  /* Nhóm giá trị cốt lõi */
-  .nhom_gioi_thieu {
-    margin-bottom: 40px;
-  }
-
-  .nhom_gioi_thieu__tieu_de {
+  .nhom_tuyen_dung__tieu_de {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 24px;
   }
 
-  .nhom_gioi_thieu__bieu_tuong {
+  .nhom_tuyen_dung__bieu_tuong {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -98,7 +55,7 @@
     font-size: 1.1rem;
   }
 
-  .nhom_gioi_thieu__tieu_de h3 {
+  .nhom_tuyen_dung__tieu_de h3 {
     font-family: 'Arial', sans-serif;
     font-size: 1rem;
     letter-spacing: 2.5px;
@@ -106,13 +63,13 @@
     text-transform: uppercase;
   }
 
-  .luoi_gia_tri {
+  .luoi_loi_ich {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
   }
 
-  .the_gia_tri {
+  .the_loi_ich {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
@@ -120,15 +77,15 @@
     transition: border-color 0.3s;
   }
 
-  .the_gia_tri:hover {
+  .the_loi_ich:hover {
     border-color: rgba(232,25,44,0.3);
   }
 
-  .the_gia_tri img {
+  .the_loi_ich img {
     margin-bottom: 16px;
   }
 
-  .the_gia_tri h4 {
+  .the_loi_ich h4 {
     font-family: 'Arial', sans-serif;
     font-size: 0.95rem;
     letter-spacing: 1.5px;
@@ -137,64 +94,143 @@
     margin-bottom: 8px;
   }
 
-  .the_gia_tri p {
+  .the_loi_ich p {
     color: var(--light);
     font-size: 0.88rem;
     line-height: 1.7;
   }
 
-  /* Hàng số liệu */
-  .thong_ke_gioi_thieu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 16px;
-    margin-bottom: 56px;
+  /* Bộ lọc vị trí */
+  .bo_loc_tuyen_dung {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
   }
 
-  .muc_thong_ke {
+  .nut_loc_tuyen_dung {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: var(--light);
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .nut_loc_tuyen_dung:hover {
+    border-color: rgba(232,25,44,0.4);
+    color: var(--text);
+  }
+
+  .nut_loc_tuyen_dung.dang_chon {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  /* Danh sách vị trí tuyển dụng */
+  .danh_sach_viec_lam {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .muc_viec_lam {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
-    padding: 28px 20px;
-    text-align: center;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: border-color 0.3s;
   }
 
-  .muc_thong_ke__so_lieu {
-    display: block;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    color: var(--red);
-    letter-spacing: 1px;
+  .muc_viec_lam:hover {
+    border-color: rgba(232,25,44,0.3);
   }
 
-  .muc_thong_ke__nhan {
-    display: block;
+  .muc_viec_lam__thong_tin h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .muc_viec_lam__chi_tiet {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+  }
+
+  .muc_viec_lam__chi_tiet span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .muc_viec_lam__nhan {
+    display: inline-block;
+    background: rgba(245,200,66,0.1);
+    border: 1px solid rgba(245,200,66,0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-top: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .muc_viec_lam__nut {
+    flex-shrink: 0;
+    background: var(--red);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 12px 28px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .muc_viec_lam__nut:hover {
+    opacity: 0.85;
   }
 
   /* Hộp liên hệ vàng */
-  .lien_he_gioi_thieu {
+  .lien_he_tuyen_dung {
     background: rgba(245,200,66,0.07);
     border: 1px solid rgba(245,200,66,0.3);
     border-radius: 12px;
     padding: 24px 28px;
-    margin-top: 16px;
     display: flex;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
   }
 
-  .lien_he_gioi_thieu__bieu_tuong {
+  .lien_he_tuyen_dung__bieu_tuong {
     font-size: 2rem;
     flex-shrink: 0;
   }
 
-  .lien_he_gioi_thieu__noi_dung h4 {
+  .lien_he_tuyen_dung__noi_dung h4 {
     color: var(--gold);
     font-family: 'Arial', sans-serif;
     font-size: 1.1rem;
@@ -202,32 +238,36 @@
     margin-bottom: 4px;
   }
 
-  .lien_he_gioi_thieu__noi_dung p {
+  .lien_he_tuyen_dung__noi_dung p {
     color: var(--light);
     font-size: 0.88rem;
     line-height: 1.6;
   }
 
-  .lien_he_gioi_thieu__noi_dung a {
+  .lien_he_tuyen_dung__noi_dung a {
     color: var(--gold);
     text-decoration: none;
     font-weight: 600;
   }
 
-  .lien_he_gioi_thieu__noi_dung a:hover {
+  .lien_he_tuyen_dung__noi_dung a:hover {
     text-decoration: underline;
   }
 
   /* Responsive */
   @media (max-width: 640px) {
-    .cau_chuyen {
-      gap: 24px;
+    .muc_viec_lam {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .cau_chuyen__hinh {
-      order: -1;
+    .muc_viec_lam__nut {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>
+
+
 </head>
 <body>
 
@@ -341,82 +381,143 @@
     <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
   </div>
 </div>
+<section class="phan_tuyen_dung">
+  <h1>TUYỂN DỤNG</h1>
+  <p class="mo_dau">Trở thành một phần của 3 CON BÁO CINEMA — nơi đam mê điện ảnh gặp gỡ cơ hội phát triển sự nghiệp.</p>
 
-
-
-<section class="phan_gioi_thieu">
-  <h1>GIỚI THIỆU</h1>
-  <p class="mo_dau">3 CON BÁO CINEMA — hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam, mang điện ảnh đỉnh cao đến gần hơn với mọi khán giả.</p>
-
-  <!-- Câu chuyện thương hiệu -->
-  <div class="cau_chuyen">
-    <div class="cau_chuyen__hinh">
-      <img src="../images/logo.png" alt="Rạp chiếu 3 Con Báo" onerror="this.style.display='none'">
-    </div>
-    <div class="cau_chuyen__noi_dung">
-      <h3>Câu chuyện của chúng tôi</h3>
-      <p>3 CON BÁO CINEMA được thành lập với sứ mệnh mang đến cho khán giả Việt Nam những trải nghiệm điện ảnh trọn vẹn nhất. Với hệ thống hơn <strong style="color:var(--text);">200 rạp chiếu</strong> trên toàn quốc, chúng tôi kết nối khán giả với những bộ phim mới nhất từ Hollywood đến điện ảnh Việt Nam, chỉ với vài thao tác đặt vé đơn giản.</p>
-      <p>Với công nghệ chiếu phim hiện đại như <strong style="color:var(--gold);">IMAX, 4DX</strong> và âm thanh Dolby Atmos, mỗi suất chiếu tại 3 CON BÁO không chỉ là xem phim, mà còn là một trải nghiệm giải trí đẳng cấp dành cho cả gia đình và bạn bè.</p>
-    </div>
-  </div>
-
-  <!-- Giá trị cốt lõi -->
-  <div class="nhom_gioi_thieu">
-    <div class="nhom_gioi_thieu__tieu_de">
-      <div class="nhom_gioi_thieu__bieu_tuong"><img src="../images/vuong_mien.png" alt="Giá trị" width="22px" height="22px"></div>
-      <h3>Giá trị cốt lõi</h3>
+  <!-- Lý do gia nhập -->
+  <div class="nhom_tuyen_dung">
+    <div class="nhom_tuyen_dung__tieu_de">
+      <div class="nhom_tuyen_dung__bieu_tuong"><img src="../images/vuong_mien.png" alt="Phúc lợi" width="22px" height="22px"></div>
+      <h3>Vì sao chọn chúng tôi</h3>
     </div>
 
-    <div class="luoi_gia_tri">
-      <div class="the_gia_tri">
-        <img src="../images/may_phim.png" width="44px" height="44px">
-        <h4>Công nghệ hiện đại</h4>
-        <p>Hệ thống máy chiếu và âm thanh chuẩn quốc tế, mang lại trải nghiệm sống động trên từng khung hình.</p>
-      </div>
-      <div class="the_gia_tri">
-        <img src="../images/vuong_mien.png" width="40px" height="40px">
-        <h4>Dịch vụ tận tâm</h4>
-        <p>Đội ngũ nhân viên chuyên nghiệp, thân thiện, luôn sẵn sàng hỗ trợ khách hàng trước, trong và sau suất chiếu.</p>
-      </div>
-      <div class="the_gia_tri">
-        <img src="../images/dt.png" width="40px" height="40px">
-        <h4>Đặt vé tiện lợi</h4>
-        <p>Ứng dụng và website đặt vé nhanh chóng, thanh toán an toàn, có thể thực hiện mọi lúc mọi nơi.</p>
-      </div>
-      <div class="the_gia_tri">
+    <div class="luoi_loi_ich">
+      <div class="the_loi_ich">
         <img src="../images/the.png" width="40px" height="40px">
-        <h4>Ưu đãi hấp dẫn</h4>
-        <p>Thường xuyên có chương trình khuyến mãi, giảm giá và quyền lợi dành riêng cho thành viên VIP.</p>
+        <h4>Lương thưởng cạnh tranh</h4>
+        <p>Mức lương hấp dẫn cùng các khoản thưởng theo doanh số, lễ Tết và đánh giá hiệu suất định kỳ.</p>
+      </div>
+      <div class="the_loi_ich">
+        <img src="../images/may_phim.png" width="44px" height="44px">
+        <h4>Môi trường năng động</h4>
+        <p>Làm việc trong môi trường giải trí trẻ trung, sáng tạo cùng đội ngũ đồng nghiệp thân thiện.</p>
+      </div>
+      <div class="the_loi_ich">
+        <img src="../images/vuong_mien.png" width="40px" height="40px">
+        <h4>Cơ hội thăng tiến</h4>
+        <p>Lộ trình đào tạo và phát triển rõ ràng, nhiều cơ hội thăng tiến lên các vị trí quản lý.</p>
+      </div>
+      <div class="the_loi_ich">
+        <img src="../images/dt.png" width="40px" height="40px">
+        <h4>Ưu đãi xem phim</h4>
+        <p>Nhân viên được miễn phí vé xem phim và giảm giá combo bắp nước tại tất cả các rạp.</p>
       </div>
     </div>
   </div>
 
-  <!-- Số liệu nổi bật -->
-  <div class="thong_ke_gioi_thieu">
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">200+</span>
-      <span class="muc_thong_ke__nhan">Rạp chiếu toàn quốc</span>
+  <!-- Bộ lọc vị trí -->
+  <div class="nhom_tuyen_dung">
+    <div class="nhom_tuyen_dung__tieu_de">
+      <div class="nhom_tuyen_dung__bieu_tuong"><img src="../images/tin_nhan.png" alt="Vị trí" width="22px" height="22px"></div>
+      <h3>Vị trí đang tuyển</h3>
     </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">10M+</span>
-      <span class="muc_thong_ke__nhan">Lượt khách mỗi năm</span>
+
+    <div class="bo_loc_tuyen_dung">
+      <button class="nut_loc_tuyen_dung dang_chon">Tất cả</button>
+      <button class="nut_loc_tuyen_dung">Vận hành rạp</button>
+      <button class="nut_loc_tuyen_dung">Văn phòng</button>
+      <button class="nut_loc_tuyen_dung">Marketing</button>
+      <button class="nut_loc_tuyen_dung">IT</button>
     </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">63</span>
-      <span class="muc_thong_ke__nhan">Tỉnh thành phục vụ</span>
-    </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">5★</span>
-      <span class="muc_thong_ke__nhan">Đánh giá trung bình</span>
+
+    <div class="danh_sach_viec_lam">
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">Vận hành rạp</span>
+          <h3>Nhân viên Soát vé &amp; Phục vụ</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px">TP. Hồ Chí Minh</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px">Toàn thời gian / Bán thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> Thỏa thuận</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
+
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">Vận hành rạp</span>
+          <h3>Nhân viên Pha chế &amp; Quầy bắp nước</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px"> Hà Nội, Vũng Tàu</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px"> Toàn thời gian / Bán thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> Thỏa thuận</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
+
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">Văn phòng</span>
+          <h3>Chuyên viên Kế toán</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px"> TP. Hồ Chí Minh</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px"> Toàn thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> 12 - 18 triệu</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
+
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">Marketing</span>
+          <h3>Chuyên viên Truyền thông &amp; Nội dung</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px"> TP. Hồ Chí Minh</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px"> Toàn thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> 10 - 15 triệu</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
+
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">IT</span>
+          <h3>Lập trình viên Web Frontend</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px"> Làm việc từ xa / TP. Hồ Chí Minh</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px"> Toàn thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> 15 - 25 triệu</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
+
+      <div class="muc_viec_lam">
+        <div class="muc_viec_lam__thong_tin">
+          <span class="muc_viec_lam__nhan">Vận hành rạp</span>
+          <h3>Quản lý Rạp chiếu phim</h3>
+          <div class="muc_viec_lam__chi_tiet">
+            <span><img src="../images/vi_tri.png" width="16px" height="16px"> Đà Nẵng</span>
+            <span><img src="../images/dong_ho.png" width="16px" height="16px"> Toàn thời gian</span>
+            <span><img src="../images/tien.png" width="16px" height="16px"> 18 - 25 triệu</span>
+          </div>
+        </div>
+        <a href="javascript:void(0)" class="muc_viec_lam__nut">Ứng tuyển</a>
+      </div>
     </div>
   </div>
 
   <!-- Hộp liên hệ -->
-  <div class="lien_he_gioi_thieu">
-    <div class="lien_he_gioi_thieu__bieu_tuong"><img src="../images/tin_nhan.png" alt="Liên hệ" width="24px" height="24px"></div>
-    <div class="lien_he_gioi_thieu__noi_dung">
-      <h4>HỢP TÁC CÙNG CHÚNG TÔI</h4>
-      <p>Bạn muốn trở thành đối tác hoặc tìm hiểu thêm về 3 CON BÁO CINEMA? Liên hệ qua số điện thoại <a href="tel:0123456789">0123456789</a> hoặc truy cập trang <a href="../Thongtin/lienhe.html">Liên hệ</a> để được hỗ trợ nhanh nhất.</p>
+  <div class="lien_he_tuyen_dung">
+    <div class="lien_he_tuyen_dung__bieu_tuong"><img src="../images/tin_nhan.png" alt="Liên hệ" width="24px" height="24px"></div>
+    <div class="lien_he_tuyen_dung__noi_dung">
+      <h4>KHÔNG TÌM THẤY VỊ TRÍ PHÙ HỢP?</h4>
+      <p>Hãy gửi CV của bạn về số điện thoại <a href="tel:0123456789">0123456789</a> hoặc liên hệ qua trang <a href="../Thongtin/lienhe.html">Liên hệ</a>, chúng tôi sẽ chủ động kết nối khi có vị trí phù hợp.</p>
     </div>
   </div>
 </section>

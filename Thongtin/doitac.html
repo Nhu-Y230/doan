@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../Style/style.css">
 <style>
-  /* ---- PHẦN GIỚI THIỆU ---- */
-  .phan_gioi_thieu {
+  /* ---- PHẦN ĐỐI TÁC ---- */
+  .phan_doi_tac {
     max-width: 1100px;
     margin: 0 auto;
     padding: 24px 24px 20px;
   }
 
-  .phan_gioi_thieu > h1 {
+  .phan_doi_tac > h1 {
     font-family: 'Times New Roman', sans-serif;
     font-size: 2rem;
     letter-spacing: 3px;
@@ -22,7 +22,7 @@
     margin-bottom: 8px;
   }
 
-  .phan_gioi_thieu > p.mo_dau {
+  .phan_doi_tac > p.mo_dau {
     color: var(--light);
     font-size: 0.95rem;
     margin-bottom: 48px;
@@ -30,62 +30,19 @@
     max-width: 700px;
   }
 
-  /* Khối câu chuyện */
-  .cau_chuyen {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 56px;
-    flex-wrap: wrap;
+  /* Nhóm */
+  .nhom_doi_tac {
+    margin-bottom: 48px;
   }
 
-  .cau_chuyen__hinh {
-    flex: 1 1 380px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .cau_chuyen__hinh img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .cau_chuyen__noi_dung {
-    flex: 1 1 380px;
-  }
-
-  .cau_chuyen__noi_dung h3 {
-    font-family: 'Arial', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 2.5px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .cau_chuyen__noi_dung p {
-    color: var(--light);
-    font-size: 0.92rem;
-    line-height: 1.8;
-    margin-bottom: 14px;
-  }
-
-  /* Nhóm giá trị cốt lõi */
-  .nhom_gioi_thieu {
-    margin-bottom: 40px;
-  }
-
-  .nhom_gioi_thieu__tieu_de {
+  .nhom_doi_tac__tieu_de {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 24px;
   }
 
-  .nhom_gioi_thieu__bieu_tuong {
+  .nhom_doi_tac__bieu_tuong {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -98,7 +55,7 @@
     font-size: 1.1rem;
   }
 
-  .nhom_gioi_thieu__tieu_de h3 {
+  .nhom_doi_tac__tieu_de h3 {
     font-family: 'Arial', sans-serif;
     font-size: 1rem;
     letter-spacing: 2.5px;
@@ -106,13 +63,14 @@
     text-transform: uppercase;
   }
 
-  .luoi_gia_tri {
+  /* Lưới quyền lợi hợp tác */
+  .luoi_quyen_loi {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
   }
 
-  .the_gia_tri {
+  .the_quyen_loi {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
@@ -120,15 +78,15 @@
     transition: border-color 0.3s;
   }
 
-  .the_gia_tri:hover {
+  .the_quyen_loi:hover {
     border-color: rgba(232,25,44,0.3);
   }
 
-  .the_gia_tri img {
+  .the_quyen_loi img {
     margin-bottom: 16px;
   }
 
-  .the_gia_tri h4 {
+  .the_quyen_loi h4 {
     font-family: 'Arial', sans-serif;
     font-size: 0.95rem;
     letter-spacing: 1.5px;
@@ -137,64 +95,187 @@
     margin-bottom: 8px;
   }
 
-  .the_gia_tri p {
+  .the_quyen_loi p {
     color: var(--light);
     font-size: 0.88rem;
     line-height: 1.7;
   }
 
-  /* Hàng số liệu */
-  .thong_ke_gioi_thieu {
+  /* Lưới logo đối tác */
+  .luoi_logo_doi_tac {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 16px;
-    margin-bottom: 56px;
   }
 
-  .muc_thong_ke {
+  .the_logo_doi_tac {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
-    padding: 28px 20px;
-    text-align: center;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+    transition: border-color 0.3s, transform 0.3s;
   }
 
-  .muc_thong_ke__so_lieu {
-    display: block;
+  .the_logo_doi_tac:hover {
+    border-color: rgba(232,25,44,0.3);
+    transform: translateY(-3px);
+  }
+
+.the_logo_doi_tac img {
+  max-width: 100%;
+  max-height: 48px;
+  object-fit: contain;
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+  .the_logo_doi_tac:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* Hình thức hợp tác */
+  .luoi_hinh_thuc {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .muc_hinh_thuc {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: border-color 0.3s;
+  }
+
+  .muc_hinh_thuc:hover {
+    border-color: rgba(232,25,44,0.3);
+  }
+
+  .muc_hinh_thuc__so {
+    flex-shrink: 0;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
+    font-size: 2rem;
     color: var(--red);
-    letter-spacing: 1px;
+    width: 50px;
   }
 
-  .muc_thong_ke__nhan {
-    display: block;
+  .muc_hinh_thuc__noi_dung {
+    flex: 1 1 240px;
+  }
+
+  .muc_hinh_thuc__noi_dung h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .muc_hinh_thuc__noi_dung p {
+    color: var(--light);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  /* Form đăng ký hợp tác */
+  .form_doi_tac {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .form_doi_tac__luoi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form_doi_tac__luoi label,
+  .form_doi_tac__truong {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form_doi_tac__truong label {
+    color: var(--light);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+
+  .form_doi_tac input,
+  .form_doi_tac select,
+  .form_doi_tac textarea {
+    background: var(--bg, #0e0e0e);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 0.88rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .form_doi_tac input::placeholder,
+  .form_doi_tac textarea::placeholder {
     color: var(--muted);
-    font-size: 0.8rem;
+  }
+
+  .form_doi_tac textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form_doi_tac__truong_full {
+    margin-bottom: 20px;
+  }
+
+  .form_doi_tac__nut {
+    background: var(--red);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 0.9rem;
     letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 6px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .form_doi_tac__nut:hover {
+    opacity: 0.85;
   }
 
   /* Hộp liên hệ vàng */
-  .lien_he_gioi_thieu {
+  .lien_he_doi_tac {
     background: rgba(245,200,66,0.07);
     border: 1px solid rgba(245,200,66,0.3);
     border-radius: 12px;
     padding: 24px 28px;
-    margin-top: 16px;
+    margin-bottom: 48px;
     display: flex;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
   }
 
-  .lien_he_gioi_thieu__bieu_tuong {
+  .lien_he_doi_tac__bieu_tuong {
     font-size: 2rem;
     flex-shrink: 0;
   }
 
-  .lien_he_gioi_thieu__noi_dung h4 {
+  .lien_he_doi_tac__noi_dung h4 {
     color: var(--gold);
     font-family: 'Arial', sans-serif;
     font-size: 1.1rem;
@@ -202,32 +283,31 @@
     margin-bottom: 4px;
   }
 
-  .lien_he_gioi_thieu__noi_dung p {
+  .lien_he_doi_tac__noi_dung p {
     color: var(--light);
     font-size: 0.88rem;
     line-height: 1.6;
   }
 
-  .lien_he_gioi_thieu__noi_dung a {
+  .lien_he_doi_tac__noi_dung a {
     color: var(--gold);
     text-decoration: none;
     font-weight: 600;
   }
 
-  .lien_he_gioi_thieu__noi_dung a:hover {
+  .lien_he_doi_tac__noi_dung a:hover {
     text-decoration: underline;
   }
 
   /* Responsive */
   @media (max-width: 640px) {
-    .cau_chuyen {
-      gap: 24px;
-    }
-    .cau_chuyen__hinh {
-      order: -1;
+    .muc_hinh_thuc {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>
+
 </head>
 <body>
 
@@ -343,83 +423,176 @@
 </div>
 
 
+<section class="phan_doi_tac">
+  <h1>ĐỐI TÁC</h1>
+  <p class="mo_dau">Cùng 3 CON BÁO CINEMA mở rộng cơ hội kinh doanh và mang trải nghiệm điện ảnh đến gần hơn với hàng triệu khán giả trên toàn quốc.</p>
 
-<section class="phan_gioi_thieu">
-  <h1>GIỚI THIỆU</h1>
-  <p class="mo_dau">3 CON BÁO CINEMA — hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam, mang điện ảnh đỉnh cao đến gần hơn với mọi khán giả.</p>
-
-  <!-- Câu chuyện thương hiệu -->
-  <div class="cau_chuyen">
-    <div class="cau_chuyen__hinh">
-      <img src="../images/logo.png" alt="Rạp chiếu 3 Con Báo" onerror="this.style.display='none'">
-    </div>
-    <div class="cau_chuyen__noi_dung">
-      <h3>Câu chuyện của chúng tôi</h3>
-      <p>3 CON BÁO CINEMA được thành lập với sứ mệnh mang đến cho khán giả Việt Nam những trải nghiệm điện ảnh trọn vẹn nhất. Với hệ thống hơn <strong style="color:var(--text);">200 rạp chiếu</strong> trên toàn quốc, chúng tôi kết nối khán giả với những bộ phim mới nhất từ Hollywood đến điện ảnh Việt Nam, chỉ với vài thao tác đặt vé đơn giản.</p>
-      <p>Với công nghệ chiếu phim hiện đại như <strong style="color:var(--gold);">IMAX, 4DX</strong> và âm thanh Dolby Atmos, mỗi suất chiếu tại 3 CON BÁO không chỉ là xem phim, mà còn là một trải nghiệm giải trí đẳng cấp dành cho cả gia đình và bạn bè.</p>
-    </div>
-  </div>
-
-  <!-- Giá trị cốt lõi -->
-  <div class="nhom_gioi_thieu">
-    <div class="nhom_gioi_thieu__tieu_de">
-      <div class="nhom_gioi_thieu__bieu_tuong"><img src="../images/vuong_mien.png" alt="Giá trị" width="22px" height="22px"></div>
-      <h3>Giá trị cốt lõi</h3>
+  <!-- Quyền lợi hợp tác -->
+  <div class="nhom_doi_tac">
+    <div class="nhom_doi_tac__tieu_de">
+      <div class="nhom_doi_tac__bieu_tuong"><img src="../images/vuong_mien.png" alt="Quyền lợi" width="22px" height="22px"></div>
+      <h3>Quyền lợi khi hợp tác</h3>
     </div>
 
-    <div class="luoi_gia_tri">
-      <div class="the_gia_tri">
-        <img src="../images/may_phim.png" width="44px" height="44px">
-        <h4>Công nghệ hiện đại</h4>
-        <p>Hệ thống máy chiếu và âm thanh chuẩn quốc tế, mang lại trải nghiệm sống động trên từng khung hình.</p>
-      </div>
-      <div class="the_gia_tri">
-        <img src="../images/vuong_mien.png" width="40px" height="40px">
-        <h4>Dịch vụ tận tâm</h4>
-        <p>Đội ngũ nhân viên chuyên nghiệp, thân thiện, luôn sẵn sàng hỗ trợ khách hàng trước, trong và sau suất chiếu.</p>
-      </div>
-      <div class="the_gia_tri">
+    <div class="luoi_quyen_loi">
+      <div class="the_quyen_loi">
         <img src="../images/dt.png" width="40px" height="40px">
-        <h4>Đặt vé tiện lợi</h4>
-        <p>Ứng dụng và website đặt vé nhanh chóng, thanh toán an toàn, có thể thực hiện mọi lúc mọi nơi.</p>
+        <h4>Tiếp cận hàng triệu khách hàng</h4>
+        <p>Tiếp cận hơn 10 triệu lượt khách hàng tiềm năng thông qua hệ thống website và ứng dụng 3 CON BÁO.</p>
       </div>
-      <div class="the_gia_tri">
+      <div class="the_quyen_loi">
         <img src="../images/the.png" width="40px" height="40px">
-        <h4>Ưu đãi hấp dẫn</h4>
-        <p>Thường xuyên có chương trình khuyến mãi, giảm giá và quyền lợi dành riêng cho thành viên VIP.</p>
+        <h4>Ưu đãi chéo độc quyền</h4>
+        <p>Cùng xây dựng các chương trình khuyến mãi, combo và voucher chéo dành riêng cho khách hàng hai bên.</p>
+      </div>
+      <div class="the_quyen_loi">
+        <img src="../images/may_phim.png" width="44px" height="44px">
+        <h4>Quảng bá thương hiệu</h4>
+        <p>Logo và thông tin đối tác được hiển thị nổi bật tại rạp chiếu, website và các kênh truyền thông.</p>
+      </div>
+      <div class="the_quyen_loi">
+        <img src="../images/vuong_mien.png" width="40px" height="40px">
+        <h4>Hỗ trợ tận tâm</h4>
+        <p>Đội ngũ phụ trách đối tác đồng hành, hỗ trợ triển khai và đo lường hiệu quả chương trình hợp tác.</p>
       </div>
     </div>
   </div>
 
-  <!-- Số liệu nổi bật -->
-  <div class="thong_ke_gioi_thieu">
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">200+</span>
-      <span class="muc_thong_ke__nhan">Rạp chiếu toàn quốc</span>
+  <!-- Đối tác hiện tại -->
+  <div class="nhom_doi_tac">
+    <div class="nhom_doi_tac__tieu_de">
+      <div class="nhom_doi_tac__bieu_tuong"><img src="../images/may_phim.png" alt="Đối tác" width="22px" height="22px"></div>
+      <h3>Đối tác hiện tại</h3>
     </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">10M+</span>
-      <span class="muc_thong_ke__nhan">Lượt khách mỗi năm</span>
+
+    <div class="luoi_logo_doi_tac">
+      <div class="the_logo_doi_tac">
+        <img src="../images/cong_ty_momo.jpg" alt="Momo" onerror="this.style.display='none'">
+      </div>
+      <div class="the_logo_doi_tac">
+        <img src="../images/coca.jpg" alt="Coca" onerror="this.style.display='none'">
+      </div>
+      <div class="the_logo_doi_tac">
+        <img src="../images/tiktok.jpg" alt="TikTok" onerror="this.style.display='none'">
+      </div>
+      <div class="the_logo_doi_tac">
+        <img src="../images/phat_hanh_phim.jpg" alt="Phát hành phim" onerror="this.style.display='none'">
+      </div>
+      <div class="the_logo_doi_tac">
+        <img src="../images/doanh_nghiep.jpg" alt="Doanh nghiệp" onerror="this.style.display='none'">
+      </div>
     </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">63</span>
-      <span class="muc_thong_ke__nhan">Tỉnh thành phục vụ</span>
+  </div>
+
+  <!-- Hình thức hợp tác -->
+  <div class="nhom_doi_tac">
+    <div class="nhom_doi_tac__tieu_de">
+      <div class="nhom_doi_tac__bieu_tuong"><img src="../images/tin_nhan.png" alt="Hình thức" width="22px" height="22px"></div>
+      <h3>Hình thức hợp tác</h3>
     </div>
-    <div class="muc_thong_ke">
-      <span class="muc_thong_ke__so_lieu">5★</span>
-      <span class="muc_thong_ke__nhan">Đánh giá trung bình</span>
+
+    <div class="luoi_hinh_thuc">
+      <div class="muc_hinh_thuc">
+        <span class="muc_hinh_thuc__so">01</span>
+        <div class="muc_hinh_thuc__noi_dung">
+          <h3>Đối tác thanh toán</h3>
+          <p>Tích hợp ví điện tử, thẻ ngân hàng và cổng thanh toán, mang đến trải nghiệm đặt vé nhanh chóng cho khách hàng.</p>
+        </div>
+      </div>
+      <div class="muc_hinh_thuc">
+        <span class="muc_hinh_thuc__so">02</span>
+        <div class="muc_hinh_thuc__noi_dung">
+          <h3>Đối tác F&amp;B</h3>
+          <p>Hợp tác cung cấp combo bắp nước, đồ uống và các sản phẩm ẩm thực độc quyền tại quầy concession.</p>
+        </div>
+      </div>
+      <div class="muc_hinh_thuc">
+        <span class="muc_hinh_thuc__so">03</span>
+        <div class="muc_hinh_thuc__noi_dung">
+          <h3>Đối tác truyền thông &amp; quảng cáo</h3>
+          <p>Quảng cáo thương hiệu trên màn hình rạp, banner website, ứng dụng và các kênh mạng xã hội của 3 CON BÁO.</p>
+        </div>
+      </div>
+      <div class="muc_hinh_thuc">
+        <span class="muc_hinh_thuc__so">04</span>
+        <div class="muc_hinh_thuc__noi_dung">
+          <h3>Đối tác phát hành phim</h3>
+          <p>Hợp tác phát hành, phân phối phim và tổ chức các sự kiện công chiếu, ra mắt phim độc quyền.</p>
+        </div>
+      </div>
+      <div class="muc_hinh_thuc">
+        <span class="muc_hinh_thuc__so">05</span>
+        <div class="muc_hinh_thuc__noi_dung">
+          <h3>Đối tác doanh nghiệp &amp; sự kiện</h3>
+          <p>Cho thuê phòng chiếu tổ chức sự kiện công ty, hội nghị, ra mắt sản phẩm theo yêu cầu.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Hộp liên hệ -->
-  <div class="lien_he_gioi_thieu">
-    <div class="lien_he_gioi_thieu__bieu_tuong"><img src="../images/tin_nhan.png" alt="Liên hệ" width="24px" height="24px"></div>
-    <div class="lien_he_gioi_thieu__noi_dung">
-      <h4>HỢP TÁC CÙNG CHÚNG TÔI</h4>
-      <p>Bạn muốn trở thành đối tác hoặc tìm hiểu thêm về 3 CON BÁO CINEMA? Liên hệ qua số điện thoại <a href="tel:0123456789">0123456789</a> hoặc truy cập trang <a href="../Thongtin/lienhe.html">Liên hệ</a> để được hỗ trợ nhanh nhất.</p>
+  <div class="lien_he_doi_tac">
+    <div class="lien_he_doi_tac__bieu_tuong"><img src="../images/tin_nhan.png" alt="Liên hệ" width="24px" height="24px"></div>
+    <div class="lien_he_doi_tac__noi_dung">
+      <h4>CẦN TƯ VẤN THÊM?</h4>
+      <p>Liên hệ bộ phận phát triển đối tác qua email <a href="mailto:doitac@3conbao.vn">doitac@3conbao.vn</a> hoặc số điện thoại <a href="tel:0123456789">0123456789</a> để được tư vấn chi tiết.</p>
     </div>
   </div>
+
+  <!-- Form đăng ký hợp tác -->
+  <div class="nhom_doi_tac">
+    <div class="nhom_doi_tac__tieu_de">
+      <div class="nhom_doi_tac__bieu_tuong"><img src="../images/the.png" alt="Đăng ký" width="22px" height="22px"></div>
+      <h3>Đăng ký hợp tác</h3>
+    </div>
+
+    <form class="form_doi_tac" onsubmit="guiDangKyDoiTac(event)">
+      <div class="form_doi_tac__luoi">
+        <div class="form_doi_tac__truong">
+          <label for="dt_ten_cong_ty">Tên công ty / thương hiệu</label>
+          <input type="text" id="dt_ten_cong_ty" placeholder="Nhập tên công ty" required>
+        </div>
+        <div class="form_doi_tac__truong">
+          <label for="dt_nguoi_lien_he">Người liên hệ</label>
+          <input type="text" id="dt_nguoi_lien_he" placeholder="Họ và tên" required>
+        </div>
+        <div class="form_doi_tac__truong">
+          <label for="dt_email">Email</label>
+          <input type="email" id="dt_email" placeholder="email@congty.com" required>
+        </div>
+        <div class="form_doi_tac__truong">
+          <label for="dt_so_dien_thoai">Số điện thoại</label>
+          <input type="tel" id="dt_so_dien_thoai" placeholder="0901 234 567" required>
+        </div>
+        <div class="form_doi_tac__truong">
+          <label for="dt_hinh_thuc">Hình thức hợp tác</label>
+          <select id="dt_hinh_thuc" required>
+            <option value="">Chọn hình thức</option>
+            <option value="thanh_toan">Đối tác thanh toán</option>
+            <option value="fnb">Đối tác F&amp;B</option>
+            <option value="truyen_thong">Đối tác truyền thông &amp; quảng cáo</option>
+            <option value="phat_hanh">Đối tác phát hành phim</option>
+            <option value="doanh_nghiep">Đối tác doanh nghiệp &amp; sự kiện</option>
+            <option value="khac">Khác</option>
+          </select>
+        </div>
+      </div>
+      <div class="form_doi_tac__truong form_doi_tac__truong_full">
+        <label for="dt_noi_dung">Nội dung đề xuất</label>
+        <textarea id="dt_noi_dung" placeholder="Mô tả ngắn gọn về đề xuất hợp tác của bạn..." required></textarea>
+      </div>
+      <button type="submit" class="form_doi_tac__nut">GỬI ĐĂNG KÝ</button>
+    </form>
+  </div>
 </section>
+
+<script>
+function guiDangKyDoiTac(event) {
+  event.preventDefault();
+  alert('Cảm ơn bạn đã đăng ký hợp tác! Đội ngũ 3 CON BÁO sẽ liên hệ lại trong thời gian sớm nhất.');
+  event.target.reset();
+}
+</script>
 <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
   <div class="auth-hop_thoai">
     <button class="close-btn" onclick="closeAuth()">✕</button>
