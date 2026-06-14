@@ -70,7 +70,7 @@ function updateNavbar() {
         const avatarColor = getAvatarColor(user);
         const displayName = getDisplayName(user);
         navActions.innerHTML = `
-            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor};cursor:pointer" onclick="chuyenTrangHoSo()">${avatarText}</div>
+            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor}; cursor:pointer;" onclick="openProfile()">${avatarText}</div>
             <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
         `;
     } else {
@@ -461,6 +461,9 @@ window.addEventListener('click', function(e) {
         if (pm) pm.classList.remove('open');
         document.body.classList.remove('hop_thoai-open');
     }
+    if (e.target.classList.contains('profile-overlay')) {
+        closeProfile();
+    }
 });
 
 function filterMovies() {
@@ -672,12 +675,6 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function chuyenTrangHoSo() {
-    // Lấy thư mục hiện tại, giữ nguyên repo name (/doan/)
-    const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-    window.location.href = currentDir + 'hoso.html';
-}
-
 function chuyenTrangRap(tenRap) {
   const path = window.location.pathname;
   const dangORap     = path.includes('/Danhsachrap/');
@@ -700,6 +697,73 @@ function chuyenTrangRap(tenRap) {
   if (tenFile) window.location.href = prefix + tenFile;
 }
 
+// ===== HỒ SƠ TÀI KHOẢN =====
+import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+async function openProfile() {
+    const user = getCurrentUser();
+    if (!user) return;
+
+    const overlay = document.getElementById('hop_thoai_ho_so_id');
+    if (!overlay) return;
+    overlay.classList.add('open');
+    document.body.classList.add('hop_thoai-open');
+
+    // Điền thông tin
+    const avatarText = getAvatarText(user);
+    const avatarColor = getAvatarColor(user);
+    const avatarEl = document.getElementById('profileAvatarLg');
+    if (avatarEl) {
+        avatarEl.textContent = avatarText;
+        avatarEl.style.background = avatarColor;
+    }
+    const nameEl = document.getElementById('profileName');
+    if (nameEl) nameEl.textContent = user.name || user.email.split('@')[0];
+    const emailEl = document.getElementById('profileEmail');
+    if (emailEl) emailEl.textContent = user.email || '—';
+
+    // Load vé từ Firestore
+    const ticketsEl = document.getElementById('profileTickets');
+    if (ticketsEl) {
+        ticketsEl.innerHTML = '<div class="profile-loading">Đang tải vé...</div>';
+        try {
+            const q = query(collection(db, "danh_sach_ve_dat"), where("email_khach", "==", user.email));
+            const snap = await getDocs(q);
+            if (snap.empty) {
+                ticketsEl.innerHTML = '<div class="profile-empty">🎟️ Bạn chưa đặt vé nào</div>';
+            } else {
+                let html = '';
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    html += `
+                    <div class="profile-ticket-card">
+                        <div class="ptc-top">
+                            <div class="ptc-movie">${d.ten_phim || '—'}</div>
+                            <div class="ptc-code">${d.ma_ve || '—'}</div>
+                        </div>
+                        <div class="ptc-meta">
+                            <span>🎬 ${d.rap || '—'}</span>
+                            <span>💺 ${d.ghe_da_chon || '—'}</span>
+                            <span>📅 ${d.ngay_dat || '—'}</span>
+                            <span>💳 ${d.phuong_thuc_tt || '—'}</span>
+                        </div>
+                    </div>`;
+                });
+                ticketsEl.innerHTML = html;
+            }
+        } catch (err) {
+            ticketsEl.innerHTML = '<div class="profile-empty">❌ Không thể tải vé. Vui lòng thử lại.</div>';
+            console.error(err);
+        }
+    }
+}
+
+function closeProfile() {
+    const overlay = document.getElementById('hop_thoai_ho_so_id');
+    if (overlay) overlay.classList.remove('open');
+    document.body.classList.remove('hop_thoai-open');
+}
+
 // Gắn các hàm vào window để gọi từ HTML onclick
 window.openAuth = openAuth;
 window.closeAuth = closeAuth;
@@ -713,10 +777,11 @@ window.closePay = closePay;
 window.processPayment = processPayment; 
 window.applyCoupon = applyCoupon;
 window.selectMethod = selectMethod;
-window.chuyenTrangHoSo = chuyenTrangHoSo;
 window.batTatMenuRap = batTatMenuRap;
 window.locRap = locRap;
 window.chuyenTrangRap = chuyenTrangRap;
 window.goPayStep = goPayStep;
 window.filterMovies = filterMovies;
 window.formatCard = formatCard;
+window.openProfile = openProfile;
+window.closeProfile = closeProfile;
