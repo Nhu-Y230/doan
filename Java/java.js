@@ -81,9 +81,10 @@ async function handleLogout() {
             await signOut(auth);
             clearCurrentUser();
             updateNavbar();
+            // FIX: showToast dùng innerHTML nên ảnh hiển thị được
             showToast('<img src="images/ban_tay.png" width="20"> Đã đăng xuất thành công.');
         } catch (error) {
-            alert('Lỗi đăng xuất: ' + error.message);
+            showAlert('Lỗi đăng xuất: ' + error.message);
         }
     }
 }
@@ -118,6 +119,7 @@ function isStrongPassword(password) {
     if (!/\d/.test(password)) return { valid: false, message: "<img src='images/dau_x_do.png' width='20'> Mật khẩu phải chứa ít nhất 1 chữ số." };
     return { valid: true };
 }
+
 async function handleLogin(e) {
     e.preventDefault();
 
@@ -125,7 +127,8 @@ async function handleLogin(e) {
     const pass = document.getElementById('loginPass').value;
 
     if (!email || !pass) {
-        alert("Vui lòng nhập email và mật khẩu");
+        // FIX: dùng showAlert thay alert() để hiển thị đúng
+        showAlert("Vui lòng nhập email và mật khẩu");
         return;
     }
 
@@ -145,12 +148,14 @@ async function handleLogin(e) {
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
-            alert("<img src='images/dau_x_do.png' width='20'> Tài khoản hoặc Mật khẩu không chính xác!");
+            // FIX: dùng showAlert thay alert() để ảnh hiển thị được
+            showAlert("<img src='images/dau_x_do.png' width='20'> Tài khoản hoặc Mật khẩu không chính xác!");
         } else {
-            alert("<img src='images/dau_x_do.png' width='20'> Lỗi: " + error.message);
+            showAlert("<img src='images/dau_x_do.png' width='20'> Lỗi: " + error.message);
         }
     }
 }
+
 async function handleRegister(e) {
     e.preventDefault();
 
@@ -160,23 +165,25 @@ async function handleRegister(e) {
     const conf = document.getElementById('regConfirm').value;
 
     if (!name || !email || !pass || !conf) {
-        alert('<img src="images/thang_do.png" width="20"> Vui lòng điền đầy đủ thông tin.');
+        // FIX: dùng showAlert thay alert()
+        showAlert('<img src="images/thang_do.png" width="20"> Vui lòng điền đầy đủ thông tin.');
         return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('<img src="images/dau_x_do.png" width="20"> Email không hợp lệ.');
+        showAlert('<img src="images/dau_x_do.png" width="20"> Email không hợp lệ.');
         return;
     }
 
     const pwCheck = isStrongPassword(pass);
     if (!pwCheck.valid) {
-        alert(pwCheck.message);
+        // FIX: dùng showAlert thay alert() để ảnh trong message hiển thị được
+        showAlert(pwCheck.message);
         return;
     }
 
     if (pass !== conf) {
-        alert('<img src="images/dau_x_do.png" width="20"> Xác nhận mật khẩu không khớp.');
+        showAlert('<img src="images/dau_x_do.png" width="20"> Xác nhận mật khẩu không khớp.');
         return;
     }
 
@@ -192,9 +199,9 @@ async function handleRegister(e) {
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/email-already-in-use') {
-            alert('<img src="images/dau_x_do.png" width="20"> Email này đã được đăng ký trên hệ thống 3 Con Báo Cinema!');
+            showAlert('<img src="images/dau_x_do.png" width="20"> Email này đã được đăng ký trên hệ thống 3 Con Báo Cinema!');
         } else {
-            alert('<img src="images/dau_x_do.png" width="20"> Đăng ký thất bại: ' + error.message);
+            showAlert('<img src="images/dau_x_do.png" width="20"> Đăng ký thất bại: ' + error.message);
         }
     }
 }
@@ -222,6 +229,7 @@ function togglePassword(inputId, btn) {
     }
 }
 
+// FIX: đổi toast.textContent → toast.innerHTML để ảnh hiển thị được
 function showToast(msg) {
     let toast = document.getElementById('cineviet-toast');
     if (!toast) {
@@ -230,11 +238,43 @@ function showToast(msg) {
         toast.className = 'cineviet-toast';
         document.body.appendChild(toast);
     }
-    toast.textContent = msg;
+    toast.innerHTML = msg;
     toast.classList.add('show');
     clearTimeout(toast._timer);
     toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
 }
+
+// FIX: thay thế alert() bằng hộp thoại tùy chỉnh hỗ trợ HTML/ảnh
+function showAlert(msg) {
+    let overlay = document.getElementById('cineviet-alert-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'cineviet-alert-overlay';
+        overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:99999;display:flex;align-items:center;justify-content:center;';
+
+        const box = document.createElement('div');
+        box.style.cssText = 'background:#1a1a2e;color:#fff;border-radius:14px;padding:28px 32px;max-width:380px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.5);font-size:15px;line-height:1.7;';
+
+        const msgDiv = document.createElement('div');
+        msgDiv.id = 'cineviet-alert-msg';
+        msgDiv.style.cssText = 'margin-bottom:20px;display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;';
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Đóng';
+        btn.style.cssText = 'background:#e50914;color:#fff;border:none;border-radius:8px;padding:9px 30px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s;';
+        btn.onmouseover = () => btn.style.opacity = '0.85';
+        btn.onmouseout = () => btn.style.opacity = '1';
+        btn.onclick = () => { overlay.style.display = 'none'; };
+
+        box.appendChild(msgDiv);
+        box.appendChild(btn);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+    }
+    document.getElementById('cineviet-alert-msg').innerHTML = msg;
+    overlay.style.display = 'flex';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     updateNavbar();
     let tenFile = location.pathname.split('/').pop();
@@ -317,12 +357,13 @@ function updateSummary() {
 
 function checkout() {
     if (da_chon.size === 0) {
-        alert('Vui lòng chọn ít nhất 1 ghế!');
+        showAlert('Vui lòng chọn ít nhất 1 ghế!');
         return;
     }
     if (!isLoggedIn()) {
         closeModal();
         openAuth('register');
+        // FIX: showToast dùng innerHTML nên ảnh hiển thị được
         showToast('<img src="images/thang_do.png" width="20"> Vui lòng đăng nhập để thanh toán!');
         return;
     }
@@ -381,12 +422,14 @@ function applyCoupon() {
     if (code === 'BAOBARA') {
         discount = Math.round(base * 0.3);
         msg.style.color = '#22c55e';
-        msg.textContent = `<img src="images/tich_xanh.png" width="20"> Giảm 30%! Tiết kiệm ${discount.toLocaleString('vi-VN')}đ`;
+        // FIX: đổi msg.textContent → msg.innerHTML để ảnh hiển thị được
+        msg.innerHTML = `<img src="images/tich_xanh.png" width="20"> Giảm 30%! Tiết kiệm ${discount.toLocaleString('vi-VN')}đ`;
         totalEl.textContent = (base - discount).toLocaleString('vi-VN') + 'đ';
     } else {
         discount = 0;
         msg.style.color = '#e50914';
-        msg.textContent = `<img src="images/dau_x_do.png" width="20"> Mã không hợp lệ`;
+        // FIX: đổi msg.textContent → msg.innerHTML để ảnh hiển thị được
+        msg.innerHTML = `<img src="images/dau_x_do.png" width="20"> Mã không hợp lệ`;
     }
 }
 
@@ -400,8 +443,9 @@ function selectMethod(el, method) {
 }
 
 async function processPayment(btn) {
-    const original = btn.textContent;
-    btn.textContent = '<img src="images/dong_ho_cac.png" width="20"> Đang xử lý...';
+    const original = btn.innerHTML;
+    // FIX: đổi btn.textContent → btn.innerHTML để ảnh hiển thị được
+    btn.innerHTML = '<img src="images/dong_ho_cac.png" width="20"> Đang xử lý...';
     btn.disabled = true;
 
     const danhSachGhe = [...da_chon].sort().join(', ') || '—';
@@ -420,9 +464,10 @@ async function processPayment(btn) {
             ngay_dat: new Date().toLocaleString('vi-VN'),
             timestamp: new Date().toISOString()
         });
-        console.log("<img src='images/hoan_ho.png' width='20'> Đã lưu vé lên 3 CON BÁO CINEMA thành công! Mã:", code);
+        // FIX: console.log không cần HTML, dùng text thuần
+        console.log("✅ Đã lưu vé lên 3 CON BÁO CINEMA thành công! Mã:", code);
     } catch (err) {
-        console.error("<img src='images/dau_x_do.png' width='20'> Lỗi 3 CON BÁO CINEMA:", err);
+        console.error("❌ Lỗi 3 CON BÁO CINEMA:", err);
     }
 
     setTimeout(() => {
@@ -432,7 +477,8 @@ async function processPayment(btn) {
         if (tenPhimVeEl) tenPhimVeEl.textContent = currentMovieTitle || '—';
 
         goPayStep(3);
-        btn.textContent = original;
+        // FIX: đổi lại bằng innerHTML vì original đã lưu innerHTML
+        btn.innerHTML = original;
         btn.disabled = false;
         paymentDone = true;
         da_chon.clear();
@@ -681,6 +727,7 @@ function chuyenTrangRap(tenRap) {
     const tenFile = bangDinhTuyen[tenRap];
     if (tenFile) window.location.href = prefix + tenFile;
 }
+
 window.openAuth = openAuth;
 window.closeAuth = closeAuth;
 window.switchTab = switchTab;
