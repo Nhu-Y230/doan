@@ -70,7 +70,7 @@ function updateNavbar() {
         const avatarColor = getAvatarColor(user);
         const displayName = getDisplayName(user);
         navActions.innerHTML = `
-            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor}">${avatarText}</div>
+            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor};cursor:pointer" onclick="chuyenTrangHoSo()">${avatarText}</div>
             <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
         `;
     } else {
@@ -672,6 +672,22 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function chuyenTrangHoSo() {
+    const path = window.location.pathname;
+    const dangOThongTin = path.includes('/Thongtin/');
+    const dangOSubFolder = path.split('/').length > 2 && path !== '/index.html' && path !== '/';
+    
+    // Xác định prefix dựa trên vị trí file hiện tại
+    let prefix = '';
+    if (dangOThongTin) {
+        prefix = '../';
+    } else if (dangOSubFolder && !path.includes('/Thongtin/')) {
+        prefix = '../';
+    }
+    
+    window.location.href = prefix + 'hoso.html';
+}
+
 function chuyenTrangRap(tenRap) {
   const path = window.location.pathname;
   const dangORap     = path.includes('/Danhsachrap/');
@@ -707,6 +723,7 @@ window.closePay = closePay;
 window.processPayment = processPayment; 
 window.applyCoupon = applyCoupon;
 window.selectMethod = selectMethod;
+window.chuyenTrangHoSo = chuyenTrangHoSo;
 window.batTatMenuRap = batTatMenuRap;
 window.locRap = locRap;
 window.chuyenTrangRap = chuyenTrangRap;
