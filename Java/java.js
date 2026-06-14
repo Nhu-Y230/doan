@@ -76,7 +76,6 @@ function updateNavbar() {
 }
 
 async function handleLogout() {
-    // FIX: thay confirm() bằng showConfirm() tùy chỉnh — hỗ trợ HTML, đúng theme
     const confirmed = await showConfirm('Bạn muốn đăng xuất không?');
     if (confirmed) {
         try {
@@ -128,7 +127,6 @@ async function handleLogin(e) {
     const pass = document.getElementById('loginPass').value;
 
     if (!email || !pass) {
-        // FIX: dùng showAlert thay alert() để hiển thị đúng
         showAlert("Vui lòng nhập email và mật khẩu");
         return;
     }
@@ -149,7 +147,6 @@ async function handleLogin(e) {
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
-            // FIX: dùng showAlert thay alert() để ảnh hiển thị được
             showAlert("<img src='images/dau_x_do.png' width='20'> Tài khoản hoặc Mật khẩu không chính xác!");
         } else {
             showAlert("<img src='images/dau_x_do.png' width='20'> Lỗi: " + error.message);
@@ -166,7 +163,6 @@ async function handleRegister(e) {
     const conf = document.getElementById('regConfirm').value;
 
     if (!name || !email || !pass || !conf) {
-        // FIX: dùng showAlert thay alert()
         showAlert('<img src="images/thang_do.png" width="20"> Vui lòng điền đầy đủ thông tin.');
         return;
     }
@@ -178,7 +174,6 @@ async function handleRegister(e) {
 
     const pwCheck = isStrongPassword(pass);
     if (!pwCheck.valid) {
-        // FIX: dùng showAlert thay alert() để ảnh trong message hiển thị được
         showAlert(pwCheck.message);
         return;
     }
@@ -229,8 +224,6 @@ function togglePassword(inputId, btn) {
         `;
     }
 }
-
-// Hiển thị thông báo nhỏ (toast) hỗ trợ HTML/ảnh
 function showToast(noiDung) {
     let thongBao = document.getElementById('thong-bao');
     if (!thongBao) {
@@ -244,8 +237,6 @@ function showToast(noiDung) {
     clearTimeout(thongBao._boDemThoiGian);
     thongBao._boDemThoiGian = setTimeout(() => thongBao.classList.remove('hien-thi'), 3000);
 }
-
-// FIX: thay thế alert() bằng hộp thoại tùy chỉnh hỗ trợ HTML/ảnh
 function showAlert(msg) {
     let overlay = document.getElementById('cineviet-alert-overlay');
     if (!overlay) {
@@ -275,8 +266,6 @@ function showAlert(msg) {
     document.getElementById('cineviet-alert-msg').innerHTML = msg;
     overlay.style.display = 'flex';
 }
-
-// FIX: thay thế confirm() bằng hộp thoại tùy chỉnh hỗ trợ HTML/ảnh, trả về Promise
 function showConfirm(msg) {
     return new Promise((resolve) => {
         let overlay = document.getElementById('cineviet-confirm-overlay');
@@ -322,8 +311,6 @@ function showConfirm(msg) {
 
         const btnOk = document.getElementById('cineviet-confirm-ok');
         const btnCancel = document.getElementById('cineviet-confirm-cancel');
-
-        // Clone để xoá event listener cũ
         const newOk = btnOk.cloneNode(true);
         const newCancel = btnCancel.cloneNode(true);
         btnOk.replaceWith(newOk);
@@ -427,7 +414,6 @@ function checkout() {
     if (!isLoggedIn()) {
         closeModal();
         openAuth('register');
-        // FIX: showToast dùng innerHTML nên ảnh hiển thị được
         showToast('<img src="images/thang_do.png" width="20"> Vui lòng đăng nhập để thanh toán!');
         return;
     }
@@ -486,13 +472,11 @@ function applyCoupon() {
     if (code === 'BAOBARA') {
         discount = Math.round(base * 0.3);
         msg.style.color = '#22c55e';
-        // FIX: đổi msg.textContent → msg.innerHTML để ảnh hiển thị được
         msg.innerHTML = `<img src="images/tich_xanh.png" width="20"> Giảm 30%! Tiết kiệm ${discount.toLocaleString('vi-VN')}đ`;
         totalEl.textContent = (base - discount).toLocaleString('vi-VN') + 'đ';
     } else {
         discount = 0;
         msg.style.color = '#e50914';
-        // FIX: đổi msg.textContent → msg.innerHTML để ảnh hiển thị được
         msg.innerHTML = `<img src="images/dau_x_do.png" width="20"> Mã không hợp lệ`;
     }
 }
@@ -508,7 +492,6 @@ function selectMethod(el, method) {
 
 async function processPayment(btn) {
     const original = btn.innerHTML;
-    // FIX: đổi btn.textContent → btn.innerHTML để ảnh hiển thị được
     btn.innerHTML = '<img src="images/dong_ho_cac.png" width="20"> Đang xử lý...';
     btn.disabled = true;
 
@@ -528,7 +511,6 @@ async function processPayment(btn) {
             ngay_dat: new Date().toLocaleString('vi-VN'),
             timestamp: new Date().toISOString()
         });
-        // FIX: console.log không cần HTML, dùng text thuần
         console.log("✅ Đã lưu vé lên 3 CON BÁO CINEMA thành công! Mã:", code);
     } catch (err) {
         console.error("❌ Lỗi 3 CON BÁO CINEMA:", err);
@@ -541,7 +523,6 @@ async function processPayment(btn) {
         if (tenPhimVeEl) tenPhimVeEl.textContent = currentMovieTitle || '—';
 
         goPayStep(3);
-        // FIX: đổi lại bằng innerHTML vì original đã lưu innerHTML
         btn.innerHTML = original;
         btn.disabled = false;
         paymentDone = true;

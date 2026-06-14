@@ -2587,7 +2587,7 @@ button.mui_ten_xuong {
   border: 1px dashed rgba(255, 255, 255, 0.1);
   border-radius: 8px;
 }
-/* Thông báo dạng toast */
+
 .thong-bao {
     position: fixed;
     bottom: 30px;
