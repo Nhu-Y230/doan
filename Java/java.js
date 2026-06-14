@@ -230,19 +230,19 @@ function togglePassword(inputId, btn) {
     }
 }
 
-// FIX: đổi toast.textContent → toast.innerHTML để ảnh hiển thị được
-function showToast(msg) {
-    let toast = document.getElementById('cineviet-toast');
-    if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'cineviet-toast';
-        toast.className = 'cineviet-toast';
-        document.body.appendChild(toast);
+// Hiển thị thông báo nhỏ (toast) hỗ trợ HTML/ảnh
+function showToast(noiDung) {
+    let thongBao = document.getElementById('thong-bao');
+    if (!thongBao) {
+        thongBao = document.createElement('div');
+        thongBao.id = 'thong-bao';
+        thongBao.className = 'thong-bao';
+        document.body.appendChild(thongBao);
     }
-    toast.innerHTML = msg;
-    toast.classList.add('show');
-    clearTimeout(toast._timer);
-    toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
+    thongBao.innerHTML = noiDung;
+    thongBao.classList.add('hien-thi');
+    clearTimeout(thongBao._boDemThoiGian);
+    thongBao._boDemThoiGian = setTimeout(() => thongBao.classList.remove('hien-thi'), 3000);
 }
 
 // FIX: thay thế alert() bằng hộp thoại tùy chỉnh hỗ trợ HTML/ảnh
