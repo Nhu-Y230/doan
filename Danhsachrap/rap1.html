@@ -1,665 +1,699 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3 CON BÁO</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../Style/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 CON BÁO</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Style/style.css">
 </head>
+
 <body>
-<nav>
-  <div class="bieu_tuong">3 CON BÁO
-    <span>CINEMA</span></div>
-  <ul>
-    <li class="co_menu_con">
-      <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong" onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="menu_rap_phim" id="menuRapPhim">
-        <div class="tim_kiem_rap">
-          <i class="fas fa-search"></i>
-          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
-          <select id="loc_thanh_pho_id" onchange="locRap('')">
-            <option value="">Tất cả</option>
-            <option value="hcm">Tp. Hồ Chí Minh</option>
-            <option value="hn">Hà Nội</option>
-            <option value="dn">Đà Nẵng</option>
-            <option value="vt">Phường Vũng Tàu</option>
-          </select>
-        </div>
-        <div class="danh_sach_rap" id="danhSachRap">
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
-            <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
-            <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
-            <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li><a href="../sapchieu.html">Sắp chiếu</a></li>
-    <li><a href="../xemphim.html">Xem phim</a></li>
-    <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
-  </ul>
-  <div class="hanh_dong_dieu_huong">
-    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
-    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
-  </div>
-</nav>
-<main class="trang_rap">
-
-  <!-- Phần thông tin rạp -->
-  <section class="thong_tin_rap_chinh">
-    <div class="dau_rap">
-      <div class="logo_rap_lon">
-        <img src="../images/beta_quang_trung.png" alt="CGV" onerror="this.innerHTML='CGV'">
-      </div>
-      <div class="chi_tiet_rap">
-        <h1 class="ten_rap_lon">CGV Quang Trung</h1>
-        <p class="dia_chi_rap_chinh">Tầng 4, Lam Sơn Square, 9 Lê Lợi, Tp. Vũng Tàu</p>
-        <div class="nhan_rap">
-          <span class="nhan_ban_do"><img src="../images/vi_tri.png" class="bieu_tuong_vi_tri"> Bản đồ</span>
-          <span class="nhan_ban_do"><img src="../images/qua_cau.png" class="bieu_tuong_vi_tri">Tp. Hồ Chí Minh</span>
-          <span class="nhan_he_thong"><img src="../images/gach.png" class="bieu_tuong_vi_tri"> Beta Cinemas</span>
-        </div>
-      </div>
+  <nav>
+    <div class="bieu_tuong">3 CON BÁO
+      <span>CINEMA</span>
     </div>
-
-    <p class="mo_ta_rap">
-      Beta Quang Trung – Rạp chiếu phim hiện đại tại khu vực sầm uất, đặt vé nhanh trên Moveek Xem lịch chiếu phim Beta Quang Trung mới nhất và mua vé xem phim online nhanh chóng tại Moveek – nền tảng đặt vé tiện lợi, cập nhật đầy đủ lịch chiếu các rạp Beta toàn quốc. Beta Cinemas Quang Trung có vị trí thuận lợi, nằm gần khu dân cư đông đúc và các trung tâm thương mại sôi động, là điểm đến lý tưởng cho giới trẻ và gia đình. Rạp sở hữu 7 phòng chiếu hiện đại, với hơn 1.000 ghế ngồi, phục vụ đa dạng các thể loại phim từ bom tấn Hollywood, phim Việt đến hoạt hình hấp dẫn.
-    </p>
-  </section>
-
-  <div class="khu_lich_chieu">
-  <!-- Thanh chọn ngày -->
-  <section class="chon_ngay_chieu">
-    <div class="danh_sach_ngay" id="danhSachNgay">
-      <div class="muc_ngay dang_chon" onclick="chonNgay(this, '2026-05-21')">
-        <span class="ngay_so">21/5</span>
-        <span class="thu">Th 5</span>
-      </div>
-      <div class="muc_ngay" onclick="chonNgay(this, '2026-05-22')">
-        <span class="ngay_so">22/5</span>
-        <span class="thu">Th 6</span>
-      </div>
-      <div class="muc_ngay" onclick="chonNgay(this, '2026-05-23')">
-        <span class="ngay_so">23/5</span>
-        <span class="thu">Th 7</span>
-      </div>
-      <div class="muc_ngay" onclick="chonNgay(this, '2026-05-24')">
-        <span class="ngay_so">24/5</span>
-        <span class="thu">CN</span>
-      </div>
-      <div class="muc_ngay" onclick="chonNgay(this, '2026-05-25')">
-        <span class="ngay_so">25/5</span>
-        <span class="thu">Th 2</span>
-      </div>
-      <div class="muc_ngay" onclick="chonNgay(this, '2026-05-26')">
-        <span class="ngay_so">26/5</span>
-        <span class="thu">Th 3</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Danh sách phim đang chiếu -->
-  <section class="danh_sach_phim_chieu" id="danhSachPhimChieu">
-
-    <!-- ===== NGÀY 21/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-21">
-
-      <div class="the_phim co_tai_tro">
-        <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/heo_5_mong.jpg" alt="Heo Năm Móng"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Heo Năm Móng</h3>
-            <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Thriller, Horror</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Anh</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" >10:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Lồng Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:15</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:45</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:15</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/7_thi_the.jpg" alt="7 Thi Thể"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">7 Thi Thể</h3>
-            <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Drama, Family</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/minions.jpg" alt="Minions"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Minions</h3>
-            <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Thriller</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:45</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:15</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">13:00</button>
-                <button class="nut_suat nut_imax">20:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 21/5 -->
-
-    <!-- ===== NGÀY 22/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-22" style="display:none">
-
-      <div class="the_phim co_tai_tro">
-        <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/quy_cau.jpg" alt="Quỷ Cẩu"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Quỷ Cẩu</h3>
-            <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Thriller, Horror</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Anh</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Lồng Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/pho.jpg" alt="Phở"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Phở</h3>
-            <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Thriller</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">11:00</button>
-                <button class="nut_suat nut_imax">19:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/muoi.jpg" alt="Mười"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Mười</h3>
-            <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Sci-Fi</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">12:00</button>
-                <button class="nut_suat nut_imax">21:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 22/5 -->
-
-    <!-- ===== NGÀY 23/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-23" style="display:none">
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/pha_vay.jpg" alt="Phá Vây"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Phá Vây</h3>
-            <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Drama, Family</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/co_dau_ma.jpg" alt="Cô Dâu Ma"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Cô Dâu Ma</h3>
-            <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Sci-Fi</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">10:30</button>
-                <button class="nut_suat nut_imax">19:45</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim co_tai_tro">
-        <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/trang_quynh.jpg" alt="Trạng Huỳnh"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Trạng Huỳnh</h3>
-            <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Thriller, Horror</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Anh</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 23/5 -->
-
-    <!-- ===== NGÀY 24/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-24" style="display:none">
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/ben_pha_xac_song.jpg" alt="Bên Phà Xác Sống"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Bên Phà Xác Sống</h3>
-            <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Sci-Fi</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">09:30</button>
-                <button class="nut_suat nut_imax">15:00</button>
-                <button class="nut_suat nut_imax">20:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/te_xac.jpg" alt="Té Xác"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Té Xác</h3>
-            <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Drama, Family</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 24/5 -->
-
-    <!-- ===== NGÀY 25/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-25" style="display:none">
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/qua_tim_mau.jpg" alt="Quả Tim Máu"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Quả Tim Máu</h3>
-            <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Thriller</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">10:30</button>
-                <button class="nut_suat nut_imax">20:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim co_tai_tro">
-        <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/giam_cam_quy_du.jpg" alt="Giam Cầm Quỷ Dữ" ></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Giam Cầm Quỷ Dữ</h3>
-            <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Thriller, Horror</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Anh</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Lồng Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 25/5 -->
-
-    <!-- ===== NGÀY 26/5 ===== -->
-    <div class="nhom_ngay" data-ngay="2026-05-26" style="display:none">
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/nha_ba_nu.jpg" alt="Nhà Bà Nữ"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Nhà Bà Nữ</h3>
-            <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Action, Sci-Fi</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat">09:00</button>
-                <button class="nut_suat">11:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
-              </div>
-            </div>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">IMAX Phụ Đề Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat nut_imax">10:00</button>
-                <button class="nut_suat nut_imax">18:30</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="the_phim">
-        <div class="noi_dung_phim">
-          <div class="anh_phim"><img src="../images/dinh_mu_mit.jpg" alt="Đỉnh Mù Mịc"></div>
-          <div class="thong_tin_phim">
-            <h3 class="ten_phim">Lật Mặt 8: Vòng Tay Nhau</h3>
-            <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
-            <p class="the_loai_phim">Drama, Family</p>
-            <div class="suat_chieu_nhom">
-              <p class="loai_phong">2D Tiếng Việt</p>
-              <div class="danh_sach_suat">
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
-                <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end 26/5 -->
-
-  </section>
-  </div><!-- end khu_lich_chieu -->
-
-<div id="hop_thoai_xac_thuc_id" class="auth-overlay">
-  <div class="auth-hop_thoai">
-    <button class="close-btn" onclick="closeAuth()">✕</button>
-    
-    <div class="tab_xac_thuc">
-      <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
-      <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
-    </div>
-
-    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
-      <div class="input-group">
-        <input type="email" id="loginEmail" placeholder="Email của bạn" required>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="loginPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('loginPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
-      <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)" onclick="switchTab('register')">Đăng ký ngay</a></div>
-    </form>
-
-    <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
-      <div class="input-group">
-        <input type="text" id="regName" placeholder="Họ và tên" required>
-      </div>
-      <div class="input-group">
-        <input type="email" id="regEmail" placeholder="Email của bạn" required>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="regPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
-      <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng nhập</a></div>
-    </form>
-  </div>
-</div>
-</main>
-
-<script>
-function chonNgay(el, ngay) {
-  document.querySelectorAll('.muc_ngay').forEach(n => n.classList.remove('dang_chon'));
-  el.classList.add('dang_chon');
-  document.querySelectorAll('.nhom_ngay').forEach(n => n.style.display = 'none');
-  document.querySelector('[data-ngay="' + ngay + '"]').style.display = 'block';
-}
-</script>
-
-<footer>
-  <div class="thuong_hieu_chan_trang">
-    <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
-    <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
-  </div>
-  <div>
-    <h4>Hỗ trợ</h4>
     <ul>
-      <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
-      <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
-      <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
-      <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
+      <li class="co_menu_con">
+        <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong"
+          onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></button>
+        <div class="menu_rap_phim" id="menuRapPhim">
+          <div class="tim_kiem_rap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
+            <select id="loc_thanh_pho_id" onchange="locRap('')">
+              <option value="">Tất cả</option>
+              <option value="hcm">Tp. Hồ Chí Minh</option>
+              <option value="hn">Hà Nội</option>
+              <option value="dn">Đà Nẵng</option>
+              <option value="vt">Phường Vũng Tàu</option>
+            </select>
+          </div>
+          <div class="danh_sach_rap" id="danhSachRap">
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1,
+                  TP. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành
+                  phố Hồ Chí Minh, Việt Nam</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
+              <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
+              <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
+              <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi
+                  City, Hà Nội</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="../sapchieu.html">Sắp chiếu</a></li>
+      <li><a href="../xemphim.html">Xem phim</a></li>
+      <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
     </ul>
-  </div>
-  <div>
-    <h4>Về chúng tôi</h4>
-    <ul>
-      <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
-      <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
-      <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
-      <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
-    </ul>
-  </div>
-  
-</footer>
-<div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
-<script type="module" src="../Java/java.js"></script>
+    <div class="hanh_dong_dieu_huong">
+      <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
+      <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
+    </div>
+  </nav>
+  <main class="trang_rap">
+
+    <!-- Phần thông tin rạp -->
+    <section class="thong_tin_rap_chinh">
+      <div class="dau_rap">
+        <div class="logo_rap_lon">
+          <img src="../images/beta_quang_trung.png" alt="CGV" onerror="this.innerHTML='CGV'">
+        </div>
+        <div class="chi_tiet_rap">
+          <h1 class="ten_rap_lon">CGV Quang Trung</h1>
+          <p class="dia_chi_rap_chinh">Tầng 4, Lam Sơn Square, 9 Lê Lợi, Tp. Vũng Tàu</p>
+          <div class="nhan_rap">
+            <span class="nhan_ban_do"><img src="../images/vi_tri.png" class="bieu_tuong_vi_tri"> Bản đồ</span>
+            <span class="nhan_ban_do"><img src="../images/qua_cau.png" class="bieu_tuong_vi_tri">Tp. Hồ Chí Minh</span>
+            <span class="nhan_he_thong"><img src="../images/gach.png" class="bieu_tuong_vi_tri"> Beta Cinemas</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="mo_ta_rap">
+        Beta Quang Trung – Rạp chiếu phim hiện đại tại khu vực sầm uất, đặt vé nhanh trên Moveek Xem lịch chiếu phim
+        Beta Quang Trung mới nhất và mua vé xem phim online nhanh chóng tại Moveek – nền tảng đặt vé tiện lợi, cập nhật
+        đầy đủ lịch chiếu các rạp Beta toàn quốc. Beta Cinemas Quang Trung có vị trí thuận lợi, nằm gần khu dân cư đông
+        đúc và các trung tâm thương mại sôi động, là điểm đến lý tưởng cho giới trẻ và gia đình. Rạp sở hữu 7 phòng
+        chiếu hiện đại, với hơn 1.000 ghế ngồi, phục vụ đa dạng các thể loại phim từ bom tấn Hollywood, phim Việt đến
+        hoạt hình hấp dẫn.
+      </p>
+    </section>
+
+    <div class="khu_lich_chieu">
+      <!-- Thanh chọn ngày -->
+      <section class="chon_ngay_chieu">
+        <div class="danh_sach_ngay" id="danhSachNgay">
+          <div class="muc_ngay dang_chon" onclick="chonNgay(this, '2026-05-21')">
+            <span class="ngay_so">21/5</span>
+            <span class="thu">Th 5</span>
+          </div>
+          <div class="muc_ngay" onclick="chonNgay(this, '2026-05-22')">
+            <span class="ngay_so">22/5</span>
+            <span class="thu">Th 6</span>
+          </div>
+          <div class="muc_ngay" onclick="chonNgay(this, '2026-05-23')">
+            <span class="ngay_so">23/5</span>
+            <span class="thu">Th 7</span>
+          </div>
+          <div class="muc_ngay" onclick="chonNgay(this, '2026-05-24')">
+            <span class="ngay_so">24/5</span>
+            <span class="thu">CN</span>
+          </div>
+          <div class="muc_ngay" onclick="chonNgay(this, '2026-05-25')">
+            <span class="ngay_so">25/5</span>
+            <span class="thu">Th 2</span>
+          </div>
+          <div class="muc_ngay" onclick="chonNgay(this, '2026-05-26')">
+            <span class="ngay_so">26/5</span>
+            <span class="thu">Th 3</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Danh sách phim đang chiếu -->
+      <section class="danh_sach_phim_chieu" id="danhSachPhimChieu">
+
+        <!-- ===== NGÀY 21/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-21">
+
+          <div class="the_phim co_tai_tro">
+            <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/heo_5_mong.jpg" alt="Heo Năm Móng"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Heo Năm Móng</h3>
+                <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html"
+                    class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Thriller, Horror</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Anh</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat">10:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Lồng Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:15</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:45</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:15</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/7_thi_the.jpg" alt="7 Thi Thể"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">7 Thi Thể</h3>
+                <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Drama, Family</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/minions.jpg" alt="Minions"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Minions</h3>
+                <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Thriller</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:45</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:15</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">13:00</button>
+                    <button class="nut_suat nut_imax">20:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 21/5 -->
+
+        <!-- ===== NGÀY 22/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-22" style="display:none">
+
+          <div class="the_phim co_tai_tro">
+            <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/quy_cau.jpg" alt="Quỷ Cẩu"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Quỷ Cẩu</h3>
+                <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html"
+                    class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Thriller, Horror</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Anh</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Lồng Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/pho.jpg" alt="Phở"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Phở</h3>
+                <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Thriller</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">11:00</button>
+                    <button class="nut_suat nut_imax">19:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/muoi.jpg" alt="Mười"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Mười</h3>
+                <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Sci-Fi</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">12:00</button>
+                    <button class="nut_suat nut_imax">21:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 22/5 -->
+
+        <!-- ===== NGÀY 23/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-23" style="display:none">
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/pha_vay.jpg" alt="Phá Vây"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Phá Vây</h3>
+                <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Drama, Family</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/co_dau_ma.jpg" alt="Cô Dâu Ma"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Cô Dâu Ma</h3>
+                <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Sci-Fi</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">10:30</button>
+                    <button class="nut_suat nut_imax">19:45</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim co_tai_tro">
+            <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/trang_quynh.jpg" alt="Trạng Huỳnh"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Trạng Huỳnh</h3>
+                <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html"
+                    class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Thriller, Horror</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Anh</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 23/5 -->
+
+        <!-- ===== NGÀY 24/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-24" style="display:none">
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/ben_pha_xac_song.jpg" alt="Bên Phà Xác Sống"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Bên Phà Xác Sống</h3>
+                <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Sci-Fi</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">09:30</button>
+                    <button class="nut_suat nut_imax">15:00</button>
+                    <button class="nut_suat nut_imax">20:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/te_xac.jpg" alt="Té Xác"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Té Xác</h3>
+                <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Drama, Family</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">17:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 24/5 -->
+
+        <!-- ===== NGÀY 25/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-25" style="display:none">
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/qua_tim_mau.jpg" alt="Quả Tim Máu"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Quả Tim Máu</h3>
+                <p class="phu_de_phim">T13 · 2h50' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Thriller</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">09:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">12:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">15:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">18:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">10:30</button>
+                    <button class="nut_suat nut_imax">20:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim co_tai_tro">
+            <div class="nhan_tai_tro">ĐƯỢC TÀI TRỢ</div>
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/giam_cam_quy_du.jpg" alt="Giam Cầm Quỷ Dữ"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Giam Cầm Quỷ Dữ</h3>
+                <p class="phu_de_phim">Hell Trotter · T18 · 1h43' · <a href="../xemphim.html"
+                    class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Thriller, Horror</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Anh</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">10:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Lồng Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 25/5 -->
+
+        <!-- ===== NGÀY 26/5 ===== -->
+        <div class="nhom_ngay" data-ngay="2026-05-26" style="display:none">
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/nha_ba_nu.jpg" alt="Nhà Bà Nữ"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Nhà Bà Nữ</h3>
+                <p class="phu_de_phim">T13 · 2h45' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Action, Sci-Fi</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat">09:00</button>
+                    <button class="nut_suat">11:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">14:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">19:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">21:30</button>
+                  </div>
+                </div>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">IMAX Phụ Đề Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat nut_imax">10:00</button>
+                    <button class="nut_suat nut_imax">18:30</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="the_phim">
+            <div class="noi_dung_phim">
+              <div class="anh_phim"><img src="../images/dinh_mu_mit.jpg" alt="Đỉnh Mù Mịc"></div>
+              <div class="thong_tin_phim">
+                <h3 class="ten_phim">Lật Mặt 8: Vòng Tay Nhau</h3>
+                <p class="phu_de_phim">T16 · 2h10' · <a href="../xemphim.html" class="link_trailer">Trailer</a></p>
+                <p class="the_loai_phim">Drama, Family</p>
+                <div class="suat_chieu_nhom">
+                  <p class="loai_phong">2D Tiếng Việt</p>
+                  <div class="danh_sach_suat">
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">08:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">11:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">13:30</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">16:00</button>
+                    <button class="nut_suat" onclick="location.href='../Thongtin/huongdandatve.html'">20:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end 26/5 -->
+
+      </section>
+    </div><!-- end khu_lich_chieu -->
+
+    <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
+      <div class="auth-hop_thoai">
+        <button class="close-btn" onclick="closeAuth()">✕</button>
+
+        <div class="tab_xac_thuc">
+          <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
+          <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
+        </div>
+
+        <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+          <div class="input-group">
+            <input type="email" id="loginEmail" placeholder="Email của bạn" required>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+            <span class="eye-icon" onclick="togglePassword('loginPass', this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </span>
+          </div>
+          <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
+          <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)"
+              onclick="switchTab('register')">Đăng ký ngay</a></div>
+        </form>
+
+        <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
+          <div class="input-group">
+            <input type="text" id="regName" placeholder="Họ và tên" required>
+          </div>
+          <div class="input-group">
+            <input type="email" id="regEmail" placeholder="Email của bạn" required>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="regPass" placeholder="Mật khẩu" required>
+            <span class="eye-icon" onclick="togglePassword('regPass', this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </span>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
+            <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </span>
+          </div>
+          <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
+          <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng
+              nhập</a></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function chonNgay(el, ngay) {
+      document.querySelectorAll('.muc_ngay').forEach(n => n.classList.remove('dang_chon'));
+      el.classList.add('dang_chon');
+      document.querySelectorAll('.nhom_ngay').forEach(n => n.style.display = 'none');
+      document.querySelector('[data-ngay="' + ngay + '"]').style.display = 'block';
+    }
+  </script>
+
+  <footer>
+    <div class="thuong_hieu_chan_trang">
+      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
+        <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
+        <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
+        <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
+        <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
+        <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
+        <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
+      </ul>
+    </div>
+
+  </footer>
+  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+  <script type="module" src="../Java/java.js"></script>
 </body>
+
 </html>

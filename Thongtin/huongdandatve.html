@@ -1,482 +1,521 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3 CON BÁO</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../Style/style.css">
-<style>
-  /* ---- SECTION HƯỚNG DẪN ĐẶT VÉ ---- */
-  .hdv-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 24px 24px 20px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 CON BÁO</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Style/style.css">
+  <style>
+    /* ---- SECTION HƯỚNG DẪN ĐẶT VÉ ---- */
+    .hdv-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 24px 20px;
+    }
 
-  .hdv-section > h1 {
-    font-family: 'Times New Roman', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
+    .hdv-section>h1 {
+      font-family: 'Times New Roman', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
 
-  .hdv-section > p.mo_dau {
-    color: var(--light);
-    font-size: 0.95rem;
-    margin-bottom: 48px;
-    line-height: 1.6;
-  }
+    .hdv-section>p.mo_dau {
+      color: var(--light);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
 
-  /* Mỗi thẻ bước */
-  .buoc {
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 36px 40px;
-    margin-bottom: 24px;
-    transition: border-color 0.3s, transform 0.2s;
-  }
-
-  .buoc:hover {
-    border-color: rgba(232,25,44,0.4);
-    transform: translateY(-2px);
-  }
-
-  /* Số tròn bên trái */
-  .buoc__so {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba(232,25,44,0.12);
-    border: 2px solid rgba(232,25,44,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Arial', sans-serif;
-    font-size: 1.6rem;
-    color: var(--red);
-  }
-
-  /* Nội dung chữ bên phải */
-  .buoc__noi_dung {
-    flex: 1;
-  }
-
-  .buoc__noi_dung h3 {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.35rem;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .buoc__noi_dung p {
-    color: var(--light);
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-
-  /* Ảnh đơn trong mỗi bước */
-  .buoc__anh {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.07);
-    margin-top: 20px;
-    display: block;
-  }
-
-  /* ---- 2 ẢNH SONG SONG (đăng ký / đăng nhập) ---- */
-  .hinh-anh-doi {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .hinh-anh-doi .buoc__anh {
-    width: 48%;
-    margin-top: 0; /* bỏ margin-top thừa từ .buoc__anh */
-  }
-
-  /* Hộp mẹo vàng */
-  .meo_nhanh {
-    background: rgba(245,200,66,0.07);
-    border: 1px solid rgba(245,200,66,0.3);
-    border-radius: 12px;
-    padding: 20px 28px;
-    margin-top: 48px;
-  }
-
-  .meo_nhanh h4 {
-    color: var(--gold);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .meo_nhanh ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .meo_nhanh ul li {
-    color: var(--light);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .meo_nhanh ul li::before {
-    content: "✦";
-    color: var(--gold);
-    position: absolute;
-    left: 0;
-    font-size: 0.65rem;
-    top: 3px;
-  }
-
-  /* Responsive mobile — 2 ảnh xếp chồng trên màn nhỏ */
-  @media (max-width: 640px) {
+    /* Mỗi thẻ bước */
     .buoc {
-      flex-direction: column;
-      gap: 20px;
-      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      transition: border-color 0.3s, transform 0.2s;
     }
+
+    .buoc:hover {
+      border-color: rgba(232, 25, 44, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Số tròn bên trái */
     .buoc__so {
-      width: 48px;
-      height: 48px;
-      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(232, 25, 44, 0.12);
+      border: 2px solid rgba(232, 25, 44, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.6rem;
+      color: var(--red);
     }
-    .hinh-anh-doi {
-      flex-direction: column;
+
+    /* Nội dung chữ bên phải */
+    .buoc__noi_dung {
+      flex: 1;
     }
-    .hinh-anh-doi .buoc__anh {
+
+    .buoc__noi_dung h3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .buoc__noi_dung p {
+      color: var(--light);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* Ảnh đơn trong mỗi bước */
+    .buoc__anh {
       width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      margin-top: 20px;
+      display: block;
     }
-  }
-</style>
+
+    /* ---- 2 ẢNH SONG SONG (đăng ký / đăng nhập) ---- */
+    .hinh-anh-doi {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .hinh-anh-doi .buoc__anh {
+      width: 48%;
+      margin-top: 0;
+      /* bỏ margin-top thừa từ .buoc__anh */
+    }
+
+    /* Hộp mẹo vàng */
+    .meo_nhanh {
+      background: rgba(245, 200, 66, 0.07);
+      border: 1px solid rgba(245, 200, 66, 0.3);
+      border-radius: 12px;
+      padding: 20px 28px;
+      margin-top: 48px;
+    }
+
+    .meo_nhanh h4 {
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .meo_nhanh ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meo_nhanh ul li {
+      color: var(--light);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .meo_nhanh ul li::before {
+      content: "✦";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-size: 0.65rem;
+      top: 3px;
+    }
+
+    /* Responsive mobile — 2 ảnh xếp chồng trên màn nhỏ */
+    @media (max-width: 640px) {
+      .buoc {
+        flex-direction: column;
+        gap: 20px;
+        padding: 28px 24px;
+      }
+
+      .buoc__so {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+      }
+
+      .hinh-anh-doi {
+        flex-direction: column;
+      }
+
+      .hinh-anh-doi .buoc__anh {
+        width: 100%;
+      }
+    }
+  </style>
 
 
 </head>
+
 <body>
 
-<nav>
-  <div class="bieu_tuong">3 CON BÁO
-    <span>CINEMA</span></div>
-  <ul>
-    <li class="co_menu_con">
-      <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong" onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="menu_rap_phim" id="menuRapPhim">
-        <div class="tim_kiem_rap">
-          <i class="fas fa-search"></i>
-          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
-          <select id="loc_thanh_pho_id" onchange="locRap('')">
-            <option value="">Tất cả</option>
-            <option value="hcm">Tp. Hồ Chí Minh</option>
-            <option value="hn">Hà Nội</option>
-            <option value="dn">Đà Nẵng</option>
-            <option value="vt">Phường Vũng Tàu</option>
-          </select>
-        </div>
-        <div class="danh_sach_rap" id="danhSachRap">
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
-            <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
-            <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
-            <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li><a href="../sapchieu.html">Sắp chiếu</a></li>
-    <li><a href="../xemphim.html">Xem phim</a></li>
-    <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
-  </ul>
-  <div class="hanh_dong_dieu_huong">
-    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
-    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
-  </div>
-</nav>
- 
-<div class="vung_noi_bat">
-  <div class="noi_dung_noi_bat">
-    <div class="nhan_noi_bat">
-      <img src="../images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+  <nav>
+    <div class="bieu_tuong">3 CON BÁO
+      <span>CINEMA</span>
     </div>
-    <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
-    <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
-    <div class="vung_noi_bat-cta">
-      <a href="../index.html" class="nut_chinh" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">Đặt vé ngay</a>
-      <button class="btn-ghost"onclick="location.href='../xemphim.html'"><img src="../images/nut_bat_dau.png" height=" 13px" width="13px"> Xem trailer</button>
-    </div> 
-  </div>
-</div>
- 
-<div class="promo-strip">
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/may_phim.png" width="66px" height="66px"></span>
-    <div class="promo-text"><strong>IMAX & 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/the.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/bap.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/vuong_mien.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/dt.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
-  </div>
-</div>
-
-
-<section>
-  <div class="hdv-section">
-
-    <h1>HƯỚNG DẪN ĐẶT VÉ</h1>
-    <p class="mo_dau">Đặt vé xem phim tại 3 CON BÁO rất đơn giản và nhanh chóng. Hãy làm theo 4 bước dưới đây để có trải nghiệm tốt nhất.</p>
-
-    <!-- Bước 1 -->
-    <div class="buoc">
-      <div class="buoc__so">01</div>
-      <div class="buoc__noi_dung">
-        <h3>ĐĂNG NHẬP HOẶC ĐĂNG KÝ TÀI KHOẢN</h3>
-        <p>Nhấn nút <strong style="color:var(--text);">Đăng nhập</strong> hoặc <strong style="color:var(--text);">Đăng ký</strong> ở góc trên bên phải màn hình. Nếu đã có tài khoản, điền email và mật khẩu. Nếu chưa có, tạo tài khoản mới — hoàn toàn miễn phí.</p>
-        <div class="hinh-anh-doi">
-          <img src="../images/huongdandatve/dangky.png" alt="Bước 1 - Đăng ký" class="buoc__anh">
-          <img src="../images/huongdandatve/dangnhap.png" alt="Bước 1 - Đăng nhập" class="buoc__anh">
+    <ul>
+      <li class="co_menu_con">
+        <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong"
+          onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></button>
+        <div class="menu_rap_phim" id="menuRapPhim">
+          <div class="tim_kiem_rap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
+            <select id="loc_thanh_pho_id" onchange="locRap('')">
+              <option value="">Tất cả</option>
+              <option value="hcm">Tp. Hồ Chí Minh</option>
+              <option value="hn">Hà Nội</option>
+              <option value="dn">Đà Nẵng</option>
+              <option value="vt">Phường Vũng Tàu</option>
+            </select>
+          </div>
+          <div class="danh_sach_rap" id="danhSachRap">
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1,
+                  TP. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành
+                  phố Hồ Chí Minh, Việt Nam</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
+              <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
+              <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
+              <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi
+                  City, Hà Nội</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </li>
+      <li><a href="../sapchieu.html">Sắp chiếu</a></li>
+      <li><a href="../xemphim.html">Xem phim</a></li>
+      <li><a href="../uudai.html">Tin Tức & Ưu đãi</a></li>
+    </ul>
+    <div class="hanh_dong_dieu_huong">
+      <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
+      <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
+    </div>
+  </nav>
+
+  <div class="vung_noi_bat">
+    <div class="noi_dung_noi_bat">
+      <div class="nhan_noi_bat">
+        <img src="../images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+      </div>
+      <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
+      <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
+      <div class="vung_noi_bat-cta">
+        <a href="../index.html" class="nut_chinh"
+          style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">Đặt vé ngay</a>
+        <button class="btn-ghost" onclick="location.href='../xemphim.html'"><img src="../images/nut_bat_dau.png"
+            height=" 13px" width="13px"> Xem trailer</button>
       </div>
     </div>
+  </div>
 
-    <!-- Bước 2 -->
-    <div class="buoc">
-      <div class="buoc__so">02</div>
-      <div class="buoc__noi_dung">
-        <h3>CHỌN PHIM VÀ GHẾ NGỒI</h3>
-        <p>Chọn ngày và suất chiếu mong muốn. Sơ đồ ghế sẽ hiện ra, ghế <strong style="color:var(--red);">đỏ</strong> đã được đặt - ghế <strong style="color:var(--text);">trắng</strong> là ghế trống - ghế <strong style="color:var(--purple);">tím</strong> là ghế Vip - ghế <strong style="color:var(--muted);">đen</strong> là ghế đã bán. Nhấn vào ghế yêu thích, có thể chọn nhiều ghế cho cả nhóm.</p>
-        <img src="../images/huongdandatve/vitrighe.png" alt="Bước 2 - Chọn ghế" class="buoc__anh">
-      </div>
+  <div class="promo-strip">
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/may_phim.png" width="66px" height="66px"></span>
+      <div class="promo-text"><strong>IMAX & 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
     </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/the.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/bap.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/vuong_mien.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/dt.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
+    </div>
+  </div>
 
-    <!-- Bước 3 -->
-    <div class="buoc">
-      <div class="buoc__so">03</div>
-      <div class="buoc__noi_dung">
-        <h3>THANH TOÁN VÀ NHẬN VÉ</h3>
-        <p>Kiểm tra lại đơn hàng, nhập mã giảm giá nếu có, chọn thêm bắp rang và nước uống nếu muốn. Chọn phương thức thanh toán: <strong style="color:var(--text);">MoMo, VNPay, ZaloPay</strong> hoặc <strong style="color:var(--text);">thẻ ngân hàng</strong>. Sau khi thanh toán, sẽ hiện thông tin mã vé ngay trên màn hình.</p>
-        <div class="hinh-anh-doi">
-          <img src="../images/huongdandatve/thanhtoan.png" alt="Bước 3 - Thanh toán" class="buoc__anh">
-          <img src="../images/huongdandatve/phuongthucthanhtoan.png" alt="Bước 4 - Phương thức thanh toán" class="buoc__anh">
+
+  <section>
+    <div class="hdv-section">
+
+      <h1>HƯỚNG DẪN ĐẶT VÉ</h1>
+      <p class="mo_dau">Đặt vé xem phim tại 3 CON BÁO rất đơn giản và nhanh chóng. Hãy làm theo 4 bước dưới đây để có
+        trải nghiệm tốt nhất.</p>
+
+      <!-- Bước 1 -->
+      <div class="buoc">
+        <div class="buoc__so">01</div>
+        <div class="buoc__noi_dung">
+          <h3>ĐĂNG NHẬP HOẶC ĐĂNG KÝ TÀI KHOẢN</h3>
+          <p>Nhấn nút <strong style="color:var(--text);">Đăng nhập</strong> hoặc <strong style="color:var(--text);">Đăng
+              ký</strong> ở góc trên bên phải màn hình. Nếu đã có tài khoản, điền email và mật khẩu. Nếu chưa có, tạo
+            tài khoản mới — hoàn toàn miễn phí.</p>
+          <div class="hinh-anh-doi">
+            <img src="../images/huongdandatve/dangky.png" alt="Bước 1 - Đăng ký" class="buoc__anh">
+            <img src="../images/huongdandatve/dangnhap.png" alt="Bước 1 - Đăng nhập" class="buoc__anh">
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Bước 4 -->
-    <div class="buoc">
-      <div class="buoc__so">04</div>
-      <div class="buoc__noi_dung">
-        <h3>KIỂM TRA ĐƠN HÀNG</h3>
-        <p>Xem lại thông tin đơn hàng đã đặt, bao gồm phim, suất chiếu, ghế đã chọn và tổng số tiền cần thanh toán.</p>
-        <img src="../images/huongdandatve/kiemtra.png" alt="Bước 4 - Kiểm tra đơn hàng" class="buoc__anh">
-      </div>
-    </div>
 
-    <!-- Mẹo nhanh -->
-    <div class="meo_nhanh">
-      <h4>✦ Mẹo để đặt vé nhanh hơn</h4>
+      <!-- Bước 2 -->
+      <div class="buoc">
+        <div class="buoc__so">02</div>
+        <div class="buoc__noi_dung">
+          <h3>CHỌN PHIM VÀ GHẾ NGỒI</h3>
+          <p>Chọn ngày và suất chiếu mong muốn. Sơ đồ ghế sẽ hiện ra, ghế <strong style="color:var(--red);">đỏ</strong>
+            đã được đặt - ghế <strong style="color:var(--text);">trắng</strong> là ghế trống - ghế <strong
+              style="color:var(--purple);">tím</strong> là ghế Vip - ghế <strong
+              style="color:var(--muted);">đen</strong> là ghế đã bán. Nhấn vào ghế yêu thích, có thể chọn nhiều ghế cho
+            cả nhóm.</p>
+          <img src="../images/huongdandatve/vitrighe.png" alt="Bước 2 - Chọn ghế" class="buoc__anh">
+        </div>
+      </div>
+
+      <!-- Bước 3 -->
+      <div class="buoc">
+        <div class="buoc__so">03</div>
+        <div class="buoc__noi_dung">
+          <h3>THANH TOÁN VÀ NHẬN VÉ</h3>
+          <p>Kiểm tra lại đơn hàng, nhập mã giảm giá nếu có, chọn thêm bắp rang và nước uống nếu muốn. Chọn phương thức
+            thanh toán: <strong style="color:var(--text);">MoMo, VNPay, ZaloPay</strong> hoặc <strong
+              style="color:var(--text);">thẻ ngân hàng</strong>. Sau khi thanh toán, sẽ hiện thông tin mã vé ngay trên
+            màn hình.</p>
+          <div class="hinh-anh-doi">
+            <img src="../images/huongdandatve/thanhtoan.png" alt="Bước 3 - Thanh toán" class="buoc__anh">
+            <img src="../images/huongdandatve/phuongthucthanhtoan.png" alt="Bước 4 - Phương thức thanh toán"
+              class="buoc__anh">
+          </div>
+        </div>
+      </div>
+      <!-- Bước 4 -->
+      <div class="buoc">
+        <div class="buoc__so">04</div>
+        <div class="buoc__noi_dung">
+          <h3>KIỂM TRA ĐƠN HÀNG</h3>
+          <p>Xem lại thông tin đơn hàng đã đặt, bao gồm phim, suất chiếu, ghế đã chọn và tổng số tiền cần thanh toán.
+          </p>
+          <img src="../images/huongdandatve/kiemtra.png" alt="Bước 4 - Kiểm tra đơn hàng" class="buoc__anh">
+        </div>
+      </div>
+
+      <!-- Mẹo nhanh -->
+      <div class="meo_nhanh">
+        <h4>✦ Mẹo để đặt vé nhanh hơn</h4>
+        <ul>
+          <li>Đặt vé trước ít nhất 30 phút để có ghế đẹp, đặc biệt vào cuối tuần.</li>
+          <li>Dùng mã <strong style="color:var(--gold);">BAOBARA</strong> để nhận ưu đãi giảm giá đặc biệt.</li>
+          <li>Thứ 3 hàng tuần giảm 30% — áp dụng tự động, không cần mã.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
+    <div class="auth-hop_thoai">
+      <button class="close-btn" onclick="closeAuth()">✕</button>
+
+      <div class="tab_xac_thuc">
+        <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
+        <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
+      </div>
+
+      <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <input type="email" id="loginEmail" placeholder="Email của bạn" required>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('loginPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
+        <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)"
+            onclick="switchTab('register')">Đăng ký ngay</a></div>
+      </form>
+
+      <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
+        <div class="input-group">
+          <input type="text" id="regName" placeholder="Họ và tên" required>
+        </div>
+        <div class="input-group">
+          <input type="email" id="regEmail" placeholder="Email của bạn" required>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="regPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
+        <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng
+            nhập</a></div>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="thuong_hieu_chan_trang">
+      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
       <ul>
-        <li>Đặt vé trước ít nhất 30 phút để có ghế đẹp, đặc biệt vào cuối tuần.</li>
-        <li>Dùng mã <strong style="color:var(--gold);">BAOBARA</strong> để nhận ưu đãi giảm giá đặc biệt.</li>
-        <li>Thứ 3 hàng tuần giảm 30% — áp dụng tự động, không cần mã.</li>
+        <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
+        <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
+        <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
+        <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
       </ul>
     </div>
-
-  </div>
-</section>
-
-
-
-<div id="hop_thoai_xac_thuc_id" class="auth-overlay">
-  <div class="auth-hop_thoai">
-    <button class="close-btn" onclick="closeAuth()">✕</button>
-    
-    <div class="tab_xac_thuc">
-      <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
-      <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
+    <div>
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
+        <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
+        <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
+        <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
+      </ul>
     </div>
+  </footer>
+  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
 
-    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
-      <div class="input-group">
-        <input type="email" id="loginEmail" placeholder="Email của bạn" required>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="loginPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('loginPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
-      <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)" onclick="switchTab('register')">Đăng ký ngay</a></div>
-    </form>
+  <div id="movieTooltip" class="movie-tooltip">
+    <div class="tooltip-header">
+      <div class="tooltip-title" id="tooltipTitle"></div>
+      <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+    </div>
+    <div class="tooltip-meta" id="tooltipMeta"></div>
+    <p class="tooltip-desc" id="tooltipDesc"></p>
+  </div>
 
-    <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
-      <div class="input-group">
-        <input type="text" id="regName" placeholder="Họ và tên" required>
-      </div>
-      <div class="input-group">
-        <input type="email" id="regEmail" placeholder="Email của bạn" required>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="regPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
-      <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng nhập</a></div>
-    </form>
-  </div>
-</div>
-<footer>
-  <div class="thuong_hieu_chan_trang">
-    <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
-    <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
-  </div>
-  <div>
-    <h4>Hỗ trợ</h4>
-    <ul>
-      <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
-      <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
-      <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
-      <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Về chúng tôi</h4>
-    <ul>
-      <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
-      <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
-      <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
-      <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+  <script type="module" src="../Java/java.js"></script>
 
-<div id="movieTooltip" class="movie-tooltip">
-  <div class="tooltip-header">
-    <div class="tooltip-title" id="tooltipTitle"></div>
-    <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+  <div class="icon">
+    <h3>ĐỊA CHỈ</h3>
+    <p>
+      <img src="../images/vi_tri.png" class="bieu_tuong_vi_tri">
+      84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
+    </p>
   </div>
-  <div class="tooltip-meta" id="tooltipMeta"></div>
-  <p class="tooltip-desc" id="tooltipDesc"></p>
-</div>
-
-<script type="module" src="../Java/java.js"></script>
-
-<div class="icon">
-  <h3>ĐỊA CHỈ</h3>
-  <p>
-    <img src="../images/vi_tri.png" class="bieu_tuong_vi_tri">
-    84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
-  </p>
-</div>
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
-  width="600" 
-  height="450" 
-  style="border:0; display:block; margin: 0 auto;" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
-<script>
-window.chuyenTrangRap = function(tenRap) {
-  var bangDinhTuyen = {
-    'beta-quang-trung':     '../Danhsachrap/rap1.html',
-    'beta-tran-quang-khai': '../Danhsachrap/rap2.html',
-    'beta-ung-van-khiem':   '../Danhsachrap/rap3.html',
-    'cinestar-quoc-thanh':  '../Danhsachrap/rap4.html',
-    'cgv-vung-tau':         '../Danhsachrap/rap5.htm l',
-    'beta-ha-noi':           '../Danhsachrap/rap6.html',
-  };
-  var url = bangDinhTuyen[tenRap];
-  if (url) window.location.href = url;
-};
-</script>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
+    width="600" height="450" style="border:0; display:block; margin: 0 auto;" allowfullscreen="" loading="lazy">
+  </iframe>
+  <script>
+    window.chuyenTrangRap = function (tenRap) {
+      var bangDinhTuyen = {
+        'beta-quang-trung': '../Danhsachrap/rap1.html',
+        'beta-tran-quang-khai': '../Danhsachrap/rap2.html',
+        'beta-ung-van-khiem': '../Danhsachrap/rap3.html',
+        'cinestar-quoc-thanh': '../Danhsachrap/rap4.html',
+        'cgv-vung-tau': '../Danhsachrap/rap5.htm l',
+        'beta-ha-noi': '../Danhsachrap/rap6.html',
+      };
+      var url = bangDinhTuyen[tenRap];
+      if (url) window.location.href = url;
+    };
+  </script>
 </body>
+
 </html>

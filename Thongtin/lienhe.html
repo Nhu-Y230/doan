@@ -1,656 +1,686 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3 CON BÁO</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../Style/style.css">
-<style>
-  /* ---- SECTION LIÊN HỆ ---- */
-  .lh-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 24px 24px 20px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 CON BÁO</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Style/style.css">
+  <style>
+    /* ---- SECTION LIÊN HỆ ---- */
+    .lh-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 24px 20px;
+    }
 
-  .lh-section > h1 {
-    font-family: 'Times New Roman', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
+    .lh-section>h1 {
+      font-family: 'Times New Roman', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
 
-  .lh-section > p.mo_dau {
-    color: var(--light);
-    font-size: 0.95rem;
-    margin-bottom: 48px;
-    line-height: 1.6;
-  }
+    .lh-section>p.mo_dau {
+      color: var(--light);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
 
-  /* Lưới 2 cột: thông tin liên hệ + form */
-  .lh-luoi {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 28px;
-    margin-bottom: 40px;
-  }
-
-  /* Thẻ thông tin liên hệ */
-  .lh-thong_tin {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .lh-muc {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 24px 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    transition: border-color 0.3s, transform 0.2s;
-  }
-
-  .lh-muc:hover {
-    border-color: rgba(232,25,44,0.4);
-    transform: translateY(-2px);
-  }
-
-  .lh-muc__bieu_tuong {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(232,25,44,0.12);
-    border: 1px solid rgba(232,25,44,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-  }
-
-  .lh-muc__noi_dung h4 {
-    font-family: 'Arial', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .lh-muc__noi_dung p,
-  .lh-muc__noi_dung a {
-    color: var(--text);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    text-decoration: none;
-  }
-
-  .lh-muc__noi_dung a:hover {
-    color: var(--red);
-  }
-
-  .lh-muc__noi_dung span.mo_ta {
-    display: block;
-    color: var(--light);
-    font-size: 0.8rem;
-    margin-top: 2px;
-  }
-
-  /* ---- FORM GỬI TIN NHẮN ---- */
-  .lh-form_hop {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 36px 40px;
-  }
-
-  .lh-form_hop h3 {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 2.5px;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
-
-  .lh-truong {
-    margin-bottom: 16px;
-  }
-
-  .lh-truong label {
-    display: block;
-    color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-  }
-
-  .lh-truong input,
-  .lh-truong select,
-  .lh-truong textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.25s;
-    box-sizing: border-box;
-  }
-
-  .lh-truong select option {
-    background: #1a1a2e;
-    color: var(--text);
-  }
-
-  .lh-truong input:focus,
-  .lh-truong select:focus,
-  .lh-truong textarea:focus {
-    border-color: rgba(232,25,44,0.5);
-  }
-
-  .lh-truong textarea {
-    resize: vertical;
-    min-height: 110px;
-  }
-
-  .lh-truong input::placeholder,
-  .lh-truong textarea::placeholder {
-    color: var(--muted);
-    opacity: 0.6;
-  }
-
-  .lh-nut_gui {
-    width: 100%;
-    padding: 14px;
-    background: var(--red);
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-    margin-top: 8px;
-  }
-
-  .lh-nut_gui:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-  }
-
-.lh-thanh_cong {
-  display: none; /* THÊM DÒNG NÀY ĐỂ ẨN MẶC ĐỊNH */
-  align-items: center; 
-  gap: 12px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  border-radius: 10px;
-  padding: 14px 20px;
-  color: #4ade80;
-  font-size: 0.88rem;
-  line-height: 1.4;
-  margin-top: 16px;
-}
-
-  /* Giờ làm việc */
-  .lh-gio_lam {
-    background: rgba(245,200,66,0.07);
-    border: 1px solid rgba(245,200,66,0.3);
-    border-radius: 12px;
-    padding: 22px 28px;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .lh-gio_lam__bieu_tuong {
-    font-size: 2rem;
-    flex-shrink: 0;
-  }
-
-  .lh-gio_lam__noi_dung h4 {
-    color: var(--gold);
-    font-family: 'Arial', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .lh-gio_lam__noi_dung ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .lh-gio_lam__noi_dung ul li {
-    color: var(--light);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding-left: 18px;
-    position: relative;
-  }
-
-  .lh-gio_lam__noi_dung ul li::before {
-    content: "✦";
-    color: var(--gold);
-    position: absolute;
-    left: 0;
-    font-size: 0.6rem;
-    top: 4px;
-  }
-
-  /* Bản đồ */
-  .lh-ban_do {
-    margin-top: 16px;
-    margin-bottom: 48px;
-  }
-
-  .lh-ban_do h3 {
-    font-family: 'Arial', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 2.5px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .lh-ban_do iframe {
-    width: 100%;
-    height: 360px;
-    border: 0;
-    border-radius: 16px;
-    display: block;
-  }
-
-  /* Responsive */
-  @media (max-width: 700px) {
+    /* Lưới 2 cột: thông tin liên hệ + form */
     .lh-luoi {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 28px;
+      margin-bottom: 40px;
     }
+
+    /* Thẻ thông tin liên hệ */
+    .lh-thong_tin {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lh-muc {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .lh-muc:hover {
+      border-color: rgba(232, 25, 44, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .lh-muc__bieu_tuong {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(232, 25, 44, 0.12);
+      border: 1px solid rgba(232, 25, 44, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .lh-muc__noi_dung h4 {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .lh-muc__noi_dung p,
+    .lh-muc__noi_dung a {
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    .lh-muc__noi_dung a:hover {
+      color: var(--red);
+    }
+
+    .lh-muc__noi_dung span.mo_ta {
+      display: block;
+      color: var(--light);
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    /* ---- FORM GỬI TIN NHẮN ---- */
     .lh-form_hop {
-      padding: 28px 24px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 36px 40px;
     }
-  }
-</style>
+
+    .lh-form_hop h3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2.5px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .lh-truong {
+      margin-bottom: 16px;
+    }
+
+    .lh-truong label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .lh-truong input,
+    .lh-truong select,
+    .lh-truong textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.25s;
+      box-sizing: border-box;
+    }
+
+    .lh-truong select option {
+      background: #1a1a2e;
+      color: var(--text);
+    }
+
+    .lh-truong input:focus,
+    .lh-truong select:focus,
+    .lh-truong textarea:focus {
+      border-color: rgba(232, 25, 44, 0.5);
+    }
+
+    .lh-truong textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .lh-truong input::placeholder,
+    .lh-truong textarea::placeholder {
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .lh-nut_gui {
+      width: 100%;
+      padding: 14px;
+      background: var(--red);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+
+    .lh-nut_gui:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .lh-thanh_cong {
+      display: none;
+      /* THÊM DÒNG NÀY ĐỂ ẨN MẶC ĐỊNH */
+      align-items: center;
+      gap: 12px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 10px;
+      padding: 14px 20px;
+      color: #4ade80;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      margin-top: 16px;
+    }
+
+    /* Giờ làm việc */
+    .lh-gio_lam {
+      background: rgba(245, 200, 66, 0.07);
+      border: 1px solid rgba(245, 200, 66, 0.3);
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .lh-gio_lam__bieu_tuong {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .lh-gio_lam__noi_dung h4 {
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .lh-gio_lam__noi_dung ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lh-gio_lam__noi_dung ul li {
+      color: var(--light);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .lh-gio_lam__noi_dung ul li::before {
+      content: "✦";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-size: 0.6rem;
+      top: 4px;
+    }
+
+    /* Bản đồ */
+    .lh-ban_do {
+      margin-top: 16px;
+      margin-bottom: 48px;
+    }
+
+    .lh-ban_do h3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .lh-ban_do iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .lh-luoi {
+        grid-template-columns: 1fr;
+      }
+
+      .lh-form_hop {
+        padding: 28px 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="bieu_tuong">3 CON BÁO
-    <span>CINEMA</span></div>
-  <ul>
-    <li class="co_menu_con">
-      <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong" onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="menu_rap_phim" id="menuRapPhim">
-        <div class="tim_kiem_rap">
-          <i class="fas fa-search"></i>
-          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
-          <select id="loc_thanh_pho_id" onchange="locRap('')">
-            <option value="">Tất cả</option>
-            <option value="hcm">Tp. Hồ Chí Minh</option>
-            <option value="hn">Hà Nội</option>
-            <option value="dn">Đà Nẵng</option>
-            <option value="vt">Phường Vũng Tàu</option>
-          </select>
-        </div>
-        <div class="danh_sach_rap" id="danhSachRap">
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
-            <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
-            <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
-            <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
-            <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li><a href="../sapchieu.html">Sắp chiếu</a></li>
-    <li><a href="../xemphim.html">Xem phim</a></li>
-    <li><a href="../uudai.html">Tin Tức &amp; Ưu đãi</a></li>
-  </ul>
-  <div class="hanh_dong_dieu_huong">
-    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
-    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
-  </div>
-</nav>
-
-<div class="vung_noi_bat">
-  <div class="noi_dung_noi_bat">
-    <div class="nhan_noi_bat">
-      <img src="../images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+  <nav>
+    <div class="bieu_tuong">3 CON BÁO
+      <span>CINEMA</span>
     </div>
-    <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
-    <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
-    <div class="vung_noi_bat-cta">
-      <a href="../index.html" class="nut_chinh" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">Đặt vé ngay</a>
-      <button class="btn-ghost" onclick="location.href='../xemphim.html'"><img src="../images/nut_bat_dau.png" height="13px" width="13px"> Xem trailer</button>
-    </div>
-  </div>
-</div>
-
-<div class="promo-strip">
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/may_phim.png" width="66px" height="66px"></span>
-    <div class="promo-text"><strong>IMAX &amp; 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/the.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/bap.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/vuong_mien.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="../images/dt.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
-  </div>
-</div>
-
-<section>
-  <div class="lh-section">
-
-    <h1>LIÊN HỆ</h1>
-    <p class="mo_dau">Đội ngũ hỗ trợ của 3 CON BÁO CINEMA luôn sẵn sàng giải đáp mọi thắc mắc của bạn. Hãy liên hệ với chúng tôi qua các kênh bên dưới hoặc gửi tin nhắn trực tiếp.</p>
-
-    <!-- Lưới 2 cột -->
-    <div class="lh-luoi">
-
-      <!-- Cột trái: thông tin liên hệ -->
-      <div class="lh-thong_tin">
-
-        <div class="lh-muc">
-          <div class="lh-muc__bieu_tuong"><img src="../images/dien_thoai.png" alt="Hotline" width="24px" height="24px"></div>
-          <div class="lh-muc__noi_dung">
-            <h4>Hotline hỗ trợ</h4>
-            <a href="tel:0123456789">0123 456 789</a>
-            <span class="mo_ta">Miễn phí · 8:00 – 22:00 hàng ngày</span>
-          </div>
-        </div>
-
-        <div class="lh-muc">
-          <div class="lh-muc__bieu_tuong"><img src="../images/thu.png" alt="Email" width="24px" height="24px"></div>
-          <div class="lh-muc__noi_dung">
-            <h4>Email</h4>
-            <a href="mailto:hotro@3conbao.vn">hotro@3conbao.vn</a>
-            <span class="mo_ta">Phản hồi trong vòng 2 giờ làm việc</span>
-          </div>
-        </div>
-
-        <div class="lh-muc">
-          <div class="lh-muc__bieu_tuong"><img src="../images/tin_nhan.png" alt="Chat trực tuyến" width="24px" height="24px"></div>
-          <div class="lh-muc__noi_dung">
-            <h4>Chat trực tuyến</h4>
-            <a href="#">Mở hộp chat</a>
-            <span class="mo_ta">Hỗ trợ ngay lập tức qua Messenger &amp; Zalo</span>
-          </div>
-        </div>
-
-        <div class="lh-muc">
-          <div class="lh-muc__bieu_tuong"><img src="../images/vi_tri.png" alt="Địa chỉ" width="24px" height="24px"></div>
-          <div class="lh-muc__noi_dung">
-            <h4>Trụ sở chính</h4>
-            <p>84 Trần Hưng Đạo, Phước Nguyễn<br>Bà Rịa - Vũng Tàu, Việt Nam</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Cột phải: form gửi tin nhắn -->
-      <div class="lh-form_hop">
-        <h3>GỬI TIN NHẮN CHO CHÚNG TÔI</h3>
-
-        <div class="lh-truong">
-          <label>Họ và tên</label>
-          <input type="text" id="lh_ten" placeholder="Nguyễn Văn A">
-        </div>
-
-        <div class="lh-truong">
-          <label>Email</label>
-          <input type="email" id="lh_email" placeholder="email@cua-ban.com">
-        </div>
-
-        <div class="lh-truong">
-          <label>Chủ đề</label>
-          <select id="lh_chu_de">
-            <option value="">-- Chọn chủ đề --</option>
-            <option value="datve">Hỗ trợ đặt vé</option>
-            <option value="hoanve">Hoàn / đổi vé</option>
-            <option value="thanhtoan">Lỗi thanh toán</option>
-            <option value="taikhoan">Tài khoản &amp; mật khẩu</option>
-            <option value="khac">Khác</option>
-          </select>
-        </div>
-
-        <div class="lh-truong">
-          <label>Nội dung</label>
-          <textarea id="lh_noi_dung" placeholder="Mô tả chi tiết vấn đề bạn gặp phải..."></textarea>
-        </div>
-
-        <button class="lh-nut_gui" onclick="guiLienHe()">GỬI TIN NHẮN</button>
-
-        <div class="lh-thanh_cong" id="lh_thanh_cong">
-  <img src="../images/tich_xanh.png" alt="Thành công" width="20px" height="20px">
-  Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất.
-</div>
-      </div>
-
-    </div>
-
-    <!-- Giờ làm việc -->
-    <div class="lh-gio_lam">
-      <div class="lh-gio_lam__bieu_tuong"><img src="../images/dong_ho.png" alt="Giờ làm việc" width="24px" height="24px"></div>
-      <div class="lh-gio_lam__noi_dung">
-        <h4>GIỜ LÀM VIỆC</h4>
-        <ul>
-          <li>Thứ 2 – Thứ 6: 8:00 – 22:00</li>
-          <li>Thứ 7 – Chủ nhật &amp; Lễ: 9:00 – 23:00</li>
-          <li>Hotline luôn hoạt động trong giờ chiếu phim</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Bản đồ -->
-    
-
-  </div>
-</section>
-
-<script>
-function guiLienHe() {
-  var ten = document.getElementById('lh_ten').value.trim();
-  var email = document.getElementById('lh_email').value.trim();
-  var chuDe = document.getElementById('lh_chu_de').value;
-  var noiDung = document.getElementById('lh_noi_dung').value.trim();
-
-  if (!ten || !email || !chuDe || !noiDung) {
-    alert('Vui lòng điền đầy đủ tất cả thông tin còn thiếu.');
-    return;
-  }
-
-  // Xóa form, hiện thông báo thành công
-  document.getElementById('lh_ten').value = '';
-  document.getElementById('lh_email').value = '';
-  document.getElementById('lh_chu_de').value = '';
-  document.getElementById('lh_noi_dung').value = '';
-  
-  // SỬA 'block' THÀNH 'flex' Ở DÒNG DƯỚI ĐÂY:
-  document.getElementById('lh_thanh_cong').style.display = 'flex'; 
-}
-</script>
-
-<div id="hop_thoai_xac_thuc_id" class="auth-overlay">
-  <div class="auth-hop_thoai">
-    <button class="close-btn" onclick="closeAuth()">✕</button>
-    <div class="tab_xac_thuc">
-      <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
-      <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
-    </div>
-    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
-      <div class="input-group">
-        <input type="email" id="loginEmail" placeholder="Email của bạn" required>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="loginPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('loginPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
-      <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)" onclick="switchTab('register')">Đăng ký ngay</a></div>
-    </form>
-    <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
-      <div class="input-group">
-        <input type="text" id="regName" placeholder="Họ và tên" required>
-      </div>
-      <div class="input-group">
-        <input type="email" id="regEmail" placeholder="Email của bạn" required>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="regPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <div class="input-group password-group">
-        <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
-      <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng nhập</a></div>
-    </form>
-  </div>
-</div>
-
-<footer>
-  <div class="thuong_hieu_chan_trang">
-    <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
-    <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
-  </div>
-  <div>
-    <h4>Hỗ trợ</h4>
     <ul>
-      <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
-      <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
-      <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
-      <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
+      <li class="co_menu_con">
+        <a href="../index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong"
+          onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></button>
+        <div class="menu_rap_phim" id="menuRapPhim">
+          <div class="tim_kiem_rap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
+            <select id="loc_thanh_pho_id" onchange="locRap('')">
+              <option value="">Tất cả</option>
+              <option value="hcm">Tp. Hồ Chí Minh</option>
+              <option value="hn">Hà Nội</option>
+              <option value="dn">Đà Nẵng</option>
+              <option value="vt">Phường Vũng Tàu</option>
+            </select>
+          </div>
+          <div class="danh_sach_rap" id="danhSachRap">
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1,
+                  TP. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
+              <img src="../images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành
+                  phố Hồ Chí Minh, Việt Nam</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
+              <img src="../images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
+              <img src="../images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
+              <img src="../images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi
+                  City, Hà Nội</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="../sapchieu.html">Sắp chiếu</a></li>
+      <li><a href="../xemphim.html">Xem phim</a></li>
+      <li><a href="../uudai.html">Tin Tức &amp; Ưu đãi</a></li>
     </ul>
-  </div>
-  <div>
-    <h4>Về chúng tôi</h4>
-    <ul>
-      <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
-      <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
-      <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
-      <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
-<div id="movieTooltip" class="movie-tooltip">
-  <div class="tooltip-header">
-    <div class="tooltip-title" id="tooltipTitle"></div>
-    <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
-  </div>
-  <div class="tooltip-meta" id="tooltipMeta"></div>
-  <p class="tooltip-desc" id="tooltipDesc"></p>
-</div>
+    <div class="hanh_dong_dieu_huong">
+      <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
+      <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
+    </div>
+  </nav>
 
-<script type="module" src="../Java/java.js"></script>
-<div class="icon">
-  <h3>ĐỊA CHỈ</h3>
-  <p>
-    <img src="../images/vi_tri.png" class="bieu_tuong_vi_tri">
-    84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
-  </p>
-</div>
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
-  width="600" 
-  height="450" 
-  style="border:0; display:block; margin: 0 auto;" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
-<script>
-window.chuyenTrangRap = function(tenRap) {
-  var bangDinhTuyen = {
-    'beta-quang-trung':     '../Danhsachrap/rap1.html',
-    'beta-tran-quang-khai': '../Danhsachrap/rap2.html',
-    'beta-ung-van-khiem':   '../Danhsachrap/rap3.html',
-    'cinestar-quoc-thanh':  '../Danhsachrap/rap4.html',
-    'cgv-vung-tau':         '../Danhsachrap/rap5.htm l',
-    'beta-ha-noi':           '../Danhsachrap/rap6.html',
-  };
-  var url = bangDinhTuyen[tenRap];
-  if (url) window.location.href = url;
-};
-</script>
+  <div class="vung_noi_bat">
+    <div class="noi_dung_noi_bat">
+      <div class="nhan_noi_bat">
+        <img src="../images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+      </div>
+      <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
+      <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
+      <div class="vung_noi_bat-cta">
+        <a href="../index.html" class="nut_chinh"
+          style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">Đặt vé ngay</a>
+        <button class="btn-ghost" onclick="location.href='../xemphim.html'"><img src="../images/nut_bat_dau.png"
+            height="13px" width="13px"> Xem trailer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-strip">
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/may_phim.png" width="66px" height="66px"></span>
+      <div class="promo-text"><strong>IMAX &amp; 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/the.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/bap.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/vuong_mien.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="../images/dt.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="lh-section">
+
+      <h1>LIÊN HỆ</h1>
+      <p class="mo_dau">Đội ngũ hỗ trợ của 3 CON BÁO CINEMA luôn sẵn sàng giải đáp mọi thắc mắc của bạn. Hãy liên hệ với
+        chúng tôi qua các kênh bên dưới hoặc gửi tin nhắn trực tiếp.</p>
+
+      <!-- Lưới 2 cột -->
+      <div class="lh-luoi">
+
+        <!-- Cột trái: thông tin liên hệ -->
+        <div class="lh-thong_tin">
+
+          <div class="lh-muc">
+            <div class="lh-muc__bieu_tuong"><img src="../images/dien_thoai.png" alt="Hotline" width="24px"
+                height="24px"></div>
+            <div class="lh-muc__noi_dung">
+              <h4>Hotline hỗ trợ</h4>
+              <a href="tel:0123456789">0123 456 789</a>
+              <span class="mo_ta">Miễn phí · 8:00 – 22:00 hàng ngày</span>
+            </div>
+          </div>
+
+          <div class="lh-muc">
+            <div class="lh-muc__bieu_tuong"><img src="../images/thu.png" alt="Email" width="24px" height="24px"></div>
+            <div class="lh-muc__noi_dung">
+              <h4>Email</h4>
+              <a href="mailto:hotro@3conbao.vn">hotro@3conbao.vn</a>
+              <span class="mo_ta">Phản hồi trong vòng 2 giờ làm việc</span>
+            </div>
+          </div>
+
+          <div class="lh-muc">
+            <div class="lh-muc__bieu_tuong"><img src="../images/tin_nhan.png" alt="Chat trực tuyến" width="24px"
+                height="24px"></div>
+            <div class="lh-muc__noi_dung">
+              <h4>Chat trực tuyến</h4>
+              <a href="#">Mở hộp chat</a>
+              <span class="mo_ta">Hỗ trợ ngay lập tức qua Messenger &amp; Zalo</span>
+            </div>
+          </div>
+
+          <div class="lh-muc">
+            <div class="lh-muc__bieu_tuong"><img src="../images/vi_tri.png" alt="Địa chỉ" width="24px" height="24px">
+            </div>
+            <div class="lh-muc__noi_dung">
+              <h4>Trụ sở chính</h4>
+              <p>84 Trần Hưng Đạo, Phước Nguyễn<br>Bà Rịa - Vũng Tàu, Việt Nam</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cột phải: form gửi tin nhắn -->
+        <div class="lh-form_hop">
+          <h3>GỬI TIN NHẮN CHO CHÚNG TÔI</h3>
+
+          <div class="lh-truong">
+            <label>Họ và tên</label>
+            <input type="text" id="lh_ten" placeholder="Nguyễn Văn A">
+          </div>
+
+          <div class="lh-truong">
+            <label>Email</label>
+            <input type="email" id="lh_email" placeholder="email@cua-ban.com">
+          </div>
+
+          <div class="lh-truong">
+            <label>Chủ đề</label>
+            <select id="lh_chu_de">
+              <option value="">-- Chọn chủ đề --</option>
+              <option value="datve">Hỗ trợ đặt vé</option>
+              <option value="hoanve">Hoàn / đổi vé</option>
+              <option value="thanhtoan">Lỗi thanh toán</option>
+              <option value="taikhoan">Tài khoản &amp; mật khẩu</option>
+              <option value="khac">Khác</option>
+            </select>
+          </div>
+
+          <div class="lh-truong">
+            <label>Nội dung</label>
+            <textarea id="lh_noi_dung" placeholder="Mô tả chi tiết vấn đề bạn gặp phải..."></textarea>
+          </div>
+
+          <button class="lh-nut_gui" onclick="guiLienHe()">GỬI TIN NHẮN</button>
+
+          <div class="lh-thanh_cong" id="lh_thanh_cong">
+            <img src="../images/tich_xanh.png" alt="Thành công" width="20px" height="20px">
+            Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Giờ làm việc -->
+      <div class="lh-gio_lam">
+        <div class="lh-gio_lam__bieu_tuong"><img src="../images/dong_ho.png" alt="Giờ làm việc" width="24px"
+            height="24px"></div>
+        <div class="lh-gio_lam__noi_dung">
+          <h4>GIỜ LÀM VIỆC</h4>
+          <ul>
+            <li>Thứ 2 – Thứ 6: 8:00 – 22:00</li>
+            <li>Thứ 7 – Chủ nhật &amp; Lễ: 9:00 – 23:00</li>
+            <li>Hotline luôn hoạt động trong giờ chiếu phim</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bản đồ -->
+
+
+    </div>
+  </section>
+
+  <script>
+    function guiLienHe() {
+      var ten = document.getElementById('lh_ten').value.trim();
+      var email = document.getElementById('lh_email').value.trim();
+      var chuDe = document.getElementById('lh_chu_de').value;
+      var noiDung = document.getElementById('lh_noi_dung').value.trim();
+
+      if (!ten || !email || !chuDe || !noiDung) {
+        alert('Vui lòng điền đầy đủ tất cả thông tin còn thiếu.');
+        return;
+      }
+
+      // Xóa form, hiện thông báo thành công
+      document.getElementById('lh_ten').value = '';
+      document.getElementById('lh_email').value = '';
+      document.getElementById('lh_chu_de').value = '';
+      document.getElementById('lh_noi_dung').value = '';
+
+      // SỬA 'block' THÀNH 'flex' Ở DÒNG DƯỚI ĐÂY:
+      document.getElementById('lh_thanh_cong').style.display = 'flex';
+    }
+  </script>
+
+  <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
+    <div class="auth-hop_thoai">
+      <button class="close-btn" onclick="closeAuth()">✕</button>
+      <div class="tab_xac_thuc">
+        <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
+        <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
+      </div>
+      <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <input type="email" id="loginEmail" placeholder="Email của bạn" required>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('loginPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+        <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
+        <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)"
+            onclick="switchTab('register')">Đăng ký ngay</a></div>
+      </form>
+      <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
+        <div class="input-group">
+          <input type="text" id="regName" placeholder="Họ và tên" required>
+        </div>
+        <div class="input-group">
+          <input type="email" id="regEmail" placeholder="Email của bạn" required>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" id="regPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+        <div class="input-group password-group">
+          <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+        <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
+        <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng
+            nhập</a></div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="thuong_hieu_chan_trang">
+      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="../Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
+        <li><a href="../Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
+        <li><a href="../Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
+        <li><a href="../Thongtin/lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="../Thongtin/gioithieu.html">Giới thiệu</a></li>
+        <li><a href="../Thongtin/tintuc.html">Tin tức</a></li>
+        <li><a href="../Thongtin/tuyendung.html">Tuyển dụng</a></li>
+        <li><a href="../Thongtin/doitac.html">Đối tác</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+  <div id="movieTooltip" class="movie-tooltip">
+    <div class="tooltip-header">
+      <div class="tooltip-title" id="tooltipTitle"></div>
+      <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+    </div>
+    <div class="tooltip-meta" id="tooltipMeta"></div>
+    <p class="tooltip-desc" id="tooltipDesc"></p>
+  </div>
+
+  <script type="module" src="../Java/java.js"></script>
+  <div class="icon">
+    <h3>ĐỊA CHỈ</h3>
+    <p>
+      <img src="../images/vi_tri.png" class="bieu_tuong_vi_tri">
+      84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
+    </p>
+  </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
+    width="600" height="450" style="border:0; display:block; margin: 0 auto;" allowfullscreen="" loading="lazy">
+  </iframe>
+  <script>
+    window.chuyenTrangRap = function (tenRap) {
+      var bangDinhTuyen = {
+        'beta-quang-trung': '../Danhsachrap/rap1.html',
+        'beta-tran-quang-khai': '../Danhsachrap/rap2.html',
+        'beta-ung-van-khiem': '../Danhsachrap/rap3.html',
+        'cinestar-quoc-thanh': '../Danhsachrap/rap4.html',
+        'cgv-vung-tau': '../Danhsachrap/rap5.htm l',
+        'beta-ha-noi': '../Danhsachrap/rap6.html',
+      };
+      var url = bangDinhTuyen[tenRap];
+      if (url) window.location.href = url;
+    };
+  </script>
 </body>
+
 </html>

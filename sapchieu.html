@@ -1,417 +1,425 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3 CON BÁO - Sắp Chiếu</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./Style/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 CON BÁO - Sắp Chiếu</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./Style/style.css">
 </head>
+
 <body>
 
-<nav>
-  <div class="bieu_tuong">3 CON BÁO
-    <span>CINEMA</span></div>
-  <ul>
-    <li class="co_menu_con">
-      <a href="index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong" onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="menu_rap_phim" id="menuRapPhim">
-        <div class="tim_kiem_rap">
-          <i class="fas fa-search"></i>
-          <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
-          <select id="loc_thanh_pho_id" onchange="locRap('')">
-            <option value="">Tất cả</option>
-            <option value="hcm">Tp. Hồ Chí Minh</option>
-            <option value="hn">Hà Nội</option>
-            <option value="dn">Đà Nẵng</option>
-            <option value="vt">Phường Vũng Tàu</option>
-          </select>
-        </div>
-        <div class="danh_sach_rap" id="danhSachRap">
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
-            <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
-            <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
-            <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
-            <img src="./images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
-            <img src="./images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
-            </div>
-          </div>
-          <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
-            <img src="./images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap" onerror="this.style.display='none'">
-            <div class="thong_tin_rap">
-              <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
-              <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi City, Hà Nội</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li><a href="sapchieu.html">Sắp chiếu</a></li>
-    <li><a href="xemphim.html">Xem phim</a></li>
-    <li><a href="uudai.html">Tin Tức & Ưu đãi</a></li>
-  </ul>
-  <div class="hanh_dong_dieu_huong">
-    <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
-    <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
-  </div>
-</nav>
- 
-<div class="vung_noi_bat">
-  <div class="noi_dung_noi_bat">
-    <div class="nhan_noi_bat">
-      <img src="images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+  <nav>
+    <div class="bieu_tuong">3 CON BÁO
+      <span>CINEMA</span>
     </div>
-    <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
-    <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
-    <div class="vung_noi_bat-cta">
-      <button class="nut_chinh" onclick="location.href='index.html'">Đặt vé ngay</button>
-      <button class="btn-ghost"onclick="location.href='xemphim.html'"><img src="images/nut_bat_dau.png" height=" 13px" width="13px"> Xem trailer</button>
-    </div> 
-  </div>
-</div>
- 
-<div class="promo-strip">
-  <div class="promo-item">
-    <span class="promo-icon"><img src="images/may_phim.png" width="66px" height="66px"></span>
-    <div class="promo-text"><strong>IMAX & 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="images/the.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="images/bap.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="images/vuong_mien.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
-  </div>
-  <div class="promo-item">
-    <span class="promo-icon"><img src="images/dt.png" width="45px" height="45px"></span>
-    <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
-  </div>
-</div>
-
-<section>
-  <div class="movie-thanh_loc">
-    <div class="o_tim_kiem">
-      <i class="fas fa-search"></i>
-      <input type="text" id="o_nhap_tim_kiem_id" placeholder="Tìm tên phim..." onkeyup="filterMovies()">
-    </div>
-
-    <div class="filters">
-      <select id="loc_the_loai_id" class="chon_loc" onchange="filterMovies()">
-        <option value="">Tất cả thể loại</option>
-        <option value="kinh-di">Kinh Dị</option>
-        <option value="hoi-hop">Hồi Hộp</option>
-        <option value="hoat-hinh">Hoạt Hình</option>
-        <option value="phieu-luu">Phiêu Lưu</option>
-        <option value="hai">Hài Hước</option>
-        <option value="tam-ly">Tâm Lý</option>
-        <option value="gia-dinh">Gia Đình</option>
-      </select>
-
-      <select id="tagFilter" class="chon_loc" onchange="filterMovies()">
-        <option value="">Tất cả</option>
-        <option value="HOT"><img src="images/lua.png"> HOT</option>
-        <option value="MỚI"><img src="images/new.png"> MỚI</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="movies-grid" id="moviesGrid">
-    
-    <div class="the_phim" data-title="Heo 5 Móng" data-genre="hoi-hop" data-tag="" onclick="openModal('Heo 5 Móng','images/heo_5_mong.jpg')"
-      data-info-title="Heo 5 Móng"
-      data-info-genre="Hồi hộp, Kinh Dị"
-      data-info-duration="120 phút"
-      data-info-diem_so="T18"
-      data-info-release="24/04/2026"
-      data-info-desc="Truyền thuyết Cô Năm Hợi kể về những linh hồn chết oan, mang nghiệp nặng nên bị mắc kẹt trong thân xác loài vật, không thể siêu thoát. Giữa không gian đậm chất Khmer huyền bí, Sa – nữ chính *Heo Năm Móng* – như đứng giữa hai cõi, mang theo số phận chồng chéo. Cô là nạn nhân hay kẻ gây tội, đang gánh chịu nghiệp báo?">
-      <div class="poster_phim">
-        <img src="images/heo_5_mong.jpg" alt="">
-        <span class="badge-genre">Hồi hộp, Kinh Dị</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Heo 5 Móng</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
-          <span>120 phút</span>
-          <span>T18</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="Doraemon: Nobita và Lâu Đài Dưới Đáy Biển" data-genre="hoat-hinh" data-tag="HOT" onclick="openModal('Doraemon: Nobita và Lâu Đài Dưới Đáy Biển','images/lau_dai_duoi_day_bien.jpg')"
-      data-info-title="Doraemon: Nobita và Lâu Đài Dưới Đáy Biển"
-      data-info-genre="Hoạt Hình, Phiêu Lưu"
-      data-info-duration="100 phút"
-      data-info-diem_so="P"
-      data-info-release="22/05/2026"
-      data-info-desc="Phim Điện Ảnh Doraemon: Nobita và Lâu Đài Dưới Đáy Biển (phiên bản mới)* kể về chuyến phiêu lưu hè của Doraemon và nhóm bạn khi quyết định cắm trại dưới đáy đại dương bằng bảo bối thần kì. Tại đây, họ khám phá sinh vật biển, gặp chàng trai bí ẩn El – cư dân liên bang Mu, và dần bị cuốn vào bí ẩn “lâu đài quỷ” đang trỗi dậy. Một hành trình kịch tính, nơi tình bạn quyết định số phận Trái Đất.">
-      <div class="poster_phim">
-        <img src="images/lau_dai_duoi_day_bien.jpg" alt="">
-        <span class="badge-genre">Hoạt Hình, Phiêu Lưu</span>
-        <span class="badge-new">HOT</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Doraemon: Nobita và Lâu Đài Dưới Đáy Biển</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 22/05/2026</span>
-          <span>100 phút</span>
-          <span>P</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương" data-genre="hoat-hinh" data-tag="" onclick="openModal('Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương','images/luc_do_toi_da_chuyen_thanh_slime_nuoc_mat_dai_duong.jpg')"
-      data-info-title="Slime: Nước Mắt Đại Dương"
-      data-info-genre="Hoạt Hình, Hành Động"
-      data-info-duration="105 phút"
-      data-info-diem_so="T13"
-      data-info-release="08/05/2026"
-      data-info-desc="Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương* là phần phim chiếu rạp thứ 2 của series nổi tiếng, diễn ra sau Lễ hội Khai quốc Tempest. Rimuru và đồng đội đến khu nghỉ dưỡng của Elmesia để thư giãn, nhưng kỳ nghỉ nhanh chóng bị phá vỡ khi Yura xuất hiện, kéo theo những bí ẩn và mối nguy đang trỗi dậy dưới lòng đại dương.">
-      <div class="poster_phim">
-        <img src="images/luc_do_toi_da_chuyen_thanh_slime_nuoc_mat_dai_duong.jpg" alt="">
-        <span class="badge-genre">Hoạt Hình</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 08/05/2026</span>
-          <span>105 phút</span>
-          <span>T13</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="MOANA 2026" data-genre="phieu-luu" data-tag="" onclick="openModal('MOANA 2026','images/MOANA.jpg')"
-      data-info-title="MOANA 2026"
-      data-info-genre="Phiêu Lưu, Giả Tưởng"
-      data-info-duration="99 phút"
-      data-info-diem_so="T18"
-      data-info-release="10/07/2026"
-      data-info-desc="Một cô gái trẻ sử dụng thiên phú dẫn đường của mình để tìm đến hòn đảo huyền thoại. Cùng tham gia chuyến phiêu lưu với cô bé là một vị anh hùng - á thần Maui huyền thoại. Trên hành trình giữa lòng đại dương để tìm lại linh hồn bị đánh cắp, bằng sự thông minh tinh quái của mình, Moana bé nhỏ đã cùng vị á thần giải cứu thế giới.">
-      <div class="poster_phim">
-        <img src="images/MOANA.jpg" alt="">
-        <span class="badge-genre">Phiêu Lưu, Giả Tưởng</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">MOANA 2026</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 10/07/2026</span>
-          <span>99 phút</span>
-          <span>T18</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="Xác Ướp" data-genre="kinh-di" data-tag="" onclick="openModal('Xác Ướp','images/xac_uop.jpg')"
-      data-info-title="Xác Ướp"
-      data-info-genre="Kinh Dị, Hồi Hộp"
-      data-info-duration="134 phút"
-      data-info-diem_so="T18"
-      data-info-release="17/04/2026"
-      data-info-desc="Ngay sau sự trở lại và thành công vang dội của bộ phim Evil Dead Rise, biên kịch/đạo diễn Lee Cronin tiếp tục khai thác một trong những câu chuyện kinh dị kinh điển nhất mọi thời đại với phiên bản đầy kịch tính: Một Bộ Phim Của Lee Cronin: Xác Ướp. Phim khai thác câu chuyện về cô con gái nhỏ của một nhà báo biến mất không dấu vết trong sa mạc. Tám năm sau, gia đình đã tan vỡ bỗng bàng hoàng khi cô bé trở về, và điều lẽ ra phải là một cuộc hội ngộ hạnh phúc lại biến thành một cơn ác mộng kinh hoàng.">
-      <div class="poster_phim">
-        <img src="images/xac_uop.jpg" alt="">
-        <span class="badge-genre">Kinh Dị</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Xác Ướp</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 17/04/2026</span>
-          <span>134 phút</span>
-          <span>T18</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="Trùm Sò" data-genre="hai" data-tag="" onclick="openModal('Trùm Sò','images/trum_so.jpg')"
-      data-info-title="Trùm Sò"
-      data-info-genre="Hài Hước, Gia Đình"
-      data-info-duration="105 phút"
-      data-info-diem_so="K"
-      data-info-release="24/04/2026"
-      data-info-desc="Tại Làng Sứa Đỏ nghèo khó, chỉ có Trùm Sò là giàu có nhưng nổi tiếng keo kiệt, sống chỉ vì tiền. Khi bị mất một số vàng lớn, hắn vì tiếc của mà lao vào hành trình truy tìm đầy rắc rối, cùng góa phụ Thị Hến và tay giang hồ Tôm Hùm, dẫn đến một vụ cướp chưa từng có.">
-      <div class="poster_phim">
-        <img src="images/trum_so.jpg" alt="">
-        <span class="badge-genre">Hài</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Trùm Sò</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
-          <span>105 phút</span>
-          <span>K</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="the_phim" data-title="Anh Hùng" data-genre="tam-ly" data-tag="" onclick="openModal('Anh Hùng','images/anh_hung.jpg')"
-      data-info-title="Anh Hùng"
-      data-info-genre="Tâm Lý, Gia Đình"
-      data-info-duration="100 phút"
-      data-info-diem_so="K"
-      data-info-release="24/04/2026"
-      data-info-desc="Câu chuyện phim theo chân Hùng (Thái Hòa) - người cha đơn thân kiêm tài xế taxi và đồng nghiệp hãng xe là Tuấn (Võ Tấn Phát) bị cuốn vào một phi vụ lừa đảo từ thiện tiền tỉ trong khi sinh mạng cô con gái nhỏ của anh đang nằm gọn trong tay tử thần.">
-      <div class="poster_phim">
-        <img src="images/anh_hung.jpg" alt="">
-        <span class="badge-genre">Tâm Lý, Gia đình</span>
-      </div>
-      <div class="thong_tin_phim">
-        <div class="ten_phim">Anh Hùng</div>
-        <div class="mo_ta_phim">
-          <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
-          <span>100 phút</span>
-          <span>K</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div id="hop_thoai_xac_thuc_id" class="auth-overlay">
-  <div class="auth-hop_thoai">
-    <button class="close-btn" onclick="closeAuth()">✕</button>
-    
-    <div class="tab_xac_thuc">
-      <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
-      <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
-    </div>
-
-    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
-      <div class="input-group">
-        <input type="email" id="loginEmail" placeholder="Email của bạn" required>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="loginPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('loginPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
-      <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)" onclick="switchTab('register')">Đăng ký ngay</a></div>
-    </form>
-
-    <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
-      <div class="input-group">
-        <input type="text" id="regName" placeholder="Họ và tên" required>
-      </div>
-      <div class="input-group">
-        <input type="email" id="regEmail" placeholder="Email của bạn" required>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="regPass" placeholder="Mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regPass', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <div class="input-group password-group">
-        <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
-        <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-      </div>
-      
-      <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
-      <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng nhập</a></div>
-    </form>
-  </div>
-</div>
-<footer>
-  <div class="thuong_hieu_chan_trang">
-    <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
-    <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
-  </div>
-  <div>
-    <h4>Hỗ trợ</h4>
     <ul>
-      <li><a href="./Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
-      <li><a href="./Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
-      <li><a href="./Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
-      <li><a href="./Thongtin/lienhe.html">Liên hệ</a></li>
+      <li class="co_menu_con">
+        <a href="index.html" class="nut_rap_phim">Rạp chiếu</a><button class="mui_ten_xuong"
+          onclick="batTatMenuRap(event)"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></button>
+        <div class="menu_rap_phim" id="menuRapPhim">
+          <div class="tim_kiem_rap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="o_tim_rap_id" placeholder="Tìm rạp tại..." oninput="locRap(this.value)">
+            <select id="loc_thanh_pho_id" onchange="locRap('')">
+              <option value="">Tất cả</option>
+              <option value="hcm">Tp. Hồ Chí Minh</option>
+              <option value="hn">Hà Nội</option>
+              <option value="dn">Đà Nẵng</option>
+              <option value="vt">Phường Vũng Tàu</option>
+            </select>
+          </div>
+          <div class="danh_sach_rap" id="danhSachRap">
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-quang-trung')">
+              <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Quang Trung <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">645 Quang Trung, Phường 11, Quận Gò Vấp, Thành phố Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-tran-quang-khai')">
+              <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Trần Quang Khải <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 2 &amp; 3, Toà nhà IMC, 62 Đường Trần Quang Khải, Phường Tân Định, Quận 1,
+                  TP. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('beta-ung-van-khiem')">
+              <img src="./images/beta_quang_trung.png" alt="Beta Cinemas" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Beta Ung Văn Khiêm <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 1, tòa nhà PAX SKY, 26 Ung Văn Khiêm, phường 25, Quận Bình Thạnh, Thành
+                  phố Hồ Chí Minh, Việt Nam</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hcm" onclick="chuyenTrangRap('cinestar-quoc-thanh')">
+              <img src="./images/Cinestar_Quoc_Thanh.png" alt="Cinestar" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">Cinestar Quốc Thanh <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">271 Nguyễn Trãi, P. Nguyễn Cư Trinh, Q.1, Tp. Hồ Chí Minh</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="vt" onclick="chuyenTrangRap('cgv-vung-tau')">
+              <img src="./images/CGV_Lapen_Center_Vung_Tau.jpg" alt="CGV" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">CGV Lapen Center Vũng Tàu <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa - Vũng Tàu</div>
+              </div>
+            </div>
+            <div class="muc_rap" data-thanh-pho="hn" onclick="chuyenTrangRap('beta-ha-noi')">
+              <img src="./images/AEON_BETA_Vincom_Smart_City.png" alt="beta" class="logo_rap"
+                onerror="this.style.display='none'">
+              <div class="thong_tin_rap">
+                <div class="ten_rap">AEON BETA Vincom Smart City <span class="nhan_ban_ve">bán vé</span></div>
+                <div class="dia_chi_rap">Tầng 3, TTTM Vincom Mega Mall Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội, Hanoi
+                  City, Hà Nội</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="sapchieu.html">Sắp chiếu</a></li>
+      <li><a href="xemphim.html">Xem phim</a></li>
+      <li><a href="uudai.html">Tin Tức & Ưu đãi</a></li>
     </ul>
-  </div>
-  <div>
-    <h4>Về chúng tôi</h4>
-    <ul>
-      <li><a href="./Thongtin/gioithieu.html">Giới thiệu</a></li>
-      <li><a href="./Thongtin/tintuc.html">Tin tức</a></li>
-      <li><a href="./Thongtin/tuyendung.html">Tuyển dụng</a></li>
-      <li><a href="./Thongtin/doitac.html">Đối tác</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+    <div class="hanh_dong_dieu_huong">
+      <button class="nut_dieu_huong_vien" onclick="openAuth('login')">Đăng nhập</button>
+      <button class="nut_dieu_huong_chinh" onclick="openAuth('register')">Đăng ký</button>
+    </div>
+  </nav>
 
-<div id="movieTooltip" class="movie-tooltip">
-  <div class="tooltip-header">
-    <div class="tooltip-title" id="tooltipTitle"></div>
-    <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+  <div class="vung_noi_bat">
+    <div class="noi_dung_noi_bat">
+      <div class="nhan_noi_bat">
+        <img src="images/lua.png" alt="">HOT NHẤT TUẦN NÀY
+      </div>
+      <h1>QUỶ DỮ TỪ<br><em>LUYỆN NGỤC</em></h1>
+      <p>Trải nghiệm tuyệt tác điện ảnh trên màn hình IMAX 4K Dolby Atmos. Đặt vé ngay hôm nay — ghế VIP giới hạn.</p>
+      <div class="vung_noi_bat-cta">
+        <button class="nut_chinh" onclick="location.href='index.html'">Đặt vé ngay</button>
+        <button class="btn-ghost" onclick="location.href='xemphim.html'"><img src="images/nut_bat_dau.png"
+            height=" 13px" width="13px"> Xem trailer</button>
+      </div>
+    </div>
   </div>
-  <div class="tooltip-meta" id="tooltipMeta"></div>
-  <p class="tooltip-desc" id="tooltipDesc"></p>
-</div>
 
-<script type="module" src="./Java/java.js"></script>
+  <div class="promo-strip">
+    <div class="promo-item">
+      <span class="promo-icon"><img src="images/may_phim.png" width="66px" height="66px"></span>
+      <div class="promo-text"><strong>IMAX & 4DX</strong><span>Trải nghiệm đỉnh cao</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="images/the.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Giảm 30%</strong><span>Thứ 3 hàng tuần</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="images/bap.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>Combo bắp nước</strong><span>Chỉ 89.000đ</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="images/vuong_mien.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>VIP Membership</strong><span>Ưu đãi độc quyền</span></div>
+    </div>
+    <div class="promo-item">
+      <span class="promo-icon"><img src="images/dt.png" width="45px" height="45px"></span>
+      <div class="promo-text"><strong>App 3 CON BÁO</strong><span>Đặt vé siêu nhanh</span></div>
+    </div>
+  </div>
 
-<div class="icon">
-  <h3>ĐỊA CHỈ</h3>
-  <p>
-    <img src="images/vi_tri.png" class="bieu_tuong_vi_tri">
-    84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
-  </p>
-</div>
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
-  width="600" 
-  height="450" 
-  style="border:0; display:block; margin: 0 auto;" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
+  <section>
+    <div class="movie-thanh_loc">
+      <div class="o_tim_kiem">
+        <i class="fas fa-search"></i>
+        <input type="text" id="o_nhap_tim_kiem_id" placeholder="Tìm tên phim..." onkeyup="filterMovies()">
+      </div>
+
+      <div class="filters">
+        <select id="loc_the_loai_id" class="chon_loc" onchange="filterMovies()">
+          <option value="">Tất cả thể loại</option>
+          <option value="kinh-di">Kinh Dị</option>
+          <option value="hoi-hop">Hồi Hộp</option>
+          <option value="hoat-hinh">Hoạt Hình</option>
+          <option value="phieu-luu">Phiêu Lưu</option>
+          <option value="hai">Hài Hước</option>
+          <option value="tam-ly">Tâm Lý</option>
+          <option value="gia-dinh">Gia Đình</option>
+        </select>
+
+        <select id="tagFilter" class="chon_loc" onchange="filterMovies()">
+          <option value="">Tất cả</option>
+          <option value="HOT"><img src="images/lua.png"> HOT</option>
+          <option value="MỚI"><img src="images/new.png"> MỚI</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="movies-grid" id="moviesGrid">
+
+      <div class="the_phim" data-title="Heo 5 Móng" data-genre="hoi-hop" data-tag=""
+        onclick="openModal('Heo 5 Móng','images/heo_5_mong.jpg')" data-info-title="Heo 5 Móng"
+        data-info-genre="Hồi hộp, Kinh Dị" data-info-duration="120 phút" data-info-diem_so="T18"
+        data-info-release="24/04/2026"
+        data-info-desc="Truyền thuyết Cô Năm Hợi kể về những linh hồn chết oan, mang nghiệp nặng nên bị mắc kẹt trong thân xác loài vật, không thể siêu thoát. Giữa không gian đậm chất Khmer huyền bí, Sa – nữ chính *Heo Năm Móng* – như đứng giữa hai cõi, mang theo số phận chồng chéo. Cô là nạn nhân hay kẻ gây tội, đang gánh chịu nghiệp báo?">
+        <div class="poster_phim">
+          <img src="images/heo_5_mong.jpg" alt="">
+          <span class="badge-genre">Hồi hộp, Kinh Dị</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Heo 5 Móng</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
+            <span>120 phút</span>
+            <span>T18</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="Doraemon: Nobita và Lâu Đài Dưới Đáy Biển" data-genre="hoat-hinh" data-tag="HOT"
+        onclick="openModal('Doraemon: Nobita và Lâu Đài Dưới Đáy Biển','images/lau_dai_duoi_day_bien.jpg')"
+        data-info-title="Doraemon: Nobita và Lâu Đài Dưới Đáy Biển" data-info-genre="Hoạt Hình, Phiêu Lưu"
+        data-info-duration="100 phút" data-info-diem_so="P" data-info-release="22/05/2026"
+        data-info-desc="Phim Điện Ảnh Doraemon: Nobita và Lâu Đài Dưới Đáy Biển (phiên bản mới)* kể về chuyến phiêu lưu hè của Doraemon và nhóm bạn khi quyết định cắm trại dưới đáy đại dương bằng bảo bối thần kì. Tại đây, họ khám phá sinh vật biển, gặp chàng trai bí ẩn El – cư dân liên bang Mu, và dần bị cuốn vào bí ẩn “lâu đài quỷ” đang trỗi dậy. Một hành trình kịch tính, nơi tình bạn quyết định số phận Trái Đất.">
+        <div class="poster_phim">
+          <img src="images/lau_dai_duoi_day_bien.jpg" alt="">
+          <span class="badge-genre">Hoạt Hình, Phiêu Lưu</span>
+          <span class="badge-new">HOT</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Doraemon: Nobita và Lâu Đài Dưới Đáy Biển</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 22/05/2026</span>
+            <span>100 phút</span>
+            <span>P</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương"
+        data-genre="hoat-hinh" data-tag=""
+        onclick="openModal('Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương','images/luc_do_toi_da_chuyen_thanh_slime_nuoc_mat_dai_duong.jpg')"
+        data-info-title="Slime: Nước Mắt Đại Dương" data-info-genre="Hoạt Hình, Hành Động" data-info-duration="105 phút"
+        data-info-diem_so="T13" data-info-release="08/05/2026"
+        data-info-desc="Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương* là phần phim chiếu rạp thứ 2 của series nổi tiếng, diễn ra sau Lễ hội Khai quốc Tempest. Rimuru và đồng đội đến khu nghỉ dưỡng của Elmesia để thư giãn, nhưng kỳ nghỉ nhanh chóng bị phá vỡ khi Yura xuất hiện, kéo theo những bí ẩn và mối nguy đang trỗi dậy dưới lòng đại dương.">
+        <div class="poster_phim">
+          <img src="images/luc_do_toi_da_chuyen_thanh_slime_nuoc_mat_dai_duong.jpg" alt="">
+          <span class="badge-genre">Hoạt Hình</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Lúc Đó Tôi Đã Chuyển Sinh Thành Slime: Nước Mắt Đại Dương</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 08/05/2026</span>
+            <span>105 phút</span>
+            <span>T13</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="MOANA 2026" data-genre="phieu-luu" data-tag=""
+        onclick="openModal('MOANA 2026','images/MOANA.jpg')" data-info-title="MOANA 2026"
+        data-info-genre="Phiêu Lưu, Giả Tưởng" data-info-duration="99 phút" data-info-diem_so="T18"
+        data-info-release="10/07/2026"
+        data-info-desc="Một cô gái trẻ sử dụng thiên phú dẫn đường của mình để tìm đến hòn đảo huyền thoại. Cùng tham gia chuyến phiêu lưu với cô bé là một vị anh hùng - á thần Maui huyền thoại. Trên hành trình giữa lòng đại dương để tìm lại linh hồn bị đánh cắp, bằng sự thông minh tinh quái của mình, Moana bé nhỏ đã cùng vị á thần giải cứu thế giới.">
+        <div class="poster_phim">
+          <img src="images/MOANA.jpg" alt="">
+          <span class="badge-genre">Phiêu Lưu, Giả Tưởng</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">MOANA 2026</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 10/07/2026</span>
+            <span>99 phút</span>
+            <span>T18</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="Xác Ướp" data-genre="kinh-di" data-tag=""
+        onclick="openModal('Xác Ướp','images/xac_uop.jpg')" data-info-title="Xác Ướp" data-info-genre="Kinh Dị, Hồi Hộp"
+        data-info-duration="134 phút" data-info-diem_so="T18" data-info-release="17/04/2026"
+        data-info-desc="Ngay sau sự trở lại và thành công vang dội của bộ phim Evil Dead Rise, biên kịch/đạo diễn Lee Cronin tiếp tục khai thác một trong những câu chuyện kinh dị kinh điển nhất mọi thời đại với phiên bản đầy kịch tính: Một Bộ Phim Của Lee Cronin: Xác Ướp. Phim khai thác câu chuyện về cô con gái nhỏ của một nhà báo biến mất không dấu vết trong sa mạc. Tám năm sau, gia đình đã tan vỡ bỗng bàng hoàng khi cô bé trở về, và điều lẽ ra phải là một cuộc hội ngộ hạnh phúc lại biến thành một cơn ác mộng kinh hoàng.">
+        <div class="poster_phim">
+          <img src="images/xac_uop.jpg" alt="">
+          <span class="badge-genre">Kinh Dị</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Xác Ướp</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 17/04/2026</span>
+            <span>134 phút</span>
+            <span>T18</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="Trùm Sò" data-genre="hai" data-tag=""
+        onclick="openModal('Trùm Sò','images/trum_so.jpg')" data-info-title="Trùm Sò"
+        data-info-genre="Hài Hước, Gia Đình" data-info-duration="105 phút" data-info-diem_so="K"
+        data-info-release="24/04/2026"
+        data-info-desc="Tại Làng Sứa Đỏ nghèo khó, chỉ có Trùm Sò là giàu có nhưng nổi tiếng keo kiệt, sống chỉ vì tiền. Khi bị mất một số vàng lớn, hắn vì tiếc của mà lao vào hành trình truy tìm đầy rắc rối, cùng góa phụ Thị Hến và tay giang hồ Tôm Hùm, dẫn đến một vụ cướp chưa từng có.">
+        <div class="poster_phim">
+          <img src="images/trum_so.jpg" alt="">
+          <span class="badge-genre">Hài</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Trùm Sò</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
+            <span>105 phút</span>
+            <span>K</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="the_phim" data-title="Anh Hùng" data-genre="tam-ly" data-tag=""
+        onclick="openModal('Anh Hùng','images/anh_hung.jpg')" data-info-title="Anh Hùng"
+        data-info-genre="Tâm Lý, Gia Đình" data-info-duration="100 phút" data-info-diem_so="K"
+        data-info-release="24/04/2026"
+        data-info-desc="Câu chuyện phim theo chân Hùng (Thái Hòa) - người cha đơn thân kiêm tài xế taxi và đồng nghiệp hãng xe là Tuấn (Võ Tấn Phát) bị cuốn vào một phi vụ lừa đảo từ thiện tiền tỉ trong khi sinh mạng cô con gái nhỏ của anh đang nằm gọn trong tay tử thần.">
+        <div class="poster_phim">
+          <img src="images/anh_hung.jpg" alt="">
+          <span class="badge-genre">Tâm Lý, Gia đình</span>
+        </div>
+        <div class="thong_tin_phim">
+          <div class="ten_phim">Anh Hùng</div>
+          <div class="mo_ta_phim">
+            <span class="diem_so">Khởi Chiếu: 24/04/2026</span>
+            <span>100 phút</span>
+            <span>K</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
+    <div class="auth-hop_thoai">
+      <button class="close-btn" onclick="closeAuth()">✕</button>
+
+      <div class="tab_xac_thuc">
+        <button class="nut_tab_xac_thuc active" id="tabLogin" onclick="switchTab('login')">Đăng nhập</button>
+        <button class="nut_tab_xac_thuc" id="tabRegister" onclick="switchTab('register')">Đăng ký</button>
+      </div>
+
+      <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <input type="email" id="loginEmail" placeholder="Email của bạn" required>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('loginPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <button type="submit" class="nut_xac_thuc">ĐĂNG NHẬP</button>
+        <div class="auth-footer-text">Chưa có tài khoản? <a href="javascript:void(0)"
+            onclick="switchTab('register')">Đăng ký ngay</a></div>
+      </form>
+
+      <form id="formRegister" class="auth-form" onsubmit="handleRegister(event)" style="display:none;">
+        <div class="input-group">
+          <input type="text" id="regName" placeholder="Họ và tên" required>
+        </div>
+        <div class="input-group">
+          <input type="email" id="regEmail" placeholder="Email của bạn" required>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="regPass" placeholder="Mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regPass', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <div class="input-group password-group">
+          <input type="password" id="regConfirm" placeholder="Xác nhận mật khẩu" required>
+          <span class="eye-icon" onclick="togglePassword('regConfirm', this)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+        </div>
+
+        <button type="submit" class="nut_xac_thuc">TẠO TÀI KHOẢN</button>
+        <div class="auth-footer-text">Đã có tài khoản? <a href="javascript:void(0)" onclick="switchTab('login')">Đăng
+            nhập</a></div>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="thuong_hieu_chan_trang">
+      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="./Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
+        <li><a href="./Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
+        <li><a href="./Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
+        <li><a href="./Thongtin/lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="./Thongtin/gioithieu.html">Giới thiệu</a></li>
+        <li><a href="./Thongtin/tintuc.html">Tin tức</a></li>
+        <li><a href="./Thongtin/tuyendung.html">Tuyển dụng</a></li>
+        <li><a href="./Thongtin/doitac.html">Đối tác</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+
+  <div id="movieTooltip" class="movie-tooltip">
+    <div class="tooltip-header">
+      <div class="tooltip-title" id="tooltipTitle"></div>
+      <span class="tooltip-diem_so-badge" id="tooltipRating"></span>
+    </div>
+    <div class="tooltip-meta" id="tooltipMeta"></div>
+    <p class="tooltip-desc" id="tooltipDesc"></p>
+  </div>
+
+  <script type="module" src="./Java/java.js"></script>
+
+  <div class="icon">
+    <h3>ĐỊA CHỈ</h3>
+    <p>
+      <img src="images/vi_tri.png" class="bieu_tuong_vi_tri">
+      84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
+    </p>
+  </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
+    width="600" height="450" style="border:0; display:block; margin: 0 auto;" allowfullscreen="" loading="lazy">
+  </iframe>
 </body>
+
 </html>
