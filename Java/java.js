@@ -673,12 +673,9 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function chuyenTrangHoSo() {
-    const path = window.location.pathname;
-    // Đếm số cấp thư mục (bỏ qua repo name GitHub Pages và file .html)
-    const segments = path.split('/').filter(p => p && !p.includes('.'));
-    const depth = segments.length;
-    const prefix = depth > 1 ? '../'.repeat(depth - 1) : '';
-    window.location.href = prefix + 'hoso.html';
+    // Lấy thư mục hiện tại, giữ nguyên repo name (/doan/)
+    const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    window.location.href = currentDir + 'hoso.html';
 }
 
 function chuyenTrangRap(tenRap) {
