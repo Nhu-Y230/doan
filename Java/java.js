@@ -76,12 +76,13 @@ function updateNavbar() {
 }
 
 async function handleLogout() {
-    if (confirm('Bạn muốn đăng xuất không?')) {
+    // FIX: thay confirm() bằng showConfirm() tùy chỉnh — hỗ trợ HTML, đúng theme
+    const confirmed = await showConfirm('Bạn muốn đăng xuất không?');
+    if (confirmed) {
         try {
             await signOut(auth);
             clearCurrentUser();
             updateNavbar();
-            // FIX: showToast dùng innerHTML nên ảnh hiển thị được
             showToast('<img src="images/ban_tay.png" width="20"> Đã đăng xuất thành công.');
         } catch (error) {
             showAlert('Lỗi đăng xuất: ' + error.message);
@@ -144,7 +145,7 @@ async function handleLogin(e) {
 
         closeAuth();
         updateNavbar();
-        showToast(`Xin chào quay trở lại! 🎬`);
+        showToast(`Xin chào quay trở lại! <img src='images/may_phim.png' width='20'> Đăng nhập thành công.`);
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
@@ -195,7 +196,7 @@ async function handleRegister(e) {
 
         closeAuth();
         updateNavbar();
-        showToast(`Chào mừng ${name}! Đăng ký thành công 🎉`);
+        showToast(`Chào mừng ${name}! Đăng ký thành công <img src='images/hoan_ho.png' width='20'>`);
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/email-already-in-use') {
@@ -273,6 +274,69 @@ function showAlert(msg) {
     }
     document.getElementById('cineviet-alert-msg').innerHTML = msg;
     overlay.style.display = 'flex';
+}
+
+// FIX: thay thế confirm() bằng hộp thoại tùy chỉnh hỗ trợ HTML/ảnh, trả về Promise
+function showConfirm(msg) {
+    return new Promise((resolve) => {
+        let overlay = document.getElementById('cineviet-confirm-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'cineviet-confirm-overlay';
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:99999;display:flex;align-items:center;justify-content:center;';
+
+            const box = document.createElement('div');
+            box.style.cssText = 'background:#1a1a2e;color:#fff;border-radius:14px;padding:28px 32px;max-width:380px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.5);font-size:15px;line-height:1.7;';
+
+            const msgDiv = document.createElement('div');
+            msgDiv.id = 'cineviet-confirm-msg';
+            msgDiv.style.cssText = 'margin-bottom:24px;display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;';
+
+            const btnRow = document.createElement('div');
+            btnRow.style.cssText = 'display:flex;gap:12px;justify-content:center;';
+
+            const btnOk = document.createElement('button');
+            btnOk.id = 'cineviet-confirm-ok';
+            btnOk.textContent = 'OK';
+            btnOk.style.cssText = 'background:#22c55e;color:#fff;border:none;border-radius:8px;padding:9px 30px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s;';
+            btnOk.onmouseover = () => btnOk.style.opacity = '0.85';
+            btnOk.onmouseout = () => btnOk.style.opacity = '1';
+
+            const btnCancel = document.createElement('button');
+            btnCancel.id = 'cineviet-confirm-cancel';
+            btnCancel.textContent = 'Huỷ';
+            btnCancel.style.cssText = 'background:#444;color:#fff;border:none;border-radius:8px;padding:9px 30px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .2s;';
+            btnCancel.onmouseover = () => btnCancel.style.opacity = '0.85';
+            btnCancel.onmouseout = () => btnCancel.style.opacity = '1';
+
+            btnRow.appendChild(btnOk);
+            btnRow.appendChild(btnCancel);
+            box.appendChild(msgDiv);
+            box.appendChild(btnRow);
+            overlay.appendChild(box);
+            document.body.appendChild(overlay);
+        }
+
+        document.getElementById('cineviet-confirm-msg').innerHTML = msg;
+        overlay.style.display = 'flex';
+
+        const btnOk = document.getElementById('cineviet-confirm-ok');
+        const btnCancel = document.getElementById('cineviet-confirm-cancel');
+
+        // Clone để xoá event listener cũ
+        const newOk = btnOk.cloneNode(true);
+        const newCancel = btnCancel.cloneNode(true);
+        btnOk.replaceWith(newOk);
+        btnCancel.replaceWith(newCancel);
+
+        newOk.onmouseover = () => newOk.style.opacity = '0.85';
+        newOk.onmouseout = () => newOk.style.opacity = '1';
+        newCancel.onmouseover = () => newCancel.style.opacity = '0.85';
+        newCancel.onmouseout = () => newCancel.style.opacity = '1';
+
+        newOk.onclick = () => { overlay.style.display = 'none'; resolve(true); };
+        newCancel.onclick = () => { overlay.style.display = 'none'; resolve(false); };
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
