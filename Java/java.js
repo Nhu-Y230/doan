@@ -674,17 +674,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function chuyenTrangHoSo() {
     const path = window.location.pathname;
-    const dangOThongTin = path.includes('/Thongtin/');
-    const dangOSubFolder = path.split('/').length > 2 && path !== '/index.html' && path !== '/';
-    
-    // Xác định prefix dựa trên vị trí file hiện tại
-    let prefix = '';
-    if (dangOThongTin) {
-        prefix = '../';
-    } else if (dangOSubFolder && !path.includes('/Thongtin/')) {
-        prefix = '../';
-    }
-    
+    // Đếm số cấp thư mục (bỏ qua repo name GitHub Pages và file .html)
+    const segments = path.split('/').filter(p => p && !p.includes('.'));
+    const depth = segments.length;
+    const prefix = depth > 1 ? '../'.repeat(depth - 1) : '';
     window.location.href = prefix + 'hoso.html';
 }
 
