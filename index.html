@@ -567,16 +567,6 @@
   allowfullscreen="" 
   loading="lazy">
 </iframe>
-<script>
-// Scroll đến lưới phim nếu URL có hash #dat-ve
-window.addEventListener('DOMContentLoaded', function() {
-  if (window.location.hash === '#dat-ve') {
-    setTimeout(function() {
-      var el = document.getElementById('dat-ve');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 300);
-  }
-});
-</script>
+
 </body>
 </html>

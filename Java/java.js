@@ -30,10 +30,27 @@ function isLoggedIn() {
 }
 
 function getAvatarText(user) {
-    // Lấy phần trước @ của email làm username (vd: taikhoanso01 → taikh)
-    const username = user.email ? user.email.split('@')[0] : (user.name || '?');
-    // Hiển thị tối đa 5 ký tự viết thường
-    return username.substring(0, 5).toLowerCase();
+    // Lấy tên hiển thị: ưu tiên user.name, nếu không có thì dùng phần trước @ của email
+    const displayName = user.name || (user.email ? user.email.split('@')[0] : '?');
+    const parts = displayName.trim().split(/\s+/);
+    // Lấy chữ cái đầu của từ cuối cùng (VD: "Hồng Vũ" → "V", "Trung" → "T")
+    const lastWord = parts[parts.length - 1];
+    return lastWord.charAt(0).toUpperCase();
+}
+
+function getAvatarColor(user) {
+    // Tạo màu cố định dựa trên tên/email để mỗi tài khoản có màu riêng
+    const key = (user.name || user.email || '?').trim();
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+        hash = key.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const colors = [
+        '#E53935', '#D81B60', '#8E24AA', '#5E35B1',
+        '#1E88E5', '#00897B', '#43A047', '#F4511E',
+        '#FB8C00', '#F6BF26', '#039BE5', '#3949AB'
+    ];
+    return colors[Math.abs(hash) % colors.length];
 }
 
 function getDisplayName(user) {
@@ -50,9 +67,10 @@ function updateNavbar() {
 
     if (user) {
         const avatarText = getAvatarText(user);
+        const avatarColor = getAvatarColor(user);
         const displayName = getDisplayName(user);
         navActions.innerHTML = `
-            <div class="user-avatar-nav" title="${user.name || displayName}">${avatarText}</div>
+            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor}">${avatarText}</div>
             <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
         `;
     } else {
