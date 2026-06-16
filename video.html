@@ -266,63 +266,7 @@
 
 
 
-  <footer>
-    <div class="thuong_hieu_chan_trang">
-      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
-      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
-    </div>
-    <div>
-      <h4>Hỗ trợ</h4>
-      <ul>
-        <li><a href="./Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
-        <li><a href="./Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
-        <li><a href="./Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
-        <li><a href="./Thongtin/lienhe.html">Liên hệ</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Về chúng tôi</h4>
-      <ul>
-        <li><a href="./Thongtin/gioithieu.html">Giới thiệu</a></li>
-        <li><a href="./Thongtin/tintuc.html">Tin tức</a></li>
-        <li><a href="./Thongtin/tuyendung.html">Tuyển dụng</a></li>
-        <li><a href="./Thongtin/doitac.html">Đối tác</a></li>
-      </ul>
-    </div>
-
-  </footer>
-  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
-  <!-- ===== ĐỊA CHỈ & BẢN ĐỒ ===== -->
-  <div class="icon">
-    <h3>ĐỊA CHỈ</h3>
-    <p>
-      <img src="images/vi_tri.png" class="bieu_tuong_vi_tri" onerror="this.style.display='none'">
-      84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
-    </p>
-  </div>
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
-    width="600" height="450" style="border:0; display:block; margin: 0 auto;" allowfullscreen="" loading="lazy">
-  </iframe>
-  <script type="module" src="./Java/java.js"></script>
-  <script>
-    function startVideo() {
-      document.getElementById('videoOverlay').style.display = 'none';
-      document.getElementById('posterImg').style.display = 'none';
-      var v = document.getElementById('myVideo');
-      v.style.display = 'block';
-      v.play();
-    }
-
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var url = params.get('url');
-      var img = params.get('img');
-      if (url) document.getElementById('sourceVideo').src = url;
-      if (img) document.getElementById('posterImg').src = img;
-      document.getElementById('myVideo').load();
-    })();
-  </script>
+  <!-- ===== ĐĂNG NHẬP / ĐĂNG KÝ ===== -->
 
   <!-- ===== ĐĂNG NHẬP / ĐĂNG KÝ ===== -->
   <div id="hop_thoai_xac_thuc_id" class="auth-overlay">
@@ -386,6 +330,65 @@
       </form>
     </div>
   </div>
+
+
+  <footer>
+    <div class="thuong_hieu_chan_trang">
+      <span class="bieu_tuong">3 CON BÁO <span>CINEMA</span></span>
+      <p>Hệ thống đặt vé xem phim trực tuyến hàng đầu Việt Nam. Hơn 200 rạp chiếu trên toàn quốc.</p>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="./Thongtin/huongdandatve.html">Hướng dẫn đặt vé</a></li>
+        <li><a href="./Thongtin/chinhsachhoanve.html">Chính sách hoàn vé</a></li>
+        <li><a href="./Thongtin/cauhoithuonggap.html">Câu hỏi thường gặp</a></li>
+        <li><a href="./Thongtin/lienhe.html">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="./Thongtin/gioithieu.html">Giới thiệu</a></li>
+        <li><a href="./Thongtin/tintuc.html">Tin tức</a></li>
+        <li><a href="./Thongtin/tuyendung.html">Tuyển dụng</a></li>
+        <li><a href="./Thongtin/doitac.html">Đối tác</a></li>
+      </ul>
+    </div>
+
+  </footer>
+  <div class="day_chan_trang">© 2026 3 CON BÁO. Bảo lưu mọi quyền.</div>
+  <!-- ===== ĐỊA CHỈ & BẢN ĐỒ ===== -->
+  <div class="icon">
+    <h3>ĐỊA CHỈ</h3>
+    <p>
+      <img src="images/vi_tri.png" class="bieu_tuong_vi_tri" onerror="this.style.display='none'">
+      84 Trần Hưng Đạo, Phước Nguyễn, Bà Rịa, Hồ Chí Minh 90000, Việt Nam
+    </p>
+  </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125538.45359592259!2d107.02892664335938!3d10.494621900000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317573c60795fab5%3A0x84279a151e65e7a6!2sGala%20Cinema!5e0!3m2!1svi!2s!4v1777364292865!5m2!1svi!2s"
+    width="600" height="450" style="border:0; display:block; margin: 0 auto;" allowfullscreen="" loading="lazy">
+  </iframe>
+  <script type="module" src="./Java/java.js"></script>
+  <script>
+    function startVideo() {
+      document.getElementById('videoOverlay').style.display = 'none';
+      document.getElementById('posterImg').style.display = 'none';
+      var v = document.getElementById('myVideo');
+      v.style.display = 'block';
+      v.play();
+    }
+
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var url = params.get('url');
+      var img = params.get('img');
+      if (url) document.getElementById('sourceVideo').src = url;
+      if (img) document.getElementById('posterImg').src = img;
+      document.getElementById('myVideo').load();
+    })();
+  </script>
 
 </body>
 
