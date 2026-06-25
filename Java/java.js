@@ -143,7 +143,7 @@ async function handleLogin(e) {
 
         closeAuth();
         updateNavbar();
-        showToast(`Xin chào quay trở lại! <img src='./images/may_phim.png' width='20'> Đăng nhập thành công.`);
+        showToast(`Xin chào quay trở lại! <img src='images/may_phim.png' width='20'> Đăng nhập thành công.`);
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
