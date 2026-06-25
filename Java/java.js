@@ -1,5 +1,12 @@
 import { auth, db, collection, addDoc } from './firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    EmailAuthProvider,
+    reauthenticateWithCredential,
+    updatePassword
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
 const ROWS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 const COLS = 10;
@@ -64,8 +71,24 @@ function updateNavbar() {
         const avatarColor = getAvatarColor(user);
         const displayName = getDisplayName(user);
         navActions.innerHTML = `
-            <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor}">${avatarText}</div>
-            <button class="nut_dieu_huong_vien" onclick="handleLogout()">Đăng xuất</button>
+            <div class="user-menu-wrap">
+                <div class="user-avatar-nav" title="${user.name || displayName}" style="background:${avatarColor}" onclick="toggleUserMenu(event)">${avatarText}</div>
+                <div class="user-dropdown" id="userDropdownId">
+                    <div class="user-dropdown-head">
+                        <div class="user-avatar-nav" style="background:${avatarColor}">${avatarText}</div>
+                        <div>
+                            <div class="user-dropdown-name">${user.name || displayName}</div>
+                            <div class="user-dropdown-email">${user.email || ''}</div>
+                        </div>
+                    </div>
+                    <button class="user-dropdown-item" onclick="openChangePassword()">
+                        <img src="images/the.png" width="16"> Đổi mật khẩu
+                    </button>
+                    <button class="user-dropdown-item user-dropdown-logout" onclick="handleLogout()">
+                        <img src="images/dau_x_do.png" width="16"> Đăng xuất
+                    </button>
+                </div>
+            </div>
         `;
     } else {
         navActions.innerHTML = `
@@ -85,6 +108,103 @@ async function handleLogout() {
             showToast('<img src="images/ban_tay.png" width="20"> Đã đăng xuất thành công.');
         } catch (error) {
             showAlert('Lỗi đăng xuất: ' + error.message);
+        }
+    }
+}
+
+function toggleUserMenu(e) {
+    if (e) e.stopPropagation();
+    const dropdown = document.getElementById('userDropdownId');
+    if (!dropdown) return;
+    const isOpen = dropdown.classList.contains('open');
+    dropdown.classList.toggle('open', !isOpen);
+
+    if (!isOpen) {
+        document.addEventListener('click', closeUserMenuOutside);
+    }
+}
+
+function closeUserMenuOutside(e) {
+    const wrap = document.querySelector('.user-menu-wrap');
+    const dropdown = document.getElementById('userDropdownId');
+    if (wrap && !wrap.contains(e.target)) {
+        if (dropdown) dropdown.classList.remove('open');
+        document.removeEventListener('click', closeUserMenuOutside);
+    }
+}
+
+function openChangePassword() {
+    const dropdown = document.getElementById('userDropdownId');
+    if (dropdown) dropdown.classList.remove('open');
+
+    const hop_thoai = document.getElementById('hop_thoai_doi_mk_id');
+    if (hop_thoai) {
+        document.getElementById('curPass').value = '';
+        document.getElementById('newPass').value = '';
+        document.getElementById('newPassConfirm').value = '';
+        hop_thoai.classList.add('open');
+        document.body.classList.add('hop_thoai-open');
+    }
+}
+
+function closeChangePassword() {
+    const hop_thoai = document.getElementById('hop_thoai_doi_mk_id');
+    if (hop_thoai) hop_thoai.classList.remove('open');
+    document.body.classList.remove('hop_thoai-open');
+}
+
+async function handleChangePassword(e) {
+    e.preventDefault();
+
+    const curPass = document.getElementById('curPass').value;
+    const newPass = document.getElementById('newPass').value;
+    const newPassConfirm = document.getElementById('newPassConfirm').value;
+
+    if (!curPass || !newPass || !newPassConfirm) {
+        showAlert('<img src="images/thang_do.png" width="20"> Vui lòng điền đầy đủ thông tin.');
+        return;
+    }
+
+    const pwCheck = isStrongPassword(newPass);
+    if (!pwCheck.valid) {
+        showAlert(pwCheck.message);
+        return;
+    }
+
+    if (newPass !== newPassConfirm) {
+        showAlert('<img src="images/dau_x_do.png" width="20"> Xác nhận mật khẩu mới không khớp.');
+        return;
+    }
+
+    if (newPass === curPass) {
+        showAlert('<img src="images/thang_do.png" width="20"> Mật khẩu mới phải khác mật khẩu hiện tại.');
+        return;
+    }
+
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) {
+        showAlert('<img src="images/dau_x_do.png" width="20"> Bạn cần đăng nhập lại để đổi mật khẩu.');
+        closeChangePassword();
+        return;
+    }
+
+    try {
+        // Firebase yêu cầu xác thực lại trước khi đổi mật khẩu
+        const credential = EmailAuthProvider.credential(firebaseUser.email, curPass);
+        await reauthenticateWithCredential(firebaseUser, credential);
+
+        await updatePassword(firebaseUser, newPass);
+
+        closeChangePassword();
+        showToast('<img src="images/hoan_ho.png" width="20"> Đổi mật khẩu thành công!');
+    } catch (error) {
+        console.error(error);
+        if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+            showAlert("<img src='images/dau_x_do.png' width='20'> Mật khẩu hiện tại không chính xác!");
+        } else if (error.code === 'auth/too-many-requests') {
+            showAlert("<img src='images/dau_x_do.png' width='20'> Bạn thử quá nhiều lần. Vui lòng thử lại sau.");
+        } else {
+            showAlert('<img src="images/dau_x_do.png" width="20"> Lỗi: ' + error.message);
         }
     }
 }
@@ -780,6 +900,10 @@ window.handleLogin = handleLogin;
 window.handleRegister = handleRegister;
 window.handleLogout = handleLogout;
 window.togglePassword = togglePassword;
+window.toggleUserMenu = toggleUserMenu;
+window.openChangePassword = openChangePassword;
+window.closeChangePassword = closeChangePassword;
+window.handleChangePassword = handleChangePassword;
 window.closeModal = closeModal;
 window.closePay = closePay;
 window.processPayment = processPayment;
