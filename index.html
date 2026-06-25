@@ -359,54 +359,6 @@
       </form>
     </div>
   </div>
-  <div id="hop_thoai_doi_mk_id" class="auth-overlay">
-    <div class="auth-hop_thoai">
-      <button class="close-btn" onclick="closeChangePassword()">✕</button>
-
-      <div class="tab_xac_thuc" style="border-bottom:none; margin-bottom:24px;">
-        <div style="flex:1; text-align:center; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.05rem; color:var(--light); padding-bottom:14px;">
-          ĐỔI MẬT KHẨU
-        </div>
-      </div>
-
-      <form id="formChangePassword" class="auth-form" onsubmit="handleChangePassword(event)">
-        <div class="input-group password-group">
-          <input type="password" id="curPass" placeholder="Mật khẩu hiện tại" required>
-          <span class="eye-icon" onclick="togglePassword('curPass', this)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </span>
-        </div>
-
-        <div class="input-group password-group">
-          <input type="password" id="newPass" placeholder="Mật khẩu mới" required>
-          <span class="eye-icon" onclick="togglePassword('newPass', this)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </span>
-        </div>
-
-        <div class="input-group password-group">
-          <input type="password" id="newPassConfirm" placeholder="Xác nhận mật khẩu mới" required>
-          <span class="eye-icon" onclick="togglePassword('newPassConfirm', this)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" class="eye-svg">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </span>
-        </div>
-
-        <button type="submit" class="nut_xac_thuc">XÁC NHẬN ĐỔI MẬT KHẨU</button>
-      </form>
-    </div>
-  </div>
   <div class="hop_thoai-overlay" id="hop_thoai">
     <div class="hop_thoai">
       <div class="dau_hop_thoai">
