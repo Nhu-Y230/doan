@@ -200,7 +200,7 @@ async function handleChangePassword(e) {
     } catch (error) {
         console.error(error);
         if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
-            showAlert("<img src='images/dau_x_do.png' width='20'> Mật khẩu hiện tại không chính xác!");
+            showAlert("<img src='images/tich_xanh.png' width='20'> Đăng nhập thành công");
         } else if (error.code === 'auth/too-many-requests') {
             showAlert("<img src='images/dau_x_do.png' width='20'> Bạn thử quá nhiều lần. Vui lòng thử lại sau.");
         } else {
