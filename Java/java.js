@@ -82,7 +82,7 @@ function updateNavbar() {
                         </div>
                     </div>
                     <button class="user-dropdown-item" onclick="openChangePassword()">
-                        <img src="images/the.png" width="16"> Đổi mật khẩu
+                        <img src="images/khoa.png" width="16"> Đổi mật khẩu
                     </button>
                     <button class="user-dropdown-item user-dropdown-logout" onclick="handleLogout()">
                         <img src="images/dau_x_do.png" width="16"> Đăng xuất
